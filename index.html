@@ -3,74 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ar.buyer_01 | Luxury Shopping</title>
+    <title>Minimalist Store</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="logo-screen">
-        <div class="logo-text">ar.buyer_01</div>
-        <div class="logo-subtext">By Arif Abbasov</div>
-    </div>
+    <header class="header">
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="logo">
+            <a href="#">Loro Piana Style</a>
+        </div>
+        <div class="cart-icon">
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+    </header>
 
-    <div class="main-content">
-        <header>
-            <nav>
-                <button class="menu-toggle" aria-label="Открыть меню">&#9776;</button>
-                <div class="logo">ar.buyer_01</div>
-                <a href="#cart" class="cart-icon" aria-label="Корзина">&#128722;</a>
-            </nav>
-            <div class="nav-drawer" id="nav-drawer">
-                <button class="close-menu">&times;</button>
-                <ul>
-                    <li><a href="#profile">Мой профиль</a></li>
-                    <li><a href="#collections">Новые коллекции</a></li>
-                    <li><a href="#home">Главная</a></li>
-                    <li><a href="#men">Мужское</a></li>
-                    <li><a href="#women">Женское</a></li>
-                    <li><a href="#catalog">Каталог</a></li>
-                    <li><a href="#vip">VIP Зона</a></li>
-                </ul>
-            </div>
-        </header>
+    <main class="main-content">
+        <section class="hero">
+            <h1>Коллекция Осень-Зима</h1>
+            <p>Исключительное качество и минимализм в каждой детали.</p>
+        </section>
 
-        <main id="home">
-            <section class="catalog-section">
-                <div class="catalog-grid">
-                    <div class="product-card">
-                        <div class="product-name">Сумка Birkin</div>
-                        <div class="product-price">Цена по запросу</div>
-                        <button class="add-to-cart-btn">Добавить в корзину</button>
-                    </div>
-                </div>
-                <div style="text-align: center;">
-                    <button class="contact-buyer-btn">Связаться с байером</button>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2026 ar.buyer_01. Все права защищены.</p>
-        </footer>
-    </div>
-
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const closeMenu = document.querySelector('.close-menu');
-        const navDrawer = document.getElementById('nav-drawer');
-
-        menuToggle.addEventListener('click', () => {
-            navDrawer.classList.add('active');
-        });
-
-        closeMenu.addEventListener('click', () => {
-            navDrawer.classList.remove('active');
-        });
-
-        window.addEventListener('click', (e) => {
-            if (!navDrawer.contains(e.target) && !menuToggle.contains(e.target)) {
-                navDrawer.classList.remove('active');
-            }
-        });
-    </script>
+        <section class="product-grid">
+            <article class="product-card">
+                <div class="image-placeholder"></div>
+                <h2>Кашемировый джемпер</h2>
+                <span class="price">120 000 сом</span>
+            </article>
+            <article class="product-card">
+                <div class="image-placeholder"></div>
+                <h2>Шарф из шерсти мериноса</h2>
+                <span class="price">35 000 сом</span>
+            </article>
+            <article class="product-card">
+                <div class="image-placeholder"></div>
+                <h2>Замшевые лоферы</h2>
+                <span class="price">85 000 сом</span>
+            </article>
+        </section>
+    </main>
 </body>
 </html>
