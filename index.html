@@ -2,9 +2,7 @@
     <nav>
         <button class="menu-toggle" aria-label="Открыть меню">&#9776;</button>
         <div class="logo">ar.buyer_01</div>
-        <a href="#cart" class="cart-icon" aria-label="Корзина">
-            &#128722;
-        </a>
+        <a href="#cart" class="cart-icon" aria-label="Корзина">&#128722;</a>
     </nav>
     <div class="nav-drawer" id="nav-drawer">
         <button class="close-menu">&times;</button>
@@ -19,25 +17,8 @@
         </ul>
     </div>
 </header>
-<const menuToggle = document.querySelector('.menu-toggle');
-    const closeMenu = document.querySelector('.close-menu');
-    const navDrawer = document.getElementById('nav-drawer');
-
-    menuToggle.addEventListener('click', () => {
-        navDrawer.classList.add('active');
-    });
-
-    closeMenu.addEventListener('click', () => {
-        navDrawer.classList.remove('active');
-    });
-
-    window.addEventListener('click', (e) => {
-        if (!navDrawer.contains(e.target) && !menuToggle.contains(e.target)) {
-            navDrawer.classList.remove('active');
-        }
-    });
-</script>
-const menuToggle = document.querySelector('.menu-toggle');
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
     const closeMenu = document.querySelector('.close-menu');
     const navDrawer = document.getElementById('nav-drawer');
 
