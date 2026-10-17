@@ -19,3 +19,22 @@
         </ul>
     </div>
 </header>
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const closeMenu = document.querySelector('.close-menu');
+    const navDrawer = document.getElementById('nav-drawer');
+
+    menuToggle.addEventListener('click', () => {
+        navDrawer.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+        navDrawer.classList.remove('active');
+    });
+
+    window.addEventListener('click', (e) => {
+        if (!navDrawer.contains(e.target) && !menuToggle.contains(e.target)) {
+            navDrawer.classList.remove('active');
+        }
+    });
+</script>
