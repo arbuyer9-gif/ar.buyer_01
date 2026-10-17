@@ -3,46 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Store</title>
+    <title>ar.buyer_01 - Luxury Selection</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
-        <div class="menu-icon">
+        <div class="menu-icon" id="menu-toggle">
             <i class="fa-solid fa-bars"></i>
         </div>
+        <nav class="nav-links">
+            <a href="#catalog">Каталог</a>
+            <a href="#vip">VIP-Зона</a>
+        </nav>
         <div class="logo">
-            <a href="#">Loro Piana Style</a>
+            <a href="#">ar.buyer_01 <span>By Arif Abbasov</span></a>
         </div>
-        <div class="cart-icon">
-            <i class="fa-solid fa-bag-shopping"></i>
+        <div class="user-actions">
+            <a href="#account" class="account-btn"><i class="fa-regular fa-user"></i> Аккаунт</a>
+            <div class="cart-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count">0</span>
+            </div>
         </div>
     </header>
 
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#catalog">Каталог</a>
+        <a href="#vip">VIP-Зона</a>
+        <a href="#account">Аккаунт</a>
+    </div>
+
     <main class="main-content">
         <section class="hero">
-            <h1>Коллекция Осень-Зима</h1>
-            <p>Исключительное качество и минимализм в каждой детали.</p>
+            <h1>Эксклюзивный байинг</h1>
+            <p>Премиальные бренды и индивидуальный подход.</p>
+            <a href="#catalog" class="cta-button">Перейти в каталог</a>
         </section>
 
-        <section class="product-grid">
-            <article class="product-card">
-                <div class="image-placeholder"></div>
-                <h2>Кашемировый джемпер</h2>
-                <span class="price">120 000 сом</span>
-            </article>
-            <article class="product-card">
-                <div class="image-placeholder"></div>
-                <h2>Шарф из шерсти мериноса</h2>
-                <span class="price">35 000 сом</span>
-            </article>
-            <article class="product-card">
-                <div class="image-placeholder"></div>
-                <h2>Замшевые лоферы</h2>
-                <span class="price">85 000 сом</span>
-            </article>
+        <section id="catalog" class="catalog-section">
+            <h2>Каталог</h2>
+            <div class="product-grid">
+                <article class="product-card">
+                    <div class="image-placeholder"><i class="fa-solid fa-image"></i></div>
+                    <h2>Сумка Chanel Classic</h2>
+                    <span class="price">По запросу</span>
+                    <button class="add-to-cart-btn">В корзину</button>
+                </article>
+                <article class="product-card">
+                    <div class="image-placeholder"><i class="fa-solid fa-image"></i></div>
+                    <h2>Часы Patek Philippe</h2>
+                    <span class="price">По запросу</span>
+                    <button class="add-to-cart-btn">В корзину</button>
+                </article>
+                <article class="product-card">
+                    <div class="image-placeholder"><i class="fa-solid fa-image"></i></div>
+                    <h2>Кольцо Cartier Trinity</h2>
+                    <span class="price">По запросу</span>
+                    <button class="add-to-cart-btn">В корзину</button>
+                </article>
+                <article class="product-card">
+                    <div class="image-placeholder"><i class="fa-solid fa-image"></i></div>
+                    <h2>Тренч Burberry</h2>
+                    <span class="price">По запросу</span>
+                    <button class="add-to-cart-btn">В корзину</button>
+                </article>
+            </div>
         </section>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
