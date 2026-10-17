@@ -1,38 +1,76 @@
-<header>
-    <nav>
-        <button class="menu-toggle" aria-label="Открыть меню">&#9776;</button>
-        <div class="logo">ar.buyer_01</div>
-        <a href="#cart" class="cart-icon" aria-label="Корзина">&#128722;</a>
-    </nav>
-    <div class="nav-drawer" id="nav-drawer">
-        <button class="close-menu">&times;</button>
-        <ul>
-            <li><a href="#profile">Мой профиль</a></li>
-            <li><a href="#collections">Новые коллекции</a></li>
-            <li><a href="#home">Главная</a></li>
-            <li><a href="#men">Мужское</a></li>
-            <li><a href="#women">Женское</a></li>
-            <li><a href="#catalog">Каталог</a></li>
-            <li><a href="#vip">VIP Зона</a></li>
-        </ul>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ar.buyer_01 | Luxury Shopping</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="logo-screen">
+        <div class="logo-text">ar.buyer_01</div>
+        <div class="logo-subtext">By Arif Abbasov</div>
     </div>
-</header>
-<script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const closeMenu = document.querySelector('.close-menu');
-    const navDrawer = document.getElementById('nav-drawer');
 
-    menuToggle.addEventListener('click', () => {
-        navDrawer.classList.add('active');
-    });
+    <div class="main-content">
+        <header>
+            <nav>
+                <button class="menu-toggle" aria-label="Открыть меню">&#9776;</button>
+                <div class="logo">ar.buyer_01</div>
+                <a href="#cart" class="cart-icon" aria-label="Корзина">&#128722;</a>
+            </nav>
+            <div class="nav-drawer" id="nav-drawer">
+                <button class="close-menu">&times;</button>
+                <ul>
+                    <li><a href="#profile">Мой профиль</a></li>
+                    <li><a href="#collections">Новые коллекции</a></li>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#men">Мужское</a></li>
+                    <li><a href="#women">Женское</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#vip">VIP Зона</a></li>
+                </ul>
+            </div>
+        </header>
 
-    closeMenu.addEventListener('click', () => {
-        navDrawer.classList.remove('active');
-    });
+        <main id="home">
+            <section class="catalog-section">
+                <div class="catalog-grid">
+                    <div class="product-card">
+                        <div class="product-name">Сумка Birkin</div>
+                        <div class="product-price">Цена по запросу</div>
+                        <button class="add-to-cart-btn">Добавить в корзину</button>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <button class="contact-buyer-btn">Связаться с байером</button>
+                </div>
+            </section>
+        </main>
 
-    window.addEventListener('click', (e) => {
-        if (!navDrawer.contains(e.target) && !menuToggle.contains(e.target)) {
+        <footer>
+            <p>&copy; 2026 ar.buyer_01. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const navDrawer = document.getElementById('nav-drawer');
+
+        menuToggle.addEventListener('click', () => {
+            navDrawer.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
             navDrawer.classList.remove('active');
-        }
-    });
-</script>
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!navDrawer.contains(e.target) && !menuToggle.contains(e.target)) {
+                navDrawer.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
