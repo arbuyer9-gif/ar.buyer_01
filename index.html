@@ -223,11 +223,11 @@
             color: var(--brand-green);
         }
 
-        .profile-btn {
+        .vip-access-btn {
             padding: 8px 16px;
             font-size: 10px;
             letter-spacing: 2px;
-            background: var(--brand-green);
+            background: linear-gradient(135deg, #111 0%, #333 100%);
             color: var(--accent-gold);
             font-weight: 700;
             border: 1px solid var(--accent-gold);
@@ -419,6 +419,27 @@
             margin-left: 10px;
         }
 
+        .promo-box {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .promo-input-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .promo-input-group input {
+            flex-grow: 1;
+            padding: 8px;
+            font-size: 11px;
+            border: 1px solid var(--border-subtle);
+            text-transform: uppercase;
+            outline: none;
+        }
+
         .cart-total-box {
             border-top: 1px solid var(--border-subtle);
             padding-top: 12px;
@@ -551,6 +572,18 @@
             object-fit: cover;
         }
 
+        .upload-img-btn {
+            position: absolute;
+            bottom: 10px;
+            background: rgba(11, 43, 32, 0.85);
+            color: var(--accent-gold);
+            font-size: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: 1px solid var(--accent-gold);
+            display: none;
+        }
+
         .catalog-category {
             font-size: 10px;
             letter-spacing: 2.5px;
@@ -618,7 +651,79 @@
             border-color: var(--brand-green);
         }
 
-        /* Модальные окна */
+        .vip-tier-section {
+            display: none;
+            padding: 80px 0;
+            background: #081D16;
+            color: var(--bg-cream);
+            border-top: 2px solid var(--accent-gold);
+            border-bottom: 2px solid var(--accent-gold);
+            margin-bottom: 40px;
+        }
+
+        .vip-tier-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            font-family: var(--font-title);
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border: 1px solid currentColor;
+        }
+
+        .tier-silver { color: #C0C0C0; }
+        .tier-gold { color: #D4AF37; }
+        .tier-platinum { color: #E5E4E2; }
+        .tier-black { color: #FFFFFF; background: #000; border-color: #333; }
+
+        .vip-history-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 25px;
+            margin-top: 40px;
+            border-radius: 4px;
+        }
+
+        .vip-history-title {
+            font-family: var(--font-title);
+            color: var(--accent-gold);
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .order-history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .history-item {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .order-status {
+            padding: 3px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 2px;
+        }
+
+        .status-processing { background: #d97706; color: #fff; }
+        .status-purchased { background: #2563eb; color: #fff; }
+        .status-shipping { background: #9333ea; color: #fff; }
+        .status-delivered { background: #16a34a; color: #fff; }
+
         .auth-modal {
             position: fixed;
             top: 0;
@@ -641,11 +746,9 @@
             background: var(--bg-cream);
             padding: 40px;
             border: 1px solid var(--accent-gold);
-            max-width: 450px;
+            max-width: 420px;
             width: 90%;
             position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
         }
 
         .auth-box h3 {
@@ -687,32 +790,19 @@
             border-color: var(--accent-gold);
         }
 
-        .order-history-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .history-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-        }
-
-        .order-status {
-            padding: 3px 8px;
+        .delete-card-btn {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #b30000;
+            color: #fff;
+            border: none;
+            padding: 4px 8px;
             font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 2px;
+            cursor: pointer;
+            z-index: 10;
         }
-        .status-processing { background: #d97706; color: #fff; }
-        .status-delivered { background: #16a34a; color: #fff; }
 
         .admin-panel-box {
             display: none;
@@ -787,9 +877,15 @@
             margin-bottom: 15px;
         }
 
+        [contenteditable="true"] {
+            outline: 1px dashed var(--accent-gold) !important;
+            padding: 2px;
+        }
+
         @media (max-width: 900px) {
             .hero h1 { font-size: 36px; }
             .container { padding: 0 20px; }
+            .history-item { flex-direction: column; align-items: flex-start; gap: 8px; }
         }
     </style>
 </head>
@@ -803,7 +899,7 @@
     <header>
         <div class="container header-inner">
             <div class="header-left">
-                <!-- Кнопка меню -->
+                <!-- Кнопка меню (Три полоски) -->
                 <div class="menu-toggle" onclick="openMenu()">
                     <svg viewBox="0 0 24 24">
                         <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -817,7 +913,7 @@
             </div>
 
             <div class="header-right">
-                <!-- Языки -->
+                <!-- Переключатель 5 Языков -->
                 <select class="selector-select" id="langSelect" onchange="switchLang(this.value)">
                     <option value="ru">RU</option>
                     <option value="en">EN</option>
@@ -826,7 +922,7 @@
                     <option value="zh">ZH</option>
                 </select>
 
-                <!-- Валюты -->
+                <!-- Переключатель 4 Валют -->
                 <select class="selector-select" id="currencySelect" onchange="switchCurrency(this.value)">
                     <option value="KGS">KGS (сом)</option>
                     <option value="USD">$ USD</option>
@@ -834,7 +930,7 @@
                     <option value="CNY">¥ CNY</option>
                 </select>
 
-                <!-- Корзина -->
+                <!-- Иконка корзины -->
                 <div class="cart-icon-btn" onclick="openCart()">
                     <svg viewBox="0 0 24 24">
                         <path d="M6 9V7a6 6 0 1 1 12 0v2m-14 0h16l1 12H3L4 9z"/>
@@ -842,10 +938,10 @@
                     <span class="cart-badge" id="cartCount">0</span>
                 </div>
 
-                <!-- Кнопка Профиль / Вход -->
-                <button class="profile-btn" onclick="openAuthModal()" id="profileBtnText">ПРОФИЛЬ</button>
+                <!-- Кнопка VIP КЛЮЧ -->
+                <button class="vip-access-btn" onclick="openVipModal()" data-i18n="btnVipKey">VIP КЛЮЧ</button>
                 
-                <!-- ADMIN -->
+                <!-- Кнопка ADMIN -->
                 <button class="admin-toggle-btn" id="adminBtn" onclick="toggleAdminMode()" data-i18n="adminBtnText">ADMIN</button>
             </div>
         </div>
@@ -858,6 +954,28 @@
             <h1 data-i18n="heroTitle">Ваш Личный Байер</h1>
             <p data-i18n="heroDesc">Выкуп эксклюзивных коллекций, редких релизов и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.</p>
             <a href="#order" class="btn-luxury btn-gold" data-i18n="btnHeroAction">ОФОРМИТЬ ЗАПРОС</a>
+        </div>
+    </section>
+
+    <!-- VIP TIER ZONES WITH HISTORY -->
+    <section class="vip-tier-section" id="vipSectionTier">
+        <div class="container">
+            <div style="text-align: center;">
+                <div class="vip-tier-badge" id="vipTierBadge">SILVER VIP</div>
+                <h2 style="font-family: var(--font-title); color: var(--accent-gold); margin-bottom: 30px;" data-i18n="vipTitleText">ЗАКРЫТЫЙ ПОДИУМНЫЙ РЕЛИЗ</h2>
+            </div>
+            
+            <div class="catalog-grid" id="vipTierGrid">
+                <!-- VIP content -->
+            </div>
+
+            <!-- VIP History Box -->
+            <div class="vip-history-box">
+                <div class="vip-history-title" data-i18n="vipHistoryTitle">ИСТОРИЯ ВАШИХ VIP-ЗАКАЗОВ</div>
+                <div class="order-history-list" id="vipHistoryList">
+                    <p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);" data-i18n="emptyHistoryText">У вас пока нет оформленных заказов.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -874,19 +992,56 @@
                 <span id="resetFilterBtn" style="display:none;" onclick="filterCatalog('ALL', null)">(<span data-i18n="resetFilterText">Сбросить фильтр</span>)</span>
             </div>
 
-            <!-- Админ панель -->
+            <!-- Панель администратора -->
             <div class="admin-panel-box" id="adminPanelBox">
-                <h4 style="font-family: var(--font-title); color: var(--brand-green); margin-bottom: 15px;" data-i18n="adminPanelTitle">Панель Управления</h4>
-                <p style="font-size: 12px; color: var(--text-muted);">Режим администратора активен.</p>
+                <h4 style="font-family: var(--font-title); color: var(--brand-green); margin-bottom: 15px;" data-i18n="adminPanelTitle">Панель Управления Кодами и Промокодами</h4>
+                
+                <div style="margin-bottom: 20px;">
+                    <button class="btn-luxury btn-gold" onclick="addNewCatalogCard()" data-i18n="btnAddProduct">+ Добавить новый товар в каталог</button>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px; margin-bottom: 20px;">
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" data-i18n="adminVipTitle">1. Создание VIP-кодов доступа (включая цифры):</h5>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <input type="text" id="newVipCode" placeholder="Код (напр. 7777 или 0000)" style="padding: 6px; font-size: 11px;">
+                        <select id="newVipTier" style="padding: 6px; font-size: 11px;">
+                            <option value="SILVER">SILVER</option>
+                            <option value="GOLD">GOLD</option>
+                            <option value="PLATINUM">PLATINUM</option>
+                            <option value="BLACK">BLACK</option>
+                        </select>
+                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createVipCode()" data-i18n="btnCreateVip">Создать VIP-код</button>
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px; margin-bottom: 20px;">
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" data-i18n="adminPromoTitle">2. Управление Промокодами на скидку:</h5>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                        <input type="text" id="newPromoCode" placeholder="Промокод (напр. SALE10)" style="padding: 6px; font-size: 11px; text-transform: uppercase;">
+                        <input type="number" id="newPromoDiscount" placeholder="% Скидки (напр. 10)" style="padding: 6px; font-size: 11px; width: 110px;">
+                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createPromoCode()" data-i18n="btnCreatePromo">Создать промокод</button>
+                    </div>
+                </div>
+
+                <!-- Управление Статусами Заказов в ADMIN -->
+                <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px;">
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" data-i18n="adminOrdersTitle">3. Все Заказы Клиентов (Управление Статусом):</h5>
+                    <div id="adminOrdersList" style="display: flex; flex-direction: column; gap: 10px;">
+                        <p style="font-size: 11px; color: var(--text-muted);" data-i18n="adminNoOrdersText">Заказов пока нет.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Сетка каталога -->
             <div class="catalog-grid" id="catalogGrid">
                 
                 <div class="catalog-card" data-category="Сумки">
+                    <button class="delete-card-btn" onclick="deleteCard(this)">Удалить</button>
                     <div>
                         <div class="card-img-container">
                             <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="Bags">
+                            <button class="upload-img-btn" onclick="triggerImgUpload(this)">Загрузить фото</button>
+                            <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, this)">
                         </div>
                         <div class="catalog-category" data-i18n="c1Cat">Сумки</div>
                         <h3 class="catalog-title" data-i18n="c1Title">Сумки & Аксессуары</h3>
@@ -906,9 +1061,12 @@
                 </div>
 
                 <div class="catalog-card" data-category="Обувь">
+                    <button class="delete-card-btn" onclick="deleteCard(this)">Удалить</button>
                     <div>
                         <div class="card-img-container">
                             <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="Shoes">
+                            <button class="upload-img-btn" onclick="triggerImgUpload(this)">Загрузить фото</button>
+                            <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, this)">
                         </div>
                         <div class="catalog-category" data-i18n="c2Cat">Обувь</div>
                         <h3 class="catalog-title" data-i18n="c2Title">Гардероб & Обувь</h3>
@@ -929,9 +1087,12 @@
                 </div>
 
                 <div class="catalog-card" data-category="Парфюмы">
+                    <button class="delete-card-btn" onclick="deleteCard(this)">Удалить</button>
                     <div>
                         <div class="card-img-container">
                             <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80" alt="Perfume">
+                            <button class="upload-img-btn" onclick="triggerImgUpload(this)">Загрузить фото</button>
+                            <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, this)">
                         </div>
                         <div class="catalog-category" data-i18n="c3Cat">Парфюмы</div>
                         <h3 class="catalog-title" data-i18n="c3Title">Селективная Парфюмерия</h3>
@@ -950,9 +1111,12 @@
                 </div>
 
                 <div class="catalog-card" data-category="Часы">
+                    <button class="delete-card-btn" onclick="deleteCard(this)">Удалить</button>
                     <div>
                         <div class="card-img-container">
                             <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80" alt="Watches">
+                            <button class="upload-img-btn" onclick="triggerImgUpload(this)">Загрузить фото</button>
+                            <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, this)">
                         </div>
                         <div class="catalog-category" data-i18n="c4Cat">Часы</div>
                         <h3 class="catalog-title" data-i18n="c4Title">Часы & Ювелирные Изделия</h3>
@@ -1032,7 +1196,9 @@
         </div>
     </footer>
 
-    <!-- ВЫЕЗЖАЮЩИЕ ПАНЕЛИ И МОДАЛЬНЫЕ ОКНА -->
+    <!-- ГЛОБАЛЬНЫЕ ВЫЕЗЖАЮЩИЕ ПАНЕЛИ И МОДАЛЬНЫЕ ОКНА (ВЫНЕСЕНЫ В КОРЕНЬ) -->
+
+    <!-- Дммер / Затемнение фона -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeAllDrawers()"></div>
 
     <!-- Боковое меню -->
@@ -1074,6 +1240,13 @@
             </div>
         </div>
         <div>
+            <div class="promo-box">
+                <div class="promo-input-group">
+                    <input type="text" id="promoInput" placeholder="ПРОМОКОД (напр. VIP10)">
+                    <button class="btn-luxury" style="padding: 8px 12px; font-size: 10px;" data-i18n="btnApplyPromo" onclick="applyPromoCode()">ПРИМЕНИТЬ</button>
+                </div>
+                <div id="promoDiscountStatus" style="font-size: 11px; color: var(--accent-gold); text-align: center; font-weight: 600;"></div>
+            </div>
             <div class="cart-total-box">
                 <span data-i18n="labelTotalSum">ИТОГО:</span>
                 <span id="cartTotalSum">0 KGS</span>
@@ -1082,34 +1255,17 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ПРОФИЛЯ И РЕГИСТРАЦИИ ПО EMAIL -->
-    <div class="auth-modal" id="authModal">
+    <!-- Модальное окно VIP КЛЮЧ -->
+    <div class="auth-modal" id="vipModal">
         <div class="auth-box">
-            <div style="position: absolute; top: 15px; right: 20px; cursor: pointer;" onclick="closeAuthModal()">✕</div>
-            
-            <!-- Форма входа/регистрации -->
-            <div id="authFormSection">
-                <h3 id="authModalTitle">РЕГИСТРАЦИЯ И ВХОД</h3>
-                <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 20px;">Введите ваш Email для доступа к профилю и истории покупок.</p>
-                <div class="form-group">
-                    <label>Ваш Email</label>
-                    <input type="email" id="userEmailInput" placeholder="client@example.com" style="text-align: center;">
-                </div>
-                <button class="btn-luxury btn-gold" style="width: 100%;" onclick="loginWithEmail()">ВОЙТИ / ЗАРЕГИСТРИРОВАТЬСЯ</button>
+            <div style="position: absolute; top: 15px; right: 20px; cursor: pointer;" onclick="closeVipModal()">✕</div>
+            <h3 data-i18n="vipModalTitle">VIP PRIVATE ACCESS</h3>
+            <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 20px;" data-i18n="vipModalDesc">Введите ваш персональный VIP-код для входа в закрытую зону релиза.</p>
+            <div class="form-group">
+                <label data-i18n="labelVipCode">Ваш VIP-Код</label>
+                <input type="text" id="vipCodeInput" placeholder="7777" style="text-align: center; letter-spacing: 2px; text-transform: uppercase;">
             </div>
-
-            <!-- Раздел личного кабинета (скрыт до входа) -->
-            <div id="userProfileSection" style="display: none;">
-                <h3 style="margin-bottom: 5px;">МОЙ ПРОФИЛЬ</h3>
-                <p id="currentUserEmailDisplay" style="font-size: 12px; color: var(--accent-gold); text-align: center; font-weight: 600; margin-bottom: 20px;"></p>
-                
-                <h4 style="font-family: var(--font-title); font-size: 14px; color: var(--brand-green); margin-bottom: 10px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 5px;">История покупок</h4>
-                <div class="order-history-list" id="userHistoryList">
-                    <p style="text-align: center; font-size: 12px; color: var(--text-muted);">У вас пока нет покупок.</p>
-                </div>
-
-                <button class="btn-luxury" style="width: 100%; margin-top: 25px; border-color: #b30000; color: #b30000;" onclick="logoutUser()">ВЫЙТИ ИЗ АККАУНТА</button>
-            </div>
+            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="submitVipCode()" data-i18n="btnActivateVip">АКТИВИРОВАТЬ КОД</button>
         </div>
     </div>
 
@@ -1119,12 +1275,26 @@
         let currentLang = 'ru';
         let currentCurrency = 'KGS';
         let isAdmin = false;
-        let currentUser = localStorage.getItem('ar_buyer_current_user') || null;
+        let activeVipTier = null;
+        let userOrders = [];
+        let appliedDiscountPercent = 0;
+        let activePromoName = "";
 
         const ADMIN_PASSWORD = "12332112_01.02.2007_15.08.2006";
 
-        const exchangeRates = { KGS: 1, USD: 0.0115, EUR: 0.0105, CNY: 0.082 };
-        const currencySymbols = { KGS: ' KGS', USD: '$', EUR: '€', CNY: '¥' };
+        const exchangeRates = {
+            KGS: 1,
+            USD: 0.0115,
+            EUR: 0.0105,
+            CNY: 0.082
+        };
+
+        const currencySymbols = {
+            KGS: ' KGS',
+            USD: '$',
+            EUR: '€',
+            CNY: '¥'
+        };
 
         const i18n = {
             ru: {
@@ -1143,6 +1313,7 @@
                 labelSocials: "Социальные сети",
                 cartHeader: "Ваша Корзина",
                 emptyCartText: "Корзина пуста",
+                btnApplyPromo: "ПРИМЕНИТЬ",
                 labelTotalSum: "ИТОГО:",
                 btnCheckout: "Связаться с байером",
                 heroSubtitle: "High Luxury & Personal Shopping",
@@ -1158,54 +1329,444 @@
                 labelName: "Ваше имя / Пожелания по связи",
                 labelDetails: "Детали Изделия (Бренд, Название, Размер)",
                 btnSubmitOrder: "ОТПРАВИТЬ ЛИЧНОМУ БАЙЕРУ",
+                vipModalTitle: "VIP PRIVATE ACCESS",
+                vipModalDesc: "Введите ваш персональный VIP-код для входа в закрытую зону релиза.",
+                labelVipCode: "Ваш VIP-Код",
+                btnActivateVip: "АКТИВИРОВАТЬ КОД",
+                btnVipKey: "VIP КЛЮЧ",
                 adminBtnText: "ADMIN",
                 adminSaveText: "СОХРАНИТЬ",
-                adminPanelTitle: "Панель Управления",
+                adminPanelTitle: "Панель Управления Кодами и Промокодами",
+                btnAddProduct: "+ Добавить новый товар в каталог",
+                adminVipTitle: "1. Создание VIP-кодов доступа (включая цифры):",
+                btnCreateVip: "Создать VIP-код",
+                adminPromoTitle: "2. Управление Промокодами на скидку:",
+                btnCreatePromo: "Создать промокод",
+                adminOrdersTitle: "3. Все Заказы Клиентов (Управление Статусом):",
+                adminNoOrdersText: "Заказов пока нет.",
+                vipTitleText: "ЗАКРЫТЫЙ ПОДИУМНЫЙ РЕЛИЗ",
+                vipHistoryTitle: "ИСТОРИЯ ВАШИХ VIP-ЗАКАЗОВ",
+                emptyHistoryText: "У вас пока нет оформленных заказов.",
                 btnCardAction: "ПЕРЕЙТИ",
                 footerRights: "© 2026 AR.BUYER_01. ALL RIGHTS RESERVED. EXCLUSIVE PERSONAL SHOPPING SERVICE.",
-                c1Cat: "Сумки", c1Title: "Сумки & Аксессуары", c1Desc: "Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
-                c2Cat: "Обувь", c2Title: "Гардероб & Обувь", c2Desc: "Изысканные ткани и силуэты Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.",
-                c3Cat: "Парфюмы", c3Title: "Селективная Парфюмерия", c3Desc: "Эксклюзивная линейка Louis Vuitton Les Extraits (Symphony) и закрытые ароматические коллекции.",
-                c4Cat: "Часы", c4Title: "Часы & Ювелирные Изделия", c4Desc: "Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet, BVLGARI.",
-                sizeFormatTitle: "Размер / Формат:", sizeTitle: "Доступные размеры:", volumeTitle: "Объем флакона:", optionTitle: "Опции выкупа:"
+                c1Cat: "Сумки",
+                c1Title: "Сумки & Аксессуары",
+                c1Desc: "Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
+                c2Cat: "Обувь",
+                c2Title: "Гардероб & Обувь",
+                c2Desc: "Изысканные ткани и силуэты Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.",
+                c3Cat: "Парфюмы",
+                c3Title: "Селективная Парфюмерия",
+                c3Desc: "Эксклюзивная линейка Louis Vuitton Les Extraits (Symphony) и закрытые ароматические коллекции.",
+                c4Cat: "Часы",
+                c4Title: "Часы & Ювелирные Изделия",
+                c4Desc: "Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet, BVLGARI.",
+                sizeFormatTitle: "Размер / Формат:",
+                sizeTitle: "Доступные размеры:",
+                volumeTitle: "Объем флакона:",
+                optionTitle: "Опции выкупа:"
+            },
+            en: {
+                topBar: "Best Buyer of the Year — Exclusive Personal Shopping Service",
+                drawerTitle: "MENU",
+                catAll: "All Categories",
+                catClothes: "Apparel",
+                catBags: "Bags",
+                catShoes: "Footwear",
+                catPerfumes: "Fragrances",
+                catJewelry: "Fine Jewelry",
+                catWatches: "Watches",
+                supportTitle: "Customer Support",
+                labelSupportText: "Support Service",
+                labelContactUs: "Contact Us",
+                labelSocials: "Social Media",
+                cartHeader: "Your Cart",
+                emptyCartText: "Cart is empty",
+                btnApplyPromo: "APPLY",
+                labelTotalSum: "TOTAL:",
+                btnCheckout: "Contact Personal Shopper",
+                heroSubtitle: "High Luxury & Personal Shopping",
+                heroTitle: "Your Personal Shopper",
+                heroDesc: "Sourcing exclusive collections, rare releases, and runway pieces directly from official boutiques in Europe, US, and Asia. Flawless execution and boutique standards.",
+                btnHeroAction: "SEND INQUIRY",
+                catalogHeader: "Curated Categories",
+                filterLabelText: "Active filter:",
+                allFilterName: "All",
+                resetFilterText: "Reset filter",
+                brandsTitle: "Official Fashion Houses",
+                orderHeader: "Personal Inquiry",
+                labelName: "Your Name / Contact Preference",
+                labelDetails: "Item Details (Brand, Item Name, Size)",
+                btnSubmitOrder: "SUBMIT TO PERSONAL SHOPPER",
+                vipModalTitle: "VIP PRIVATE ACCESS",
+                vipModalDesc: "Enter your personal VIP key to access private boutique releases.",
+                labelVipCode: "Your VIP Key",
+                btnActivateVip: "ACTIVATE KEY",
+                btnVipKey: "VIP KEY",
+                adminBtnText: "ADMIN",
+                adminSaveText: "SAVE",
+                adminPanelTitle: "Codes & Promo Management Panel",
+                btnAddProduct: "+ Add New Catalog Item",
+                adminVipTitle: "1. Create VIP Access Codes (including digits):",
+                btnCreateVip: "Create VIP Code",
+                adminPromoTitle: "2. Manage Discount Promos:",
+                btnCreatePromo: "Create Promo",
+                adminOrdersTitle: "3. All Client Orders (Status Management):",
+                adminNoOrdersText: "No orders yet.",
+                vipTitleText: "PRIVATE RUNWAY RELEASE",
+                vipHistoryTitle: "YOUR VIP ORDER HISTORY",
+                emptyHistoryText: "You have no active orders.",
+                btnCardAction: "PROCEED",
+                footerRights: "© 2026 AR.BUYER_01. ALL RIGHTS RESERVED. EXCLUSIVE PERSONAL SHOPPING SERVICE.",
+                c1Cat: "Bags",
+                c1Title: "Bags & Accessories",
+                c1Desc: "Iconic silhouettes and rare colorways from Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
+                c2Cat: "Footwear",
+                c2Title: "Apparel & Footwear",
+                c2Desc: "Exquisite fabrics and tailoring from Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.",
+                c3Cat: "Fragrances",
+                c3Title: "Niche Fragrances",
+                c3Desc: "Exclusive Louis Vuitton Les Extraits range (Symphony) and private perfume creations.",
+                c4Cat: "Watches",
+                c4Title: "Fine Jewelry & Watches",
+                c4Desc: "Official sourcing of high jewelry and timepieces from Cartier, Van Cleef, Rolex, Audemars Piguet, BVLGARI.",
+                sizeFormatTitle: "Size / Format:",
+                sizeTitle: "Available sizes:",
+                volumeTitle: "Bottle volume:",
+                optionTitle: "Sourcing options:"
+            },
+            fr: {
+                topBar: "Best Buyer of the Year — Service de Personal Shopper de Luxe",
+                drawerTitle: "MENU",
+                catAll: "Toutes les catégories",
+                catClothes: "Vêtements",
+                catBags: "Sacs",
+                catShoes: "Chaussures",
+                catPerfumes: "Parfums",
+                catJewelry: "Joaillerie",
+                catWatches: "Horlogerie",
+                supportTitle: "Service Client",
+                labelSupportText: "Service Client",
+                labelContactUs: "Nous Contacter",
+                labelSocials: "Réseaux Sociaux",
+                cartHeader: "Votre Panier",
+                emptyCartText: "Le panier est vide",
+                btnApplyPromo: "APPLIQUER",
+                labelTotalSum: "TOTAL:",
+                btnCheckout: "Contacter le Personal Shopper",
+                heroSubtitle: "Haute Luxe & Personal Shopping",
+                heroTitle: "Votre Personal Shopper",
+                heroDesc: "Aquisition de collections exclusives, pièces de défilés et éditions rares auprès des boutiques officielles en Europe, USA et Asie.",
+                btnHeroAction: "FAIRE UNE DEMANDE",
+                catalogHeader: "Catalogue Exclusif",
+                filterLabelText: "Filtre actif:",
+                allFilterName: "Tout",
+                resetFilterText: "Réinitialiser le filtre",
+                brandsTitle: "Maisons de Couture",
+                orderHeader: "Demande Personnalisée",
+                labelName: "Votre Nom / Contact",
+                labelDetails: "Détails de la pièce (Marque, Modèle, Taille)",
+                btnSubmitOrder: "ENVOYER AU SHOPPER",
+                vipModalTitle: "VIP PRIVATE ACCESS",
+                vipModalDesc: "Entrez votre code VIP privé pour accéder aux ventes exclusives.",
+                labelVipCode: "Votre Code VIP",
+                btnActivateVip: "ACTIVER LE CODE",
+                btnVipKey: "CLÉ VIP",
+                adminBtnText: "ADMIN",
+                adminSaveText: "ENREGISTRER",
+                adminPanelTitle: "Panneau de Gestion des Codes et Promos",
+                btnAddProduct: "+ Ajouter un nouvel article",
+                adminVipTitle: "1. Créer des codes VIP (chiffres acceptés):",
+                btnCreateVip: "Créer Code VIP",
+                adminPromoTitle: "2. Gérer les codes promo:",
+                btnCreatePromo: "Créer Promo",
+                adminOrdersTitle: "3. Commandes Clients (Gestion du Statut):",
+                adminNoOrdersText: "Aucune commande pour le moment.",
+                vipTitleText: "VENTE PRIVÉE DE DÉFILÉ",
+                vipHistoryTitle: "HISTORIQUE DE VOS COMMANDES VIP",
+                emptyHistoryText: "Vous n'avez pas de commandes.",
+                btnCardAction: "DÉCOUVRIR",
+                footerRights: "© 2026 AR.BUYER_01. TOUS DROITS RÉSERVÉS.",
+                c1Cat: "Sacs",
+                c1Title: "Sacs & Accessoires",
+                c1Desc: "Modèles iconiques Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
+                c2Cat: "Chaussures",
+                c2Title: "Prêt-à-porter & Chaussures",
+                c2Desc: "Matières nobles Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.",
+                c3Cat: "Parfums",
+                c3Title: "Haute Parfumerie",
+                c3Desc: "Gamme exclusive Louis Vuitton Les Extraits (Symphony) et flacons rares.",
+                c4Cat: "Horlogerie",
+                c4Title: "Joaillerie & Horlogerie",
+                c4Desc: "Achat officiel Cartier, Van Cleef & Arpels, Rolex, Audemars Piguet, BVLGARI.",
+                sizeFormatTitle: "Taille / Format:",
+                sizeTitle: "Tailles disponibles:",
+                volumeTitle: "Volume flacon:",
+                optionTitle: "Options d'achat:"
+            },
+            es: {
+                topBar: "Best Buyer of the Year — Servicio de Personal Shopper de Lujo",
+                drawerTitle: "MENÚ",
+                catAll: "Todas las categorías",
+                catClothes: "Ropa",
+                catBags: "Bolsos",
+                catShoes: "Calzado",
+                catPerfumes: "Perfumes",
+                catJewelry: "Joyería",
+                catWatches: "Relojes",
+                supportTitle: "Atención al Cliente",
+                labelSupportText: "Soporte Técnico",
+                labelContactUs: "Contáctenos",
+                labelSocials: "Redes Sociales",
+                cartHeader: "Su Cesta",
+                emptyCartText: "La cesta está vacía",
+                btnApplyPromo: "APLICAR",
+                labelTotalSum: "TOTAL:",
+                btnCheckout: "Contactar Personal Shopper",
+                heroSubtitle: "Alta Costura & Personal Shopping",
+                heroTitle: "Su Personal Shopper",
+                heroDesc: "Adquisición de colecciones exclusivas, piezas de pasarela y ediciones limitadas directamente de boutique oficiales.",
+                btnHeroAction: "ENVIAR SOLICITUD",
+                catalogHeader: "Catálogo Exclusivo",
+                filterLabelText: "Filtro activo:",
+                allFilterName: "Todo",
+                resetFilterText: "Restablecer filtro",
+                brandsTitle: "Casas de Moda",
+                orderHeader: "Solicitud Personalizada",
+                labelName: "Su Nombre / Contacto",
+                labelDetails: "Detalles del artículo (Marca, Modelo, Talla)",
+                btnSubmitOrder: "ENVIAR AL SHOPPER",
+                vipModalTitle: "VIP PRIVATE ACCESS",
+                vipModalDesc: "Ingrese su código VIP privado para acceder al lanzamiento privado.",
+                labelVipCode: "Su Código VIP",
+                btnActivateVip: "ACTIVAR CÓDIGO",
+                btnVipKey: "CLAVE VIP",
+                adminBtnText: "ADMIN",
+                adminSaveText: "GUARDAR",
+                adminPanelTitle: "Panel de Gestión de Códigos y Promos",
+                btnAddProduct: "+ Agregar nuevo producto",
+                adminVipTitle: "1. Crear códigos VIP (números permitidos):",
+                btnCreateVip: "Crear Código VIP",
+                adminPromoTitle: "2. Gestionar códigos promocionales:",
+                btnCreatePromo: "Crear Promo",
+                adminOrdersTitle: "3. Pedidos de Clientes (Gestión de Estado):",
+                adminNoOrdersText: "No hay pedidos todavía.",
+                vipTitleText: "LANCE EXCLUSIVO DE PASARELA",
+                vipHistoryTitle: "HISTORIAL DE SUS PEDIDOS VIP",
+                emptyHistoryText: "Aún no tiene pedidos registrados.",
+                btnCardAction: "VER MÁS",
+                footerRights: "© 2026 AR.BUYER_01. TODOS LOS DERECHOS RESERVADOS.",
+                c1Cat: "Bolsos",
+                c1Title: "Bolsos & Accesorios",
+                c1Desc: "Modelos icónicos de Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
+                c2Cat: "Calzado",
+                c2Title: "Vestuario & Calzado",
+                c2Desc: "Tejidos finos Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.",
+                c3Cat: "Perfumes",
+                c3Title: "Perfumería de Nicho",
+                c3Desc: "Colección exclusiva Louis Vuitton Les Extraits (Symphony) y perfumes raros.",
+                c4Cat: "Relojes",
+                c4Title: "Alta Joyería & Relojes",
+                c4Desc: "Adquisición oficial Cartier, Van Cleef & Arpels, Rolex, Audemars Piguet, BVLGARI.",
+                sizeFormatTitle: "Tamaño / Formato:",
+                sizeTitle: "Tallas disponibles:",
+                volumeTitle: "Volumen del frasco:",
+                optionTitle: "Opciones de compra:"
+            },
+            zh: {
+                topBar: "Best Buyer of the Year — 尊享买手服务",
+                drawerTitle: "菜单",
+                catAll: "所有分类",
+                catClothes: "服装",
+                catBags: "手袋",
+                catShoes: "鞋履",
+                catPerfumes: "香水",
+                catJewelry: "珠宝",
+                catWatches: "腕表",
+                supportTitle: "客户服务",
+                labelSupportText: "技术支持",
+                labelContactUs: "联系我们",
+                labelSocials: "社交媒体",
+                cartHeader: "购物袋",
+                emptyCartText: "购物袋为空",
+                btnApplyPromo: "应用",
+                labelTotalSum: "总计:",
+                btnCheckout: "联系私人买手",
+                heroSubtitle: "High Luxury & Personal Shopping",
+                heroTitle: "您的私人代购买手",
+                heroDesc: "直接代购欧洲、美国和亚洲官方专柜的独家限量系列、秀场同款和稀有单品。提供极致尊贵的服务标准。",
+                btnHeroAction: "提交定制需求",
+                catalogHeader: "尊享目录",
+                filterLabelText: "当前筛选:",
+                allFilterName: "全部",
+                resetFilterText: "重置筛选",
+                brandsTitle: "官方合作奢品大牌",
+                orderHeader: "私人定制需求",
+                labelName: "您的姓名 / 联系方式",
+                labelDetails: "单品详情 (品牌, 款式, 尺码)",
+                btnSubmitOrder: "发送给私人买手",
+                vipModalTitle: "VIP PRIVATE ACCESS",
+                vipModalDesc: "请输入您的专属VIP密钥以开启私享发布会。",
+                labelVipCode: "您的VIP密钥",
+                btnActivateVip: "激活密钥",
+                btnVipKey: "VIP 密钥",
+                adminBtnText: "ADMIN",
+                adminSaveText: "保存",
+                adminPanelTitle: "兑换码与优惠券管理后台",
+                btnAddProduct: "+ 添加新目录商品",
+                adminVipTitle: "1. 创建 VIP 访问密钥（支持纯数字）：",
+                btnCreateVip: "创建VIP密钥",
+                adminPromoTitle: "2. 管理折扣优惠码：",
+                btnCreatePromo: "创建优惠码",
+                adminOrdersTitle: "3. 所有客户订单（状态管理）：",
+                adminNoOrdersText: "暂无订单。",
+                vipTitleText: "私享秀场限定发布",
+                vipHistoryTitle: "您的VIP历史订单",
+                emptyHistoryText: "您暂无历史订单记录。",
+                btnCardAction: "查看详情",
+                footerRights: "© 2026 AR.BUYER_01. 保留所有权利。",
+                c1Cat: "手袋",
+                c1Title: "手袋与配饰",
+                c1Desc: "Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior 等品牌标志性与稀有配色手袋。",
+                c2Cat: "鞋履",
+                c2Title: "成衣与鞋履",
+                c2Desc: "Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata 等品牌奢华面料服装。",
+                c3Cat: "香水",
+                c3Title: "沙龙沙龙香水",
+                c3Desc: "Louis Vuitton Les Extraits (Symphony) 独家精油香水系列及私人收藏香氛。",
+                c4Cat: "腕表",
+                c4Title: "高级珠宝与腕表",
+                c4Desc: "Cartier, Van Cleef & Arpels, Rolex, Audemars Piguet, BVLGARI 等品牌官方专柜正品代购。",
+                sizeFormatTitle: "尺寸 / 规格:",
+                sizeTitle: "可选尺码:",
+                volumeTitle: "净含量:",
+                optionTitle: "代购选项:"
             }
         };
 
+        let vipDatabase = {
+            "7777": "BLACK",
+            "0000": "BLACK",
+            "SILVER-100": "SILVER",
+            "GOLD-200": "GOLD",
+            "PLATINUM-300": "PLATINUM",
+            "BLACK-9900": "BLACK"
+        };
+
+        let promoDatabase = {
+            "VIP10": 10,
+            "SALE15": 15,
+            "LUXURY20": 20
+        };
+
+        const vipTierContent = {
+            SILVER: `
+                <div class="catalog-card">
+                    <div class="catalog-category">SILVER VIP EXCLUSIVE</div>
+                    <h3 class="catalog-title">Chanel Classic Flap Medium</h3>
+                    <div class="catalog-price" data-base-kgs="850000">850 000 KGS</div>
+                    <p class="catalog-desc">Парижский бутик. Доступ по ключу Silver.</p>
+                    <button class="btn-luxury btn-gold" onclick="addVipOrder('Chanel Classic Flap Medium', '850 000 KGS')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            `,
+            GOLD: `
+                <div class="catalog-card">
+                    <div class="catalog-category">GOLD VIP EXCLUSIVE</div>
+                    <h3 class="catalog-title">Louis Vuitton Symphony 100ml (Les Extraits)</h3>
+                    <div class="catalog-price" data-base-kgs="380000">380 000 KGS</div>
+                    <p class="catalog-desc">Запечатанный флакон с сертификатом бутика.</p>
+                    <button class="btn-luxury btn-gold" onclick="addVipOrder('Louis Vuitton Symphony 100ml', '380 000 KGS')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            `,
+            PLATINUM: `
+                <div class="catalog-card">
+                    <div class="catalog-category">PLATINUM VIP EXCLUSIVE</div>
+                    <h3 class="catalog-title">Hermès Birkin 25 Gold Hardware</h3>
+                    <div class="catalog-price" data-base-kgs="1850000">1 850 000 KGS</div>
+                    <p class="catalog-desc">Официальный выкуп во Франции. Полный комплект.</p>
+                    <button class="btn-luxury btn-gold" onclick="addVipOrder('Hermès Birkin 25 Gold Hardware', '1 850 000 KGS')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            `,
+            BLACK: `
+                <div class="catalog-card" style="border-color: var(--accent-gold);">
+                    <div class="catalog-category">BLACK VIP PRIVATE COLLECTION</div>
+                    <h3 class="catalog-title">Rolex Daytona Cosmograph Oystersteel</h3>
+                    <div class="catalog-price" data-base-kgs="2900000">2 900 000 KGS</div>
+                    <p class="catalog-desc">Эксклюзивный доступ уровня Black. Заводская комплектация.</p>
+                    <button class="btn-luxury btn-gold" onclick="addVipOrder('Rolex Daytona Cosmograph', '2 900 000 KGS')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            `
+        };
+
         window.addEventListener('DOMContentLoaded', () => {
-            updateProfileButtonUI();
+            const savedCatalog = localStorage.getItem('ar_buyer_catalog_v3');
+            if (savedCatalog) {
+                document.getElementById('catalogGrid').innerHTML = savedCatalog;
+            }
+            const savedCodes = localStorage.getItem('ar_buyer_vip_codes');
+            if (savedCodes) {
+                vipDatabase = JSON.parse(savedCodes);
+            }
+            const savedPromos = localStorage.getItem('ar_buyer_promos');
+            if (savedPromos) {
+                promoDatabase = JSON.parse(savedPromos);
+            }
+            const savedOrders = localStorage.getItem('ar_buyer_orders');
+            if (savedOrders) {
+                userOrders = JSON.parse(savedOrders);
+            }
             switchLang('ru');
+            renderHistoryUI();
         });
 
         function switchLang(lang) {
             currentLang = lang;
             document.getElementById('langSelect').value = lang;
             const t = i18n[lang] || i18n.ru;
+
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (t[key]) el.innerText = t[key];
+                if (t[key]) {
+                    el.innerText = t[key];
+                }
             });
+
+            const adminBtn = document.getElementById('adminBtn');
+            if (adminBtn) {
+                adminBtn.innerText = isAdmin ? (t.adminSaveText || "СОХРАНИТЬ") : (t.adminBtnText || "ADMIN");
+            }
+
             updateCartUI();
         }
 
         function switchCurrency(currency) {
             currentCurrency = currency;
             document.getElementById('currencySelect').value = currency;
+
             const rate = exchangeRates[currency] || 1;
             const symbol = currencySymbols[currency] || ' KGS';
 
             document.querySelectorAll('.catalog-price').forEach(priceEl => {
                 let baseKgs = priceEl.getAttribute('data-base-kgs');
+                
                 if (!baseKgs) {
-                    baseKgs = priceEl.innerText.replace(/[^0-9]/g, '');
-                    priceEl.setAttribute('data-base-kgs', baseKgs);
+                    const digitsOnly = priceEl.innerText.replace(/[^0-9]/g, '');
+                    if (digitsOnly) {
+                        baseKgs = digitsOnly;
+                        priceEl.setAttribute('data-base-kgs', baseKgs);
+                    }
                 }
-                const num = parseFloat(baseKgs) * rate;
-                if (currency === 'KGS') {
-                    priceEl.innerText = Math.round(num).toLocaleString('ru-RU') + symbol;
-                } else {
-                    priceEl.innerText = symbol + ' ' + Math.round(num).toLocaleString('en-US');
+
+                if (baseKgs) {
+                    const num = parseFloat(baseKgs) * rate;
+                    if (currency === 'KGS') {
+                        priceEl.innerText = Math.round(num).toLocaleString('ru-RU') + symbol;
+                    } else {
+                        priceEl.innerText = symbol + ' ' + Math.round(num).toLocaleString('en-US');
+                    }
                 }
             });
+
             updateCartUI();
         }
 
@@ -1214,18 +1775,23 @@
                 document.querySelectorAll('.drawer-menu-list a').forEach(a => a.classList.remove('active-cat'));
                 el.classList.add('active-cat');
             }
+
             const cards = document.querySelectorAll('#catalogGrid .catalog-card');
             const statusText = document.getElementById('currentFilterName');
             const resetBtn = document.getElementById('resetFilterBtn');
 
             if (category === 'ALL') {
                 cards.forEach(card => card.style.display = 'flex');
-                statusText.innerText = 'Все';
+                statusText.innerText = i18n[currentLang]?.allFilterName || 'Все';
                 resetBtn.style.display = 'none';
             } else {
                 cards.forEach(card => {
-                    const cardCat = card.getAttribute('data-category');
-                    card.style.display = (cardCat && cardCat.toLowerCase().includes(category.toLowerCase())) ? 'flex' : 'none';
+                    const cardCat = card.getAttribute('data-category') || card.querySelector('.catalog-category').innerText;
+                    if (cardCat.toLowerCase().includes(category.toLowerCase())) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
                 });
                 statusText.innerText = category;
                 resetBtn.style.display = 'inline';
@@ -1233,97 +1799,267 @@
             closeAllDrawers();
         }
 
-        /* Управление профилем и авторизацией по Email */
-        function openAuthModal() {
-            document.getElementById('authModal').classList.add('active');
-            if (currentUser) {
-                document.getElementById('authFormSection').style.display = 'none';
-                document.getElementById('userProfileSection').style.display = 'block';
-                document.getElementById('currentUserEmailDisplay').innerText = currentUser;
-                renderUserHistory();
-            } else {
-                document.getElementById('authFormSection').style.display = 'block';
-                document.getElementById('userProfileSection').style.display = 'none';
-            }
+        function openVipModal() {
+            document.getElementById('vipModal').classList.add('active');
         }
 
-        function closeAuthModal() {
-            document.getElementById('authModal').classList.remove('active');
+        function closeVipModal() {
+            document.getElementById('vipModal').classList.remove('active');
         }
 
-        function loginWithEmail() {
-            const emailInput = document.getElementById('userEmailInput').value.trim();
-            if (!emailInput || !emailInput.includes('@')) {
-                alert('Пожалуйста, введите корректный Email адрес.');
+        function submitVipCode() {
+            const input = document.getElementById('vipCodeInput').value.trim().toUpperCase();
+            if (!input) {
+                alert('Пожалуйста, введите код.');
                 return;
             }
-            currentUser = emailInput;
-            localStorage.setItem('ar_buyer_current_user', currentUser);
-            updateProfileButtonUI();
-            openAuthModal();
-        }
 
-        function logoutUser() {
-            currentUser = null;
-            localStorage.removeItem('ar_buyer_current_user');
-            updateProfileButtonUI();
-            closeAuthModal();
-        }
+            if (vipDatabase[input]) {
+                const tier = vipDatabase[input];
+                activeVipTier = tier;
 
-        function updateProfileButtonUI() {
-            const btn = document.getElementById('profileBtnText');
-            if (currentUser) {
-                btn.innerText = "ПРОФИЛЬ";
-                btn.style.background = "var(--accent-gold)";
-                btn.style.color = "var(--brand-green)";
+                const section = document.getElementById('vipSectionTier');
+                const badge = document.getElementById('vipTierBadge');
+                const grid = document.getElementById('vipTierGrid');
+
+                badge.innerText = tier + ' VIP ACCESS';
+                badge.className = 'vip-tier-badge tier-' + tier.toLowerCase();
+                grid.innerHTML = vipTierContent[tier] || vipTierContent.SILVER;
+                
+                section.style.display = 'block';
+                closeVipModal();
+                switchCurrency(currentCurrency);
+                renderHistoryUI();
+                section.scrollIntoView({ behavior: 'smooth' });
             } else {
-                btn.innerText = "ВХОД";
-                btn.style.background = "var(--brand-green)";
-                btn.style.color = "var(--accent-gold)";
+                alert('Неверный VIP-код.');
             }
         }
 
-        function renderUserHistory() {
-            const historyListEl = document.getElementById('userHistoryList');
-            if (!currentUser) return;
+        function addVipOrder(itemName, price) {
+            const newOrder = {
+                id: 'ORD-' + Math.floor(1000 + Math.random() * 9000),
+                item: itemName,
+                price: price,
+                date: new Date().toLocaleDateString('ru-RU'),
+                tier: activeVipTier || 'SILVER',
+                status: 'processing'
+            };
 
-            let allOrders = JSON.parse(localStorage.getItem('ar_buyer_orders_db') || '{}');
-            let userOrders = allOrders[currentUser] || [];
+            userOrders.unshift(newOrder);
+            localStorage.setItem('ar_buyer_orders', JSON.stringify(userOrders));
+            renderHistoryUI();
+
+            const whatsappNumber = '996709972571';
+            const message = encodeURIComponent(
+                `Здравствуйте, личный байер!\n\n` +
+                `Запрос на бронирование VIP-релиза:\n` +
+                `• Товар: ${itemName}\n` +
+                `• Цена: ${price}\n` +
+                `• Код заказа: ${newOrder.id}\n\n` +
+                `Уточните, пожалуйста, наличие и реквизиты.`
+            );
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        }
+
+        function renderHistoryUI() {
+            const list = document.getElementById('vipHistoryList');
+            const adminList = document.getElementById('adminOrdersList');
+            const t = i18n[currentLang] || i18n.ru;
 
             if (userOrders.length === 0) {
-                historyListEl.innerHTML = `<p style="text-align: center; font-size: 12px; color: var(--text-muted);">У вас пока нет покупок.</p>`;
+                list.innerHTML = `<p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);">${t.emptyHistoryText}</p>`;
+                adminList.innerHTML = `<p style="font-size: 11px; color: var(--text-muted);">${t.adminNoOrdersText}</p>`;
                 return;
             }
 
-            historyListEl.innerHTML = userOrders.map(o => `
+            const statusLabels = {
+                processing: { text: 'В обработке', class: 'status-processing' },
+                purchased: { text: 'Выкуплено', class: 'status-purchased' },
+                shipping: { text: 'В доставке', class: 'status-shipping' },
+                delivered: { text: 'Доставлено', class: 'status-delivered' }
+            };
+
+            list.innerHTML = userOrders.map(o => `
                 <div class="history-item">
                     <div>
-                        <strong style="color: var(--brand-green);">${o.id}</strong> • ${o.item}
-                        <div style="font-size: 10px; color: var(--text-muted);">${o.date} • ${o.price}</div>
+                        <strong style="color: var(--accent-gold);">${o.id}</strong> • ${o.item}
+                        <div style="font-size: 10px; color: rgba(255,255,255,0.6);">${o.date} • ${o.price}</div>
                     </div>
-                    <span class="order-status status-processing">В обработке</span>
+                    <span class="order-status ${statusLabels[o.status].class}">${statusLabels[o.status].text}</span>
+                </div>
+            `).join('');
+
+            adminList.innerHTML = userOrders.map((o, idx) => `
+                <div style="background: #fff; padding: 10px; border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                    <div>
+                        <strong>${o.id}</strong> (${o.tier}) — ${o.item} [${o.price}]
+                    </div>
+                    <div>
+                        <select onchange="updateOrderStatus(${idx}, this.value)" style="padding: 3px; font-size: 11px;">
+                            <option value="processing" ${o.status==='processing'?'selected':''}>В обработке</option>
+                            <option value="purchased" ${o.status==='purchased'?'selected':''}>Выкуплено</option>
+                            <option value="shipping" ${o.status==='shipping'?'selected':''}>В доставке</option>
+                            <option value="delivered" ${o.status==='delivered'?'selected':''}>Доставлено</option>
+                        </select>
+                    </div>
                 </div>
             `).join('');
         }
 
+        function updateOrderStatus(index, newStatus) {
+            userOrders[index].status = newStatus;
+            localStorage.setItem('ar_buyer_orders', JSON.stringify(userOrders));
+            renderHistoryUI();
+            alert('Статус заказа успешно обновлен!');
+        }
+
+        function applyPromoCode() {
+            const input = document.getElementById('promoInput').value.trim().toUpperCase();
+            const statusEl = document.getElementById('promoDiscountStatus');
+
+            if (!input) {
+                alert('Введите промокод!');
+                return;
+            }
+
+            if (promoDatabase[input]) {
+                appliedDiscountPercent = promoDatabase[input];
+                activePromoName = input;
+                statusEl.innerText = `ПРОМОКОД ${input} ПРИМЕНЕН: -${appliedDiscountPercent}%`;
+                updateCartUI();
+            } else {
+                alert('Промокод не найден или недействителен.');
+            }
+        }
+
+        function triggerImgUpload(btn) {
+            btn.nextElementSibling.click();
+        }
+
+        function handleImageUpload(event, input) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    input.closest('.card-img-container').querySelector('img').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
         function toggleAdminMode() {
-            isAdmin = !isAdmin;
-            const adminBtn = document.getElementById('adminBtn');
-            const adminPanel = document.getElementById('adminPanelBox');
-            if (isAdmin) {
+            const t = i18n[currentLang] || i18n.ru;
+            if (!isAdmin) {
                 const pass = prompt("Введите пароль администратора:");
                 if (pass !== ADMIN_PASSWORD) {
                     alert("Неверный пароль!");
-                    isAdmin = false;
                     return;
                 }
-                adminBtn.innerText = "СОХРАНИТЬ";
-                adminPanel.style.display = 'block';
-            } else {
-                adminBtn.innerText = "ADMIN";
-                adminPanel.style.display = 'none';
-                alert('Изменения сохранены!');
             }
+
+            isAdmin = !isAdmin;
+            const adminBtn = document.getElementById('adminBtn');
+            const adminPanel = document.getElementById('adminPanelBox');
+            const deleteBtns = document.querySelectorAll('.delete-card-btn');
+            const uploadBtns = document.querySelectorAll('.upload-img-btn');
+            const editables = document.querySelectorAll('.catalog-title, .catalog-desc, .catalog-price, .catalog-category');
+
+            if (isAdmin) {
+                adminBtn.innerText = t.adminSaveText || "СОХРАНИТЬ";
+                adminBtn.style.background = '#28a745';
+                adminBtn.style.color = '#fff';
+                adminPanel.style.display = 'block';
+                deleteBtns.forEach(b => b.style.display = 'block');
+                uploadBtns.forEach(b => b.style.display = 'block');
+                editables.forEach(el => el.setAttribute('contenteditable', 'true'));
+            } else {
+                adminBtn.innerText = t.adminBtnText || "ADMIN";
+                adminBtn.style.background = 'var(--accent-gold)';
+                adminBtn.style.color = 'var(--brand-green)';
+                adminPanel.style.display = 'none';
+                deleteBtns.forEach(b => b.style.display = 'none');
+                uploadBtns.forEach(b => b.style.display = 'none');
+                editables.forEach(el => el.removeAttribute('contenteditable'));
+                
+                localStorage.setItem('ar_buyer_catalog_v3', document.getElementById('catalogGrid').innerHTML);
+                alert('Все изменения сохранены!');
+            }
+        }
+
+        function addNewCatalogCard() {
+            const grid = document.getElementById('catalogGrid');
+            const newCard = document.createElement('div');
+            newCard.className = 'catalog-card';
+            newCard.setAttribute('data-category', 'Одежда');
+            newCard.innerHTML = `
+                <button class="delete-card-btn" style="display:block;" onclick="deleteCard(this)">Удалить</button>
+                <div>
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80" alt="New Item">
+                        <button class="upload-img-btn" style="display:block;" onclick="triggerImgUpload(this)">Загрузить фото</button>
+                        <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, this)">
+                    </div>
+                    <div class="catalog-category" contenteditable="true">Одежда</div>
+                    <h3 class="catalog-title" contenteditable="true">Новый Товар</h3>
+                    <div class="catalog-price" contenteditable="true" data-base-kgs="100000">100 000 KGS</div>
+                    <p class="catalog-desc" contenteditable="true">Описание эксклюзивного товара.</p>
+                    
+                    <div class="size-box">
+                        <div class="size-title">Размеры:</div>
+                        <div class="size-chips">
+                            <span class="size-chip active" onclick="selectSize(this)">S</span>
+                            <span class="size-chip" onclick="selectSize(this)">M</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-luxury btn-gold btn-card-action" onclick="addToCartFromElement(this)">ПЕРЕЙТИ</button>
+            `;
+            grid.appendChild(newCard);
+            switchCurrency(currentCurrency);
+        }
+
+        function createVipCode() {
+            const code = document.getElementById('newVipCode').value.trim().toUpperCase();
+            const tier = document.getElementById('newVipTier').value;
+
+            if (!code) {
+                alert('Введите название или цифры кода.');
+                return;
+            }
+
+            vipDatabase[code] = tier;
+            localStorage.setItem('ar_buyer_vip_codes', JSON.stringify(vipDatabase));
+            alert(`Успешно создан VIP-код ${code} (${tier})!`);
+            document.getElementById('newVipCode').value = '';
+        }
+
+        function createPromoCode() {
+            const code = document.getElementById('newPromoCode').value.trim().toUpperCase();
+            const discount = parseInt(document.getElementById('newPromoDiscount').value);
+
+            if (!code || isNaN(discount) || discount <= 0 || discount > 100) {
+                alert('Введите корректный промокод и процент скидки (от 1 до 100)!');
+                return;
+            }
+
+            promoDatabase[code] = discount;
+            localStorage.setItem('ar_buyer_promos', JSON.stringify(promoDatabase));
+            alert(`Успешно создан промокод ${code} со скидкой ${discount}%!`);
+            document.getElementById('newPromoCode').value = '';
+            document.getElementById('newPromoDiscount').value = '';
+        }
+
+        function deleteCard(btn) {
+            if (confirm('Удалить эту карточку из каталога?')) {
+                btn.closest('.catalog-card').remove();
+            }
+        }
+
+        function selectSize(chipElement) {
+            const parent = chipElement.parentElement;
+            parent.querySelectorAll('.size-chip').forEach(c => c.classList.remove('active'));
+            chipElement.classList.add('active');
         }
 
         function openMenu() {
@@ -1342,11 +2078,6 @@
             document.getElementById('drawerOverlay').classList.remove('active');
             document.getElementById('sideDrawer').classList.remove('active');
             document.getElementById('cartDrawer').classList.remove('active');
-        }
-
-        function selectSize(chipElement) {
-            chipElement.parentElement.querySelectorAll('.size-chip').forEach(c => c.classList.remove('active'));
-            chipElement.classList.add('active');
         }
 
         function addToCartFromElement(btn) {
@@ -1374,9 +2105,10 @@
             document.getElementById('cartCount').innerText = cart.length;
             const list = document.getElementById('cartItemsList');
             const totalSumEl = document.getElementById('cartTotalSum');
+            const t = i18n[currentLang] || i18n.ru;
             
             if (cart.length === 0) {
-                list.innerHTML = `<p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 30px;">Корзина пуста</p>`;
+                list.innerHTML = `<p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 30px;" data-i18n="emptyCartText">${t.emptyCartText}</p>`;
                 totalSumEl.innerText = "0 " + currentCurrency;
                 return;
             }
@@ -1392,11 +2124,19 @@
             `).join('');
 
             let rawTotalKgs = cart.reduce((sum, i) => sum + i.baseKgs, 0);
+            if (appliedDiscountPercent > 0) {
+                rawTotalKgs = rawTotalKgs * (1 - appliedDiscountPercent / 100);
+            }
+
             const rate = exchangeRates[currentCurrency] || 1;
             const symbol = currencySymbols[currentCurrency] || ' KGS';
             const finalNum = rawTotalKgs * rate;
 
-            totalSumEl.innerText = currentCurrency === 'KGS' ? Math.round(finalNum).toLocaleString('ru-RU') + symbol : symbol + ' ' + Math.round(finalNum).toLocaleString('en-US');
+            if (currentCurrency === 'KGS') {
+                totalSumEl.innerText = Math.round(finalNum).toLocaleString('ru-RU') + symbol;
+            } else {
+                totalSumEl.innerText = symbol + ' ' + Math.round(finalNum).toLocaleString('en-US');
+            }
         }
 
         function checkoutCart() {
@@ -1404,31 +2144,33 @@
                 alert('Ваша корзина пуста.');
                 return;
             }
-            if (!currentUser) {
-                alert('Пожалуйста, войдите в профиль через Email перед оформлением заказа, чтобы сохранить историю покупок!');
-                openAuthModal();
-                return;
-            }
 
             const totalSumText = document.getElementById('cartTotalSum').innerText;
-            let allOrders = JSON.parse(localStorage.getItem('ar_buyer_orders_db') || '{}');
-            if (!allOrders[currentUser]) allOrders[currentUser] = [];
 
             cart.forEach(item => {
-                allOrders[currentUser].unshift({
+                userOrders.unshift({
                     id: 'ORD-' + Math.floor(1000 + Math.random() * 9000),
                     item: item.name + ` (${item.size})`,
                     price: item.priceText,
-                    date: new Date().toLocaleDateString('ru-RU')
+                    date: new Date().toLocaleDateString('ru-RU'),
+                    tier: activeVipTier || 'GUEST',
+                    status: 'processing'
                 });
             });
 
-            localStorage.setItem('ar_buyer_orders_db', JSON.stringify(allOrders));
+            localStorage.setItem('ar_buyer_orders', JSON.stringify(userOrders));
+            renderHistoryUI();
 
             const whatsappNumber = '996709972571';
             const itemsListText = cart.map(i => `• ${i.name} (Размер: ${i.size}) — ${i.priceText}`).join('\n');
+            let discountInfo = appliedDiscountPercent > 0 ? `\n\nПрименен промокод: ${activePromoName} (-${appliedDiscountPercent}%)` : '';
+
             const message = encodeURIComponent(
-                `Здравствуйте, личный байер!\n\nEmail клиента: ${currentUser}\n\nЗаказ из корзины:\n${itemsListText}\n\nИТОГО: ${totalSumText}\nВалюта: ${currentCurrency}`
+                `Здравствуйте, личный байер!\n\n` +
+                `Хочу оформить заказ из корзины:\n${itemsListText}${discountInfo}\n\n` +
+                `ИТОГО СО СКИДКОЙ: ${totalSumText}\n` +
+                `Валюта: ${currentCurrency}\n\n` +
+                `Уточните, пожалуйста, наличие и реквизиты для оплаты.`
             );
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
         }
@@ -1438,20 +2180,14 @@
             const name = document.getElementById('clientName').value;
             const details = document.getElementById('orderDetails').value;
             
-            if (currentUser) {
-                let allOrders = JSON.parse(localStorage.getItem('ar_buyer_orders_db') || '{}');
-                if (!allOrders[currentUser]) allOrders[currentUser] = [];
-                allOrders[currentUser].unshift({
-                    id: 'REQ-' + Math.floor(1000 + Math.random() * 9000),
-                    item: details,
-                    price: 'По запросу',
-                    date: new Date().toLocaleDateString('ru-RU')
-                });
-                localStorage.setItem('ar_buyer_orders_db', JSON.stringify(allOrders));
-            }
-
             const whatsappNumber = '996709972571';
-            const message = encodeURIComponent(`Здравствуйте, личный байер!\n\nИмя: ${name}\nEmail: ${currentUser || 'Не указан'}\nДетали: ${details}`);
+            const message = encodeURIComponent(
+                `Здравствуйте, личный байер!\n\n` +
+                `Меня зовут: ${name}\n` +
+                `Детали запроса:\n${details}\n\n` +
+                `Валюта: ${currentCurrency}\n` +
+                `Уточните, пожалуйста, наличие, цену и возможные размеры.`
+            );
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
         });
     </script>
