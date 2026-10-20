@@ -66,7 +66,7 @@
 
         /* Header Navigation */
         header {
-            padding: 30px 0;
+            padding: 25px 0;
             background: rgba(251, 249, 245, 0.95);
             backdrop-filter: blur(8px);
             position: sticky;
@@ -97,7 +97,8 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: 35px;
+            align-items: center;
         }
 
         nav a {
@@ -110,6 +111,31 @@
 
         nav a:hover {
             color: var(--accent-gold);
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: var(--brand-green);
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .lang-btn {
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 2px;
+            transition: all 0.3s;
+            color: var(--text-muted);
+        }
+
+        .lang-btn.active {
+            color: var(--accent-gold);
+            background: var(--brand-green);
         }
 
         .btn-luxury {
@@ -410,7 +436,7 @@
 <body>
 
     <!-- Top Bar -->
-    <div class="top-bar">
+    <div class="top-bar" id="topBar">
         🏆 Best Buyer of the Year — Эксклюзивный сервис персонального байинга
     </div>
 
@@ -420,23 +446,30 @@
             <div class="logo">ar.buyer<span>_01</span></div>
             <nav>
                 <ul>
-                    <li><a href="#about">Стандарты</a></li>
-                    <li><a href="#catalog">Каталог</a></li>
-                    <li><a href="#brands">Дома Моды</a></li>
-                    <li><a href="#order">Запрос</a></li>
+                    <li><a href="#about" id="navAbout">Стандарты</a></li>
+                    <li><a href="#catalog" id="navCatalog">Каталог</a></li>
+                    <li><a href="#brands" id="navBrands">Дома Моды</a></li>
+                    <li><a href="#order" id="navOrder">Запрос</a></li>
                 </ul>
             </nav>
-            <a href="#order" class="btn-luxury">Консьерж</a>
+            <div style="display: flex; align-items: center;">
+                <a href="#order" class="btn-luxury btn-action">ПЕРЕЙТИ</a>
+                <div class="lang-switch">
+                    <span class="lang-btn active" id="btnRu" onclick="switchLang('ru')">RU</span>
+                    <span>|</span>
+                    <span class="lang-btn" id="btnEn" onclick="switchLang('en')">EN</span>
+                </div>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <p class="hero-subtitle">High Luxury & Personal Shopping</p>
-            <h1>Ваш Личный Байер</h1>
-            <p>Выкуп эксклюзивных коллекций, редких релизаций и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.</p>
-            <a href="#order" class="btn-luxury btn-gold">Оформить персональный запрос</a>
+            <p class="hero-subtitle" id="heroSubtitle">High Luxury & Personal Shopping</p>
+            <h1 id="heroTitle">Ваш Личный Байер</h1>
+            <p id="heroDesc">Выкуп эксклюзивных коллекций, редких релизаций и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.</p>
+            <a href="#order" class="btn-luxury btn-gold btn-action">ПЕРЕЙТИ</a>
         </div>
     </section>
 
@@ -444,21 +477,21 @@
     <section class="pillars" id="about">
         <div class="container">
             <div class="section-header">
-                <h2>Гарантии и Сервис</h2>
+                <h2 id="pillarsTitle">Гарантии и Сервис</h2>
                 <div></div>
             </div>
             <div class="pillars-grid">
                 <div class="pillar-card">
-                    <h3>100% Подлинность</h3>
-                    <p>Прямой выкуп исключительно в официальных флагманских бутиках. Каждая позиция сопровождается кассовыми чеками, фирменными пыльниками и оригинальной бутиковой упаковкой.</p>
+                    <h3 id="p1Title">100% Подлинность</h3>
+                    <p id="p1Desc">Прямой выкуп исключительно в официальных флагманских бутиках. Каждая позиция сопровождается кассовыми чеками, фирменными пыльниками и оригинальной бутиковой упаковкой.</p>
                 </div>
                 <div class="pillar-card">
-                    <h3>Премиум Качество</h3>
-                    <p>Многоэтапный экспертный осмотр каждого изделия перед отправкой. Полный фото- и видеоотчет деталей, швов и комплектации лично для вас.</p>
+                    <h3 id="p2Title">Премиум Качество</h3>
+                    <p id="p2Desc">Многоэтапный экспертный осмотр каждого изделия перед отправкой. Полный фото- и видеоотчет деталей, швов и комплектации лично для вас.</p>
                 </div>
                 <div class="pillar-card">
-                    <h3>Закрытый Доступ</h3>
-                    <p>Приоритетный подбор лимитированных аксессуаров, подиумных коллекций и эксклюзивной парфюмерии через личных менеджеров в бутиках по всему миру.</p>
+                    <h3 id="p3Title">Закрытый Доступ</h3>
+                    <p id="p3Desc">Приоритетный подбор лимитированных аксессуаров, подиумных коллекций и эксклюзивной парфюмерии через личных менеджеров в бутиках по всему миру.</p>
                 </div>
             </div>
         </div>
@@ -468,44 +501,44 @@
     <section class="catalog-section" id="catalog">
         <div class="container">
             <div class="section-header">
-                <h2>Каталог Направлений</h2>
+                <h2 id="catalogHeader">Каталог Направлений</h2>
                 <div></div>
             </div>
             <div class="catalog-grid">
                 <div class="catalog-card">
                     <div>
                         <div class="catalog-category">High Luxury</div>
-                        <h3 class="catalog-title">Сумки & Аксессуары</h3>
-                        <p class="catalog-desc">Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.</p>
+                        <h3 class="catalog-title" id="c1Title">Сумки & Аксессуары</h3>
+                        <p class="catalog-desc" id="c1Desc">Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.</p>
                     </div>
-                    <a href="#order" class="btn-luxury btn-gold">Запросить модель</a>
+                    <a href="#order" class="btn-luxury btn-gold btn-action">ПЕРЕЙТИ</a>
                 </div>
 
                 <div class="catalog-card">
                     <div>
                         <div class="catalog-category">Quiet Luxury</div>
-                        <h3 class="catalog-title">Гардероб & Обувь</h3>
-                        <p class="catalog-desc">Изысканные ткани и силуэты Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.</p>
+                        <h3 class="catalog-title" id="c2Title">Гардероб & Обувь</h3>
+                        <p class="catalog-desc" id="c2Desc">Изысканные ткани и силуэты Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.</p>
                     </div>
-                    <a href="#order" class="btn-luxury btn-gold">Подобрать размер</a>
+                    <a href="#order" class="btn-luxury btn-gold btn-action">ПЕРЕЙТИ</a>
                 </div>
 
                 <div class="catalog-card">
                     <div>
                         <div class="catalog-category">Niche Beauty</div>
-                        <h3 class="catalog-title">Селективная Парфюмерия</h3>
-                        <p class="catalog-desc">Эксклюзивная линейка Louis Vuitton Les Extraits (Symphony и др.) и закрытые ароматические коллекции.</p>
+                        <h3 class="catalog-title" id="c3Title">Селективная Парфюмерия</h3>
+                        <p class="catalog-desc" id="c3Desc">Эксклюзивная линейка Louis Vuitton Les Extraits (Symphony и др.) и закрытые ароматические коллекции.</p>
                     </div>
-                    <a href="#order" class="btn-luxury btn-gold">Найти аромат</a>
+                    <a href="#order" class="btn-luxury btn-gold btn-action">ПЕРЕЙТИ</a>
                 </div>
 
                 <div class="catalog-card">
                     <div>
                         <div class="catalog-category">Fine Jewelry & Watches</div>
-                        <h3 class="catalog-title">Часы & Ювелирные Изделия</h3>
-                        <p class="catalog-desc">Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet.</p>
+                        <h3 class="catalog-title" id="c4Title">Часы & Ювелирные Изделия</h3>
+                        <p class="catalog-desc" id="c4Desc">Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet.</p>
                     </div>
-                    <a href="#order" class="btn-luxury btn-gold">Уточнить наличие</a>
+                    <a href="#order" class="btn-luxury btn-gold btn-action">ПЕРЕЙТИ</a>
                 </div>
             </div>
         </div>
@@ -514,7 +547,7 @@
     <!-- Luxury Fashion Houses -->
     <section class="brands-section" id="brands">
         <div class="container">
-            <h2>Официальные Дома Моды</h2>
+            <h2 id="brandsTitle">Официальные Дома Моды</h2>
             <div class="brands-ticker">
                 <span>LORO PIANA</span> • 
                 <span>HERMÈS</span> • 
@@ -541,20 +574,20 @@
     <section class="order-section" id="order">
         <div class="container">
             <div class="section-header">
-                <h2>Персональный Запрос</h2>
+                <h2 id="orderHeader">Персональный Запрос</h2>
                 <div></div>
             </div>
             <div class="form-wrapper">
                 <form id="orderForm">
                     <div class="form-group">
-                        <label for="clientName">Ваше имя / Telegram @username</label>
-                        <input type="text" id="clientName" placeholder="@username или имя" required>
+                        <label for="clientName" id="labelName">Ваше имя / Telegram @username</label>
+                        <input type="text" id="clientName" placeholder="@username" required>
                     </div>
                     <div class="form-group">
-                        <label for="orderDetails">Детали Изделия (Бренд, Название, Размер)</label>
-                        <textarea id="orderDetails" rows="5" placeholder="Например: Loro Piana Summer Walk size 42 или Louis Vuitton Symphony 100ml" required></textarea>
+                        <label for="orderDetails" id="labelDetails">Детали Изделия (Бренд, Название, Размер)</label>
+                        <textarea id="orderDetails" rows="5" placeholder="Loro Piana Summer Walk size 42 / Louis Vuitton Symphony 100ml" required></textarea>
                     </div>
-                    <button type="submit" class="btn-luxury btn-gold" style="width: 100%;">Отправить Персональный Запрос</button>
+                    <button type="submit" class="btn-luxury btn-gold btn-action" style="width: 100%;">ПЕРЕЙТИ</button>
                 </form>
             </div>
         </div>
@@ -568,14 +601,122 @@
         </div>
     </footer>
 
-    <!-- Script -->
+    <!-- Script for Multi-language & Telegram Redirect -->
     <script>
+        const i18n = {
+            ru: {
+                topBar: "🏆 Best Buyer of the Year — Эксклюзивный сервис персонального байинга",
+                navAbout: "Стандарты",
+                navCatalog: "Каталог",
+                navBrands: "Дома Моды",
+                navOrder: "Запрос",
+                btnAction: "ПЕРЕЙТИ",
+                heroSubtitle: "High Luxury & Personal Shopping",
+                heroTitle: "Ваш Личный Байер",
+                heroDesc: "Выкуп эксклюзивных коллекций, редких релизаций и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.",
+                pillarsTitle: "Гарантии и Сервис",
+                p1Title: "100% Подлинность",
+                p1Desc: "Прямой выкуп исключительно в официальных флагманских бутиках. Каждая позиция сопровождается кассовыми чеками, фирменными пыльниками и оригинальной бутиковой упаковкой.",
+                p2Title: "Премиум Качество",
+                p2Desc: "Многоэтапный экспертный осмотр каждого изделия перед отправкой. Полный фото- и видеоотчет деталей, швов и комплектации лично для вас.",
+                p3Title: "Закрытый Доступ",
+                p3Desc: "Приоритетный подбор лимитированных аксессуаров, подиумных коллекций и эксклюзивной парфюмерии через личных менеджеров в бутиках по всему миру.",
+                catalogHeader: "Каталог Направлений",
+                c1Title: "Сумки & Аксессуары",
+                c1Desc: "Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
+                c2Title: "Гардероб & Обувь",
+                c2Desc: "Изысканные ткани и силуэты Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.",
+                c3Title: "Селективная Парфюмерия",
+                c3Desc: "Эксклюзивная линейка Louis Vuitton Les Extraits (Symphony и др.) и закрытые ароматические коллекции.",
+                c4Title: "Часы & Ювелирные Изделия",
+                c4Desc: "Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet.",
+                brandsTitle: "Официальные Дома Моды",
+                orderHeader: "Персональный Запрос",
+                labelName: "Ваше имя / Telegram @username",
+                labelDetails: "Детали Изделия (Бренд, Название, Размер)"
+            },
+            en: {
+                topBar: "🏆 Best Buyer of the Year — Exclusive Personal Shopping Service",
+                navAbout: "Standards",
+                navCatalog: "Catalog",
+                navBrands: "Fashion Houses",
+                navOrder: "Inquiry",
+                btnAction: "PROCEED",
+                heroSubtitle: "High Luxury & Personal Shopping",
+                heroTitle: "Your Personal Shopper",
+                heroDesc: "Acquisition of exclusive collections, rare releases, and runway pieces from official boutiques in Europe, US, and Asia. Highest service standards and flawless execution.",
+                pillarsTitle: "Guarantees & Service",
+                p1Title: "100% Authenticity",
+                p1Desc: "Direct acquisition strictly from official flagship boutiques. Every item is accompanied by receipts, signature dust bags, and original boutique packaging.",
+                p2Title: "Premium Quality",
+                p2Desc: "Multi-stage expert inspection of each item before dispatch. Detailed photo and video reports of craftsmanship, stitching, and full set packaging.",
+                p3Title: "VIP Access",
+                p3Desc: "Priority access to limited accessories, runway fashion, and niche fragrances via direct personal boutique relations worldwide.",
+                catalogHeader: "Curated Categories",
+                c1Title: "Bags & Accessories",
+                c1Desc: "Iconic models and rare colorways from Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
+                c2Title: "Apparel & Footwear",
+                c2Desc: "Exquisite fabrics and silhouettes from Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.",
+                c3Title: "Niche Fragrances",
+                c3Desc: "Exclusive Louis Vuitton Les Extraits range (Symphony & more) and private fragrance collections.",
+                c4Title: "Fine Jewelry & Watches",
+                c4Desc: "Official sourcing of high jewelry and horological masterpieces from Cartier, Van Cleef, Rolex, Audemars Piguet.",
+                brandsTitle: "Official Fashion Houses",
+                orderHeader: "Personal Inquiry",
+                labelName: "Your Name / Telegram @username",
+                labelDetails: "Item Details (Brand, Name, Size)"
+            }
+        };
+
+        function switchLang(lang) {
+            document.getElementById('btnRu').classList.toggle('active', lang === 'ru');
+            document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+
+            const t = i18n[lang];
+            
+            document.getElementById('topBar').innerText = t.topBar;
+            document.getElementById('navAbout').innerText = t.navAbout;
+            document.getElementById('navCatalog').innerText = t.navCatalog;
+            document.getElementById('navBrands').innerText = t.navBrands;
+            document.getElementById('navOrder').innerText = t.navOrder;
+            
+            document.getElementById('heroSubtitle').innerText = t.heroSubtitle;
+            document.getElementById('heroTitle').innerText = t.heroTitle;
+            document.getElementById('heroDesc').innerText = t.heroDesc;
+            
+            document.getElementById('pillarsTitle').innerText = t.pillarsTitle;
+            document.getElementById('p1Title').innerText = t.p1Title;
+            document.getElementById('p1Desc').innerText = t.p1Desc;
+            document.getElementById('p2Title').innerText = t.p2Title;
+            document.getElementById('p2Desc').innerText = t.p2Desc;
+            document.getElementById('p3Title').innerText = t.p3Title;
+            document.getElementById('p3Desc').innerText = t.p3Desc;
+            
+            document.getElementById('catalogHeader').innerText = t.catalogHeader;
+            document.getElementById('c1Title').innerText = t.c1Title;
+            document.getElementById('c1Desc').innerText = t.c1Desc;
+            document.getElementById('c2Title').innerText = t.c2Title;
+            document.getElementById('c2Desc').innerText = t.c2Desc;
+            document.getElementById('c3Title').innerText = t.c3Title;
+            document.getElementById('c3Desc').innerText = t.c3Desc;
+            document.getElementById('c4Title').innerText = t.c4Title;
+            document.getElementById('c4Desc').innerText = t.c4Desc;
+            
+            document.getElementById('brandsTitle').innerText = t.brandsTitle;
+            document.getElementById('orderHeader').innerText = t.orderHeader;
+            document.getElementById('labelName').innerText = t.labelName;
+            document.getElementById('labelDetails').innerText = t.labelDetails;
+
+            document.querySelectorAll('.btn-action').forEach(btn => {
+                btn.innerText = t.btnAction;
+            });
+        }
+
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('clientName').value;
             const details = document.getElementById('orderDetails').value;
             
-            // Замените на ваш Telegram username
             const telegramUsername = 'ar_buyer_01'; 
             
             const message = encodeURIComponent(`Доброго дня! Меня зовут ${name}.\nМой персональный запрос: ${details}`);
