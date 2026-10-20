@@ -1398,7 +1398,7 @@
                 btnSubmitOrder: "SUBMIT TO PERSONAL SHOPPER",
                 vipModalTitle: "VIP PRIVATE ACCESS",
                 vipModalDesc: "Enter your personal VIP key to access private boutique releases.",
-                labelVipCode: "Your VIP Key",
+                labelVipKey: "Your VIP Key",
                 btnActivateVip: "ACTIVATE KEY",
                 btnVipKey: "VIP KEY",
                 adminBtnText: "ADMIN",
@@ -1533,7 +1533,7 @@
                 labelDetails: "Detalles del artículo (Marca, Modelo, Talla)",
                 btnSubmitOrder: "ENVIAR AL SHOPPER",
                 vipModalTitle: "VIP PRIVATE ACCESS",
-                vipModalDesc: "Ingrese su código VIP privado para acceder a las ventas exclusivas.",
+                vipModalDesc: "Ingrese su código VIP privado para acceder al lanzamiento privado.",
                 labelVipCode: "Su Código VIP",
                 btnActivateVip: "ACTIVAR CÓDIGO",
                 btnVipKey: "CLAVE VIP",
@@ -1735,7 +1735,6 @@
                 if (el && t[id]) el.innerText = t[id];
             });
 
-            // Обновляем кнопку ADMIN динамически (в зависимости от режима)
             const adminBtn = document.getElementById('adminBtn');
             if (adminBtn) {
                 adminBtn.innerText = isAdmin ? (t.adminSaveText || "СОХРАНИТЬ") : (t.adminBtnText || "ADMIN");
