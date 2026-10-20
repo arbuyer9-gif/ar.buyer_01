@@ -891,7 +891,7 @@
 </head>
 <body>
 
-    <div class="top-bar" id="topBar">
+    <div class="top-bar" data-i18n="topBar">
         Best Buyer of the Year — Эксклюзивный сервис личного байера
     </div>
 
@@ -899,13 +899,13 @@
     <div class="auth-modal" id="vipModal">
         <div class="auth-box">
             <div style="position: absolute; top: 15px; right: 20px; cursor: pointer;" onclick="closeModal('vipModal')">✕</div>
-            <h3 id="vipModalTitle">VIP PRIVATE ACCESS</h3>
-            <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 20px;" id="vipModalDesc">Введите ваш персональный VIP-код для входа в закрытую зону релиза.</p>
+            <h3 data-i18n="vipModalTitle">VIP PRIVATE ACCESS</h3>
+            <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 20px;" data-i18n="vipModalDesc">Введите ваш персональный VIP-код для входа в закрытую зону релиза.</p>
             <div class="form-group">
-                <label id="labelVipCode">Ваш VIP-Код</label>
+                <label data-i18n="labelVipCode">Ваш VIP-Код</label>
                 <input type="text" id="vipCodeInput" placeholder="7777" style="text-align: center; letter-spacing: 2px; text-transform: uppercase;">
             </div>
-            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="submitVipCode()" id="btnActivateVip">АКТИВИРОВАТЬ КОД</button>
+            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="submitVipCode()" data-i18n="btnActivateVip">АКТИВИРОВАТЬ КОД</button>
         </div>
     </div>
 
@@ -916,28 +916,28 @@
     <div class="side-drawer" id="sideDrawer">
         <div>
             <div class="drawer-header">
-                <div class="drawer-title" id="drawerTitle">МЕНЮ</div>
+                <div class="drawer-title" data-i18n="drawerTitle">МЕНЮ</div>
                 <div class="drawer-close" onclick="closeAllDrawers()">✕</div>
             </div>
 
             <!-- Фильтрация по категориям -->
             <ul class="drawer-menu-list">
-                <li><a onclick="filterCatalog('ALL', this)" class="active-cat" id="catAll">Все категории</a></li>
-                <li><a onclick="filterCatalog('Одежда', this)" id="catClothes">Одежда</a></li>
-                <li><a onclick="filterCatalog('Сумки', this)" id="catBags">Сумки</a></li>
-                <li><a onclick="filterCatalog('Обувь', this)" id="catShoes">Обувь</a></li>
-                <li><a onclick="filterCatalog('Парфюмы', this)" id="catPerfumes">Парфюмы</a></li>
-                <li><a onclick="filterCatalog('Ювелирные изделия', this)" id="catJewelry">Ювелирные изделия</a></li>
-                <li><a onclick="filterCatalog('Часы', this)" id="catWatches">Часы</a></li>
+                <li><a onclick="filterCatalog('ALL', this)" class="active-cat" data-i18n="catAll">Все категории</a></li>
+                <li><a onclick="filterCatalog('Одежда', this)" data-i18n="catClothes">Одежда</a></li>
+                <li><a onclick="filterCatalog('Сумки', this)" data-i18n="catBags">Сумки</a></li>
+                <li><a onclick="filterCatalog('Обувь', this)" data-i18n="catShoes">Обувь</a></li>
+                <li><a onclick="filterCatalog('Парфюмы', this)" data-i18n="catPerfumes">Парфюмы</a></li>
+                <li><a onclick="filterCatalog('Ювелирные изделия', this)" data-i18n="catJewelry">Ювелирные изделия</a></li>
+                <li><a onclick="filterCatalog('Часы', this)" data-i18n="catWatches">Часы</a></li>
             </ul>
         </div>
 
         <div class="support-box">
-            <div class="support-title" id="supportTitle">Служба поддержки</div>
+            <div class="support-title" data-i18n="supportTitle">Служба поддержки</div>
             <ul class="support-list">
-                <li><span id="labelSupportText">Служба поддержки</span>: <a href="mailto:arbuyersupport@gmail.com">arbuyersupport@gmail.com</a></li>
-                <li><span id="labelContactUs">Связаться с нами</span>: <a href="https://wa.me/996709972571" target="_blank">+996 709 972 571</a></li>
-                <li><span id="labelSocials">Социальные сети</span>: <a href="https://instagram.com/ar.buyer_01" target="_blank">inst: ar.buyer_01</a></li>
+                <li><span data-i18n="labelSupportText">Служба поддержки</span>: <a href="mailto:arbuyersupport@gmail.com">arbuyersupport@gmail.com</a></li>
+                <li><span data-i18n="labelContactUs">Связаться с нами</span>: <a href="https://wa.me/996709972571" target="_blank">+996 709 972 571</a></li>
+                <li><span data-i18n="labelSocials">Социальные сети</span>: <a href="https://instagram.com/ar.buyer_01" target="_blank">inst: ar.buyer_01</a></li>
             </ul>
         </div>
     </div>
@@ -946,11 +946,11 @@
     <div class="cart-drawer" id="cartDrawer">
         <div>
             <div class="drawer-header">
-                <div class="drawer-title" id="cartHeader">Ваша Корзина</div>
+                <div class="drawer-title" data-i18n="cartHeader">Ваша Корзина</div>
                 <div class="drawer-close" onclick="closeAllDrawers()">✕</div>
             </div>
             <div class="cart-items-list" id="cartItemsList">
-                <p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 30px;" id="emptyCartText">Корзина пуста</p>
+                <p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 30px;" data-i18n="emptyCartText">Корзина пуста</p>
             </div>
         </div>
         <div>
@@ -958,17 +958,17 @@
             <div class="promo-box">
                 <div class="promo-input-group">
                     <input type="text" id="promoInput" placeholder="ПРОМОКОД (напр. VIP10)">
-                    <button class="btn-luxury" style="padding: 8px 12px; font-size: 10px;" id="btnApplyPromo" onclick="applyPromoCode()">ПРИМЕНИТЬ</button>
+                    <button class="btn-luxury" style="padding: 8px 12px; font-size: 10px;" data-i18n="btnApplyPromo" onclick="applyPromoCode()">ПРИМЕНИТЬ</button>
                 </div>
                 <div id="promoDiscountStatus" style="font-size: 11px; color: var(--accent-gold); text-align: center; font-weight: 600;"></div>
             </div>
 
             <div class="cart-total-box">
-                <span id="labelTotalSum">ИТОГО:</span>
+                <span data-i18n="labelTotalSum">ИТОГО:</span>
                 <span id="cartTotalSum">0 KGS</span>
             </div>
 
-            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="checkoutCart()" id="btnCheckout">Связаться с байером</button>
+            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="checkoutCart()" data-i18n="btnCheckout">Связаться с байером</button>
         </div>
     </div>
 
@@ -1015,8 +1015,8 @@
                     <span class="cart-badge" id="cartCount">0</span>
                 </div>
 
-                <button class="vip-access-btn" onclick="openModal('vipModal')" id="btnVipKey">VIP КЛЮЧ</button>
-                <button class="admin-toggle-btn" id="adminBtn" onclick="toggleAdminMode()">ADMIN</button>
+                <button class="vip-access-btn" onclick="openModal('vipModal')" data-i18n="btnVipKey">VIP КЛЮЧ</button>
+                <button class="admin-toggle-btn" id="adminBtn" onclick="toggleAdminMode()" data-i18n="adminBtnText">ADMIN</button>
             </div>
         </div>
     </header>
@@ -1024,10 +1024,10 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <p class="hero-subtitle" id="heroSubtitle">High Luxury & Personal Shopping</p>
-            <h1 id="heroTitle">Ваш Личный Байер</h1>
-            <p id="heroDesc">Выкуп эксклюзивных коллекций, редких релизов и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.</p>
-            <a href="#order" class="btn-luxury btn-gold" id="btnHeroAction">ОФОРМИТЬ ЗАПРОС</a>
+            <p class="hero-subtitle" data-i18n="heroSubtitle">High Luxury & Personal Shopping</p>
+            <h1 data-i18n="heroTitle">Ваш Личный Байер</h1>
+            <p data-i18n="heroDesc">Выкуп эксклюзивных коллекций, редких релизов и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.</p>
+            <a href="#order" class="btn-luxury btn-gold" data-i18n="btnHeroAction">ОФОРМИТЬ ЗАПРОС</a>
         </div>
     </section>
 
@@ -1036,7 +1036,7 @@
         <div class="container">
             <div style="text-align: center;">
                 <div class="vip-tier-badge" id="vipTierBadge">SILVER VIP</div>
-                <h2 style="font-family: var(--font-title); color: var(--accent-gold); margin-bottom: 30px;" id="vipTitleText">ЗАКРЫТЫЙ ПОДИУМНЫЙ РЕЛИЗ</h2>
+                <h2 style="font-family: var(--font-title); color: var(--accent-gold); margin-bottom: 30px;" data-i18n="vipTitleText">ЗАКРЫТЫЙ ПОДИУМНЫЙ РЕЛИЗ</h2>
             </div>
             
             <div class="catalog-grid" id="vipTierGrid">
@@ -1045,9 +1045,9 @@
 
             <!-- VIP History Box -->
             <div class="vip-history-box">
-                <div class="vip-history-title" id="vipHistoryTitle">ИСТОРИЯ ВАШИХ VIP-ЗАКАЗОВ</div>
+                <div class="vip-history-title" data-i18n="vipHistoryTitle">ИСТОРИЯ ВАШИХ VIP-ЗАКАЗОВ</div>
                 <div class="order-history-list" id="vipHistoryList">
-                    <p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);" id="emptyHistoryText">У вас пока нет оформленных заказов.</p>
+                    <p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);" data-i18n="emptyHistoryText">У вас пока нет оформленных заказов.</p>
                 </div>
             </div>
         </div>
@@ -1057,25 +1057,25 @@
     <section class="catalog-section" id="catalog">
         <div class="container">
             <div class="section-header">
-                <h2 id="catalogHeader">Каталог Направлений</h2>
+                <h2 data-i18n="catalogHeader">Каталог Направлений</h2>
                 <div></div>
             </div>
 
             <div class="filter-status-bar" id="filterStatus">
-                <span id="filterLabelText">Показаны категории:</span> <strong id="currentFilterName">Все</strong>
-                <span id="resetFilterBtn" style="display:none;" onclick="filterCatalog('ALL', null)">(Сбросить фильтр)</span>
+                <span data-i18n="filterLabelText">Показаны категории:</span> <strong id="currentFilterName" data-i18n="allFilterName">Все</strong>
+                <span id="resetFilterBtn" style="display:none;" onclick="filterCatalog('ALL', null)">(<span data-i18n="resetFilterText">Сбросить фильтр</span>)</span>
             </div>
 
             <!-- Панель администратора -->
             <div class="admin-panel-box" id="adminPanelBox">
-                <h4 style="font-family: var(--font-title); color: var(--brand-green); margin-bottom: 15px;" id="adminPanelTitle">Панель Управления Кодами и Промокодами</h4>
+                <h4 style="font-family: var(--font-title); color: var(--brand-green); margin-bottom: 15px;" data-i18n="adminPanelTitle">Панель Управления Кодами и Промокодами</h4>
                 
                 <div style="margin-bottom: 20px;">
-                    <button class="btn-luxury btn-gold" onclick="addNewCatalogCard()" id="btnAddProduct">+ Добавить новый товар в каталог</button>
+                    <button class="btn-luxury btn-gold" onclick="addNewCatalogCard()" data-i18n="btnAddProduct">+ Добавить новый товар в каталог</button>
                 </div>
 
                 <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px; margin-bottom: 20px;">
-                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" id="adminVipTitle">1. Создание VIP-кодов доступа (включая цифры):</h5>
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" data-i18n="adminVipTitle">1. Создание VIP-кодов доступа (включая цифры):</h5>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <input type="text" id="newVipCode" placeholder="Код (напр. 7777 или 0000)" style="padding: 6px; font-size: 11px;">
                         <select id="newVipTier" style="padding: 6px; font-size: 11px;">
@@ -1084,24 +1084,24 @@
                             <option value="PLATINUM">PLATINUM</option>
                             <option value="BLACK">BLACK</option>
                         </select>
-                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createVipCode()" id="btnCreateVip">Создать VIP-код</button>
+                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createVipCode()" data-i18n="btnCreateVip">Создать VIP-код</button>
                     </div>
                 </div>
 
                 <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px; margin-bottom: 20px;">
-                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" id="adminPromoTitle">2. Управление Промокодами на скидку:</h5>
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" data-i18n="adminPromoTitle">2. Управление Промокодами на скидку:</h5>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
                         <input type="text" id="newPromoCode" placeholder="Промокод (напр. SALE10)" style="padding: 6px; font-size: 11px; text-transform: uppercase;">
                         <input type="number" id="newPromoDiscount" placeholder="% Скидки (напр. 10)" style="padding: 6px; font-size: 11px; width: 110px;">
-                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createPromoCode()" id="btnCreatePromo">Создать промокод</button>
+                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createPromoCode()" data-i18n="btnCreatePromo">Создать промокод</button>
                     </div>
                 </div>
 
                 <!-- Управление Статусами Заказов в ADMIN -->
                 <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px;">
-                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" id="adminOrdersTitle">3. Все Заказы Клиентов (Управление Статусом):</h5>
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" data-i18n="adminOrdersTitle">3. Все Заказы Клиентов (Управление Статусом):</h5>
                     <div id="adminOrdersList" style="display: flex; flex-direction: column; gap: 10px;">
-                        <p style="font-size: 11px; color: var(--text-muted);" id="adminNoOrdersText">Заказов пока нет.</p>
+                        <p style="font-size: 11px; color: var(--text-muted);" data-i18n="adminNoOrdersText">Заказов пока нет.</p>
                     </div>
                 </div>
             </div>
@@ -1117,13 +1117,13 @@
                             <button class="upload-img-btn" onclick="triggerImgUpload(this)">Загрузить фото</button>
                             <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, this)">
                         </div>
-                        <div class="catalog-category" key="c1Cat">Сумки</div>
-                        <h3 class="catalog-title" key="c1Title">Сумки & Аксессуары</h3>
+                        <div class="catalog-category" data-i18n="c1Cat">Сумки</div>
+                        <h3 class="catalog-title" data-i18n="c1Title">Сумки & Аксессуары</h3>
                         <div class="catalog-price" data-base-kgs="180000">180 000 KGS</div>
-                        <p class="catalog-desc" key="c1Desc">Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.</p>
+                        <p class="catalog-desc" data-i18n="c1Desc">Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.</p>
                         
                         <div class="size-box">
-                            <div class="size-title" key="sizeFormatTitle">Размер / Формат:</div>
+                            <div class="size-title" data-i18n="sizeFormatTitle">Размер / Формат:</div>
                             <div class="size-chips">
                                 <span class="size-chip active" onclick="selectSize(this)">Nano</span>
                                 <span class="size-chip" onclick="selectSize(this)">PM</span>
@@ -1131,7 +1131,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn-luxury btn-gold btn-card-action" onclick="addToCartFromElement(this)">ПЕРЕЙТИ</button>
+                    <button class="btn-luxury btn-gold btn-card-action" onclick="addToCartFromElement(this)" data-i18n="btnCardAction">ПЕРЕЙТИ</button>
                 </div>
 
                 <div class="catalog-card" data-category="Обувь">
@@ -1142,13 +1142,13 @@
                             <button class="upload-img-btn" onclick="triggerImgUpload(this)">Загрузить фото</button>
                             <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, this)">
                         </div>
-                        <div class="catalog-category" key="c2Cat">Обувь</div>
-                        <h3 class="catalog-title" key="c2Title">Гардероб & Обувь</h3>
+                        <div class="catalog-category" data-i18n="c2Cat">Обувь</div>
+                        <h3 class="catalog-title" data-i18n="c2Title">Гардероб & Обувь</h3>
                         <div class="catalog-price" data-base-kgs="85000">85 000 KGS</div>
-                        <p class="catalog-desc" key="c2Desc">Изысканные ткани и силуэты Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.</p>
+                        <p class="catalog-desc" data-i18n="c2Desc">Изысканные ткани и силуэты Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.</p>
                         
                         <div class="size-box">
-                            <div class="size-title" key="sizeTitle">Доступные размеры:</div>
+                            <div class="size-title" data-i18n="sizeTitle">Доступные размеры:</div>
                             <div class="size-chips">
                                 <span class="size-chip active" onclick="selectSize(this)">EU 36</span>
                                 <span class="size-chip" onclick="selectSize(this)">EU 38</span>
@@ -1157,7 +1157,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn-luxury btn-gold btn-card-action" onclick="addToCartFromElement(this)">ПЕРЕЙТИ</button>
+                    <button class="btn-luxury btn-gold btn-card-action" onclick="addToCartFromElement(this)" data-i18n="btnCardAction">ПЕРЕЙТИ</button>
                 </div>
 
                 <div class="catalog-card" data-category="Парфюмы">
@@ -1168,20 +1168,20 @@
                             <button class="upload-img-btn" onclick="triggerImgUpload(this)">Загрузить фото</button>
                             <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, this)">
                         </div>
-                        <div class="catalog-category" key="c3Cat">Парфюмы</div>
-                        <h3 class="catalog-title" key="c3Title">Селективная Парфюмерия</h3>
+                        <div class="catalog-category" data-i18n="c3Cat">Парфюмы</div>
+                        <h3 class="catalog-title" data-i18n="c3Title">Селективная Парфюмерия</h3>
                         <div class="catalog-price" data-base-kgs="52000">52 000 KGS</div>
-                        <p class="catalog-desc" key="c3Desc">Эксклюзивная линейка Louis Vuitton Les Extraits (Symphony) и закрытые ароматические коллекции.</p>
+                        <p class="catalog-desc" data-i18n="c3Desc">Эксклюзивная линейка Louis Vuitton Les Extraits (Symphony) и закрытые ароматические коллекции.</p>
                         
                         <div class="size-box">
-                            <div class="size-title" key="volumeTitle">Объем флакона:</div>
+                            <div class="size-title" data-i18n="volumeTitle">Объем флакона:</div>
                             <div class="size-chips">
                                 <span class="size-chip active" onclick="selectSize(this)">100 ml</span>
                                 <span class="size-chip" onclick="selectSize(this)">200 ml</span>
                             </div>
                         </div>
                     </div>
-                    <button class="btn-luxury btn-gold btn-card-action" onclick="addToCartFromElement(this)">ПЕРЕЙТИ</button>
+                    <button class="btn-luxury btn-gold btn-card-action" onclick="addToCartFromElement(this)" data-i18n="btnCardAction">ПЕРЕЙТИ</button>
                 </div>
 
                 <div class="catalog-card" data-category="Часы">
@@ -1192,20 +1192,20 @@
                             <button class="upload-img-btn" onclick="triggerImgUpload(this)">Загрузить фото</button>
                             <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, this)">
                         </div>
-                        <div class="catalog-category" key="c4Cat">Часы</div>
-                        <h3 class="catalog-title" key="c4Title">Часы & Ювелирные Изделия</h3>
+                        <div class="catalog-category" data-i18n="c4Cat">Часы</div>
+                        <h3 class="catalog-title" data-i18n="c4Title">Часы & Ювелирные Изделия</h3>
                         <div class="catalog-price" data-base-kgs="350000">350 000 KGS</div>
-                        <p class="catalog-desc" key="c4Desc">Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet, BVLGARI.</p>
+                        <p class="catalog-desc" data-i18n="c4Desc">Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet, BVLGARI.</p>
                         
                         <div class="size-box">
-                            <div class="size-title" key="optionTitle">Опции выкупа:</div>
+                            <div class="size-title" data-i18n="optionTitle">Опции выкупа:</div>
                             <div class="size-chips">
                                 <span class="size-chip active" onclick="selectSize(this)">Standard</span>
                                 <span class="size-chip" onclick="selectSize(this)">Custom Size</span>
                             </div>
                         </div>
                     </div>
-                    <button class="btn-luxury btn-gold btn-card-action" onclick="addToCartFromElement(this)">ПЕРЕЙТИ</button>
+                    <button class="btn-luxury btn-gold btn-card-action" onclick="addToCartFromElement(this)" data-i18n="btnCardAction">ПЕРЕЙТИ</button>
                 </div>
 
             </div>
@@ -1215,7 +1215,7 @@
     <!-- Brands Section -->
     <section class="brands-section">
         <div class="container">
-            <h2 id="brandsTitle">Официальные Дома Моды</h2>
+            <h2 data-i18n="brandsTitle">Официальные Дома Моды</h2>
             <div class="brands-ticker">
                 <span>LOUIS VUITTON</span> • 
                 <span>BVLGARI</span> • 
@@ -1243,20 +1243,20 @@
     <section class="order-section" id="order">
         <div class="container">
             <div class="section-header">
-                <h2 id="orderHeader">Персональный Запрос</h2>
+                <h2 data-i18n="orderHeader">Персональный Запрос</h2>
                 <div></div>
             </div>
             <div class="form-wrapper">
                 <form id="orderForm">
                     <div class="form-group">
-                        <label id="labelName">Ваше имя / Пожелания по связи</label>
+                        <label data-i18n="labelName">Ваше имя / Пожелания по связи</label>
                         <input type="text" id="clientName" placeholder="Ваше имя" required>
                     </div>
                     <div class="form-group">
-                        <label id="labelDetails">Детали Изделия (Бренд, Название, Размер)</label>
+                        <label data-i18n="labelDetails">Детали Изделия (Бренд, Название, Размер)</label>
                         <textarea id="orderDetails" rows="5" placeholder="Loro Piana Summer Walk size 42 / Louis Vuitton Symphony 100ml / BVLGARI B.zero1" required></textarea>
                     </div>
-                    <button type="submit" class="btn-luxury btn-gold" style="width: 100%;" id="btnSubmitOrder">ОТПРАВИТЬ ЛИЧНОМУ БАЙЕРУ</button>
+                    <button type="submit" class="btn-luxury btn-gold" style="width: 100%;" data-i18n="btnSubmitOrder">ОТПРАВИТЬ ЛИЧНОМУ БАЙЕРУ</button>
                 </form>
             </div>
         </div>
@@ -1266,7 +1266,7 @@
         <div class="container">
             <div class="footer-logo">ar.buyer_01</div>
             <div class="footer-subtext">BY ARIF ABBASOV</div>
-            <p style="font-size: 11px; color: rgba(251,249,245,0.5);" id="footerRights">© 2026 AR.BUYER_01. ALL RIGHTS RESERVED. EXCLUSIVE PERSONAL SHOPPING SERVICE.</p>
+            <p style="font-size: 11px; color: rgba(251,249,245,0.5);" data-i18n="footerRights">© 2026 AR.BUYER_01. ALL RIGHTS RESERVED. EXCLUSIVE PERSONAL SHOPPING SERVICE.</p>
         </div>
     </footer>
 
@@ -1724,41 +1724,19 @@
             document.getElementById('langSelect').value = lang;
             const t = i18n[lang] || i18n.ru;
 
-            const ids = ['topBar', 'drawerTitle', 'catAll', 'catClothes', 'catBags', 'catShoes', 
-                         'catPerfumes', 'catJewelry', 'catWatches', 'supportTitle', 'labelSupportText',
-                         'labelContactUs', 'labelSocials', 'cartHeader', 'emptyCartText', 'btnApplyPromo',
-                         'labelTotalSum', 'btnCheckout', 'heroSubtitle', 'heroTitle', 'heroDesc', 
-                         'btnHeroAction', 'catalogHeader', 'filterLabelText', 'resetFilterBtn', 'brandsTitle', 
-                         'orderHeader', 'labelName', 'labelDetails', 'btnSubmitOrder', 
-                         'vipModalTitle', 'vipModalDesc', 'labelVipCode', 'btnActivateVip', 'btnVipKey', 
-                         'vipTitleText', 'vipHistoryTitle', 'emptyHistoryText',
-                         'adminPanelTitle', 'btnAddProduct', 'adminVipTitle', 'btnCreateVip',
-                         'adminPromoTitle', 'btnCreatePromo', 'adminOrdersTitle', 'adminNoOrdersText', 'footerRights'];
-
-            ids.forEach(id => {
-                const el = document.getElementById(id);
-                if (el && t[id]) {
-                    if (id === 'resetFilterBtn') {
-                        el.innerText = '(' + t.resetFilterText + ')';
-                    } else {
-                        el.innerText = t[id];
-                    }
+            // Надежный проход по всем элементам с атрибутом data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    el.innerText = t[key];
                 }
             });
 
+            // Отдельно управляем кнопкой ADMIN / СОХРАНИТЬ
             const adminBtn = document.getElementById('adminBtn');
             if (adminBtn) {
                 adminBtn.innerText = isAdmin ? (t.adminSaveText || "СОХРАНИТЬ") : (t.adminBtnText || "ADMIN");
             }
-
-            document.querySelectorAll('[key]').forEach(el => {
-                const key = el.getAttribute('key');
-                if (t[key]) el.innerText = t[key];
-            });
-
-            document.querySelectorAll('.btn-card-action').forEach(btn => {
-                btn.innerText = t.btnCardAction || "ПЕРЕЙТИ";
-            });
 
             updateCartUI();
         }
@@ -2074,105 +2052,4 @@
 
         function selectSize(chipElement) {
             const parent = chipElement.parentElement;
-            parent.querySelectorAll('.size-chip').forEach(c => c.classList.remove('active'));
-            chipElement.classList.add('active');
-        }
-
-        function openMenu() {
-            closeAllDrawers();
-            document.getElementById('drawerOverlay').classList.add('active');
-            document.getElementById('sideDrawer').classList.add('active');
-        }
-
-        function openCart() {
-            closeAllDrawers();
-            document.getElementById('drawerOverlay').classList.add('active');
-            document.getElementById('cartDrawer').classList.add('active');
-        }
-
-        function closeAllDrawers() {
-            document.getElementById('drawerOverlay').classList.remove('active');
-            document.getElementById('sideDrawer').classList.remove('active');
-            document.getElementById('cartDrawer').classList.remove('active');
-        }
-
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
-
-        function addToCartFromElement(btn) {
-            const card = btn.closest('.catalog-card');
-            const title = card.querySelector('.catalog-title').innerText;
-            const priceEl = card.querySelector('.catalog-price');
-            const baseKgs = parseFloat(priceEl.getAttribute('data-base-kgs')) || 100000;
-            const priceText = priceEl.innerText;
-            
-            let selectedSize = 'Standard';
-            const activeChip = card.querySelector('.size-chip.active');
-            if (activeChip) selectedSize = activeChip.innerText;
-
-            cart.push({ name: title, size: selectedSize, priceText: priceText, baseKgs: baseKgs });
-            updateCartUI();
-            openCart();
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            document.getElementById('cartCount').innerText = cart.length;
-            const list = document.getElementById('cartItemsList');
-            const totalSumEl = document.getElementById('cartTotalSum');
-            const t = i18n[currentLang] || i18n.ru;
-            
-            if (cart.length === 0) {
-                list.innerHTML = `<p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 30px;">${t.emptyCartText}</p>`;
-                totalSumEl.innerText = "0 " + currentCurrency;
-                return;
-            }
-
-            list.innerHTML = cart.map((item, idx) => `
-                <div class="cart-item">
-                    <div class="cart-item-info">
-                        <h4>${item.name}</h4>
-                        <p>Размер: ${item.size} • ${item.priceText}</p>
-                    </div>
-                    <div class="cart-remove-btn" onclick="removeFromCart(${idx})">✕</div>
-                </div>
-            `).join('');
-
-            // Расчет итоговой суммы со скидкой промокода
-            let rawTotalKgs = cart.reduce((sum, i) => sum + i.baseKgs, 0);
-            if (appliedDiscountPercent > 0) {
-                rawTotalKgs = rawTotalKgs * (1 - appliedDiscountPercent / 100);
-            }
-
-            const rate = exchangeRates[currentCurrency] || 1;
-            const symbol = currencySymbols[currentCurrency] || ' KGS';
-            const finalNum = rawTotalKgs * rate;
-
-            if (currentCurrency === 'KGS') {
-                totalSumEl.innerText = Math.round(finalNum).toLocaleString('ru-RU') + symbol;
-            } else {
-                totalSumEl.innerText = symbol + ' ' + Math.round(finalNum).toLocaleString('en-US');
-            }
-        }
-
-        function checkoutCart() {
-            if (cart.length === 0) {
-                alert('Ваша корзина пуста.');
-                return;
-            }
-
-            const totalSumText = document.getElementById('cartTotalSum').innerText;
-
-            // Запись покупок в историю
-            cart.forEach(item => {
-                userOrders.unshift({
-                    id: '
+            parent.querySelectorAll('.size-chip').forEach(c => c.
