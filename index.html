@@ -227,7 +227,7 @@
             padding: 8px 16px;
             font-size: 10px;
             letter-spacing: 2px;
-            background: linear-gradient(135deg, #111 0%, #333 100%);
+            background: var(--brand-green);
             color: var(--accent-gold);
             font-weight: 700;
             border: 1px solid var(--accent-gold);
@@ -938,6 +938,9 @@
                     <span class="cart-badge" id="cartCount">0</span>
                 </div>
 
+                <!-- Кнопка ПРОФИЛЬ / ВХОД -->
+                <button class="vip-access-btn" onclick="openAuthModal()" id="profileBtnText">ПРОФИЛЬ</button>
+
                 <!-- Кнопка VIP КЛЮЧ -->
                 <button class="vip-access-btn" onclick="openVipModal()" data-i18n="btnVipKey">VIP КЛЮЧ</button>
                 
@@ -1269,6 +1272,35 @@
         </div>
     </div>
 
+    <!-- МОДАЛЬНОЕ ОКНО ПРОФИЛЯ И РЕГИСТРАЦИИ ПО EMAIL -->
+    <div class="auth-modal" id="profileModal">
+        <div class="auth-box">
+            <div style="position: absolute; top: 15px; right: 20px; cursor: pointer;" onclick="closeProfileModal()">✕</div>
+            
+            <div id="profileAuthSection">
+                <h3 style="font-family: var(--font-title); color: var(--brand-green); text-align: center; margin-bottom: 20px; letter-spacing: 2px;">ВХОД / РЕГИСТРАЦИЯ</h3>
+                <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 20px;">Введите ваш Email для доступа к профилю и истории покупок.</p>
+                <div class="form-group">
+                    <label>Ваш Email</label>
+                    <input type="email" id="userEmailInput" placeholder="client@example.com" style="text-align: center;">
+                </div>
+                <button class="btn-luxury btn-gold" style="width: 100%;" onclick="loginWithEmail()">ПРОДОЛЖИТЬ</button>
+            </div>
+
+            <div id="profileInfoSection" style="display: none;">
+                <h3 style="font-family: var(--font-title); color: var(--brand-green); text-align: center; margin-bottom: 5px; letter-spacing: 2px;">МОЙ ПРОФИЛЬ</h3>
+                <p id="currentUserEmailDisplay" style="font-size: 12px; color: var(--accent-gold); text-align: center; font-weight: 600; margin-bottom: 25px;"></p>
+                
+                <h4 style="font-family: var(--font-title); font-size: 14px; color: var(--brand-green); margin-bottom: 15px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 5px;">История ваших покупок</h4>
+                <div class="order-history-list" id="clientProfileHistoryList">
+                    <p style="text-align: center; font-size: 12px; color: var(--text-muted);">У вас пока нет оформленных заказов.</p>
+                </div>
+
+                <button class="btn-luxury" style="width: 100%; margin-top: 30px; border-color: #b30000; color: #b30000;" onclick="logoutUser()">ВЫЙТИ ИЗ АККАУНТА</button>
+            </div>
+        </div>
+    </div>
+
     <!-- СКРИПТЫ -->
     <script>
         let cart = [];
@@ -1279,6 +1311,7 @@
         let userOrders = [];
         let appliedDiscountPercent = 0;
         let activePromoName = "";
+        let currentUserEmail = localStorage.getItem('ar_buyer_current_user') || null;
 
         const ADMIN_PASSWORD = "12332112_01.02.2007_15.08.2006";
 
@@ -1715,6 +1748,7 @@
             if (savedOrders) {
                 userOrders = JSON.parse(savedOrders);
             }
+            updateProfileButtonUI();
             switchLang('ru');
             renderHistoryUI();
         });
@@ -1805,6 +1839,79 @@
 
         function closeVipModal() {
             document.getElementById('vipModal').classList.remove('active');
+        }
+
+        /* Управление профилем и авторизацией по Email */
+        function openAuthModal() {
+            document.getElementById('profileModal').classList.add('active');
+            if (currentUserEmail) {
+                document.getElementById('profileAuthSection').style.display = 'none';
+                document.getElementById('profileInfoSection').style.display = 'block';
+                document.getElementById('currentUserEmailDisplay').innerText = currentUserEmail;
+                renderClientHistory();
+            } else {
+                document.getElementById('profileAuthSection').style.display = 'block';
+                document.getElementById('profileInfoSection').style.display = 'none';
+            }
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profileModal').classList.remove('active');
+        }
+
+        function loginWithEmail() {
+            const emailInput = document.getElementById('userEmailInput').value.trim();
+            if (!emailInput || !emailInput.includes('@')) {
+                alert('Пожалуйста, введите корректный Email адрес.');
+                return;
+            }
+            currentUserEmail = emailInput;
+            localStorage.setItem('ar_buyer_current_user', currentUserEmail);
+            updateProfileButtonUI();
+            openAuthModal();
+        }
+
+        function logoutUser() {
+            currentUserEmail = null;
+            localStorage.removeItem('ar_buyer_current_user');
+            updateProfileButtonUI();
+            closeProfileModal();
+        }
+
+        function updateProfileButtonUI() {
+            const btn = document.getElementById('profileBtnText');
+            if (currentUserEmail) {
+                btn.innerText = "ПРОФИЛЬ";
+                btn.style.background = "var(--accent-gold)";
+                btn.style.color = "var(--brand-green)";
+            } else {
+                btn.innerText = "ВХОД";
+                btn.style.background = "var(--brand-green)";
+                btn.style.color = "var(--accent-gold)";
+            }
+        }
+
+        function renderClientHistory() {
+            const historyListEl = document.getElementById('clientProfileHistoryList');
+            if (!currentUserEmail) return;
+
+            let allOrdersDb = JSON.parse(localStorage.getItem('ar_buyer_orders_db') || '{}');
+            let userClientOrders = allOrdersDb[currentUserEmail] || [];
+
+            if (userClientOrders.length === 0) {
+                historyListEl.innerHTML = `<p style="text-align: center; font-size: 12px; color: var(--text-muted);">У вас пока нет оформленных заказов.</p>`;
+                return;
+            }
+
+            historyListEl.innerHTML = userClientOrders.map(o => `
+                <div class="history-item">
+                    <div>
+                        <strong style="color: var(--brand-green);">${o.id}</strong> • ${o.item}
+                        <div style="font-size: 10px; color: var(--text-muted);">${o.date} • ${o.price}</div>
+                    </div>
+                    <span class="order-status status-processing">В обработке</span>
+                </div>
+            `).join('');
         }
 
         function submitVipCode() {
@@ -1974,6 +2081,14 @@
                 uploadBtns.forEach(b => b.style.display = 'block');
                 editables.forEach(el => el.setAttribute('contenteditable', 'true'));
             } else {
+                // Автоматически синхронизируем базовые цены перед сохранением
+                document.querySelectorAll('.catalog-price').forEach(priceEl => {
+                    const cleanDigits = priceEl.innerText.replace(/[^0-9]/g, '');
+                    if (cleanDigits) {
+                        priceEl.setAttribute('data-base-kgs', cleanDigits);
+                    }
+                });
+
                 adminBtn.innerText = t.adminBtnText || "ADMIN";
                 adminBtn.style.background = 'var(--accent-gold)';
                 adminBtn.style.color = 'var(--brand-green)';
@@ -2144,29 +2259,35 @@
                 alert('Ваша корзина пуста.');
                 return;
             }
+            if (!currentUserEmail) {
+                alert('Пожалуйста, войдите в профиль через Email перед оформлением заказа, чтобы сохранить историю покупок!');
+                openAuthModal();
+                return;
+            }
 
             const totalSumText = document.getElementById('cartTotalSum').innerText;
 
+            let allOrdersDb = JSON.parse(localStorage.getItem('ar_buyer_orders_db') || '{}');
+            if (!allOrdersDb[currentUserEmail]) allOrdersDb[currentUserEmail] = [];
+
             cart.forEach(item => {
-                userOrders.unshift({
+                const newRecord = {
                     id: 'ORD-' + Math.floor(1000 + Math.random() * 9000),
                     item: item.name + ` (${item.size})`,
                     price: item.priceText,
-                    date: new Date().toLocaleDateString('ru-RU'),
-                    tier: activeVipTier || 'GUEST',
-                    status: 'processing'
-                });
+                    date: new Date().toLocaleDateString('ru-RU')
+                };
+                allOrdersDb[currentUserEmail].unshift(newRecord);
             });
 
-            localStorage.setItem('ar_buyer_orders', JSON.stringify(userOrders));
-            renderHistoryUI();
+            localStorage.setItem('ar_buyer_orders_db', JSON.stringify(allOrdersDb));
 
             const whatsappNumber = '996709972571';
             const itemsListText = cart.map(i => `• ${i.name} (Размер: ${i.size}) — ${i.priceText}`).join('\n');
             let discountInfo = appliedDiscountPercent > 0 ? `\n\nПрименен промокод: ${activePromoName} (-${appliedDiscountPercent}%)` : '';
 
             const message = encodeURIComponent(
-                `Здравствуйте, личный байер!\n\n` +
+                `Здравствуйте, личный байер!\n\nEmail клиента: ${currentUserEmail}\n\n` +
                 `Хочу оформить заказ из корзины:\n${itemsListText}${discountInfo}\n\n` +
                 `ИТОГО СО СКИДКОЙ: ${totalSumText}\n` +
                 `Валюта: ${currentCurrency}\n\n` +
@@ -2180,10 +2301,22 @@
             const name = document.getElementById('clientName').value;
             const details = document.getElementById('orderDetails').value;
             
+            if (currentUserEmail) {
+                let allOrdersDb = JSON.parse(localStorage.getItem('ar_buyer_orders_db') || '{}');
+                if (!allOrdersDb[currentUserEmail]) allOrdersDb[currentUserEmail] = [];
+                allOrdersDb[currentUserEmail].unshift({
+                    id: 'REQ-' + Math.floor(1000 + Math.random() * 9000),
+                    item: details,
+                    price: 'По запросу',
+                    date: new Date().toLocaleDateString('ru-RU')
+                });
+                localStorage.setItem('ar_buyer_orders_db', JSON.stringify(allOrdersDb));
+            }
+
             const whatsappNumber = '996709972571';
             const message = encodeURIComponent(
                 `Здравствуйте, личный байер!\n\n` +
-                `Меня зовут: ${name}\n` +
+                `Имя: ${name}\nEmail: ${currentUserEmail || 'Не указан'}\n` +
                 `Детали запроса:\n${details}\n\n` +
                 `Валюта: ${currentCurrency}\n` +
                 `Уточните, пожалуйста, наличие, цену и возможные размеры.`
