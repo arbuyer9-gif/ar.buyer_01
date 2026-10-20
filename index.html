@@ -899,7 +899,7 @@
     <div class="auth-modal" id="vipModal">
         <div class="auth-box">
             <div style="position: absolute; top: 15px; right: 20px; cursor: pointer;" onclick="closeModal('vipModal')">✕</div>
-            <h3>VIP PRIVATE ACCESS</h3>
+            <h3 id="vipModalTitle">VIP PRIVATE ACCESS</h3>
             <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 20px;" id="vipModalDesc">Введите ваш персональный VIP-код для входа в закрытую зону релиза.</p>
             <div class="form-group">
                 <label id="labelVipCode">Ваш VIP-Код</label>
@@ -1015,7 +1015,7 @@
                     <span class="cart-badge" id="cartCount">0</span>
                 </div>
 
-                <button class="vip-access-btn" onclick="openModal('vipModal')">VIP КЛЮЧ</button>
+                <button class="vip-access-btn" onclick="openModal('vipModal')" id="btnVipKey">VIP КЛЮЧ</button>
                 <button class="admin-toggle-btn" id="adminBtn" onclick="toggleAdminMode()">ADMIN</button>
             </div>
         </div>
@@ -1068,14 +1068,14 @@
 
             <!-- Панель администратора -->
             <div class="admin-panel-box" id="adminPanelBox">
-                <h4 style="font-family: var(--font-title); color: var(--brand-green); margin-bottom: 15px;">Панель Управления Кодами и Промокодами</h4>
+                <h4 style="font-family: var(--font-title); color: var(--brand-green); margin-bottom: 15px;" id="adminPanelTitle">Панель Управления Кодами и Промокодами</h4>
                 
                 <div style="margin-bottom: 20px;">
-                    <button class="btn-luxury btn-gold" onclick="addNewCatalogCard()">+ Добавить новый товар в каталог</button>
+                    <button class="btn-luxury btn-gold" onclick="addNewCatalogCard()" id="btnAddProduct">+ Добавить новый товар в каталог</button>
                 </div>
 
                 <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px; margin-bottom: 20px;">
-                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;">1. Создание VIP-кодов доступа (включая цифры):</h5>
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" id="adminVipTitle">1. Создание VIP-кодов доступа (включая цифры):</h5>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <input type="text" id="newVipCode" placeholder="Код (напр. 7777 или 0000)" style="padding: 6px; font-size: 11px;">
                         <select id="newVipTier" style="padding: 6px; font-size: 11px;">
@@ -1084,24 +1084,24 @@
                             <option value="PLATINUM">PLATINUM</option>
                             <option value="BLACK">BLACK</option>
                         </select>
-                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createVipCode()">Создать VIP-код</button>
+                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createVipCode()" id="btnCreateVip">Создать VIP-код</button>
                     </div>
                 </div>
 
                 <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px; margin-bottom: 20px;">
-                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;">2. Управление Промокодами на скидку:</h5>
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" id="adminPromoTitle">2. Управление Промокодами на скидку:</h5>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
                         <input type="text" id="newPromoCode" placeholder="Промокод (напр. SALE10)" style="padding: 6px; font-size: 11px; text-transform: uppercase;">
                         <input type="number" id="newPromoDiscount" placeholder="% Скидки (напр. 10)" style="padding: 6px; font-size: 11px; width: 110px;">
-                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createPromoCode()">Создать промокод</button>
+                        <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createPromoCode()" id="btnCreatePromo">Создать промокод</button>
                     </div>
                 </div>
 
                 <!-- Управление Статусами Заказов в ADMIN -->
                 <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px;">
-                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;">3. Все Заказы Клиентов (Управление Статусом):</h5>
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;" id="adminOrdersTitle">3. Все Заказы Клиентов (Управление Статусом):</h5>
                     <div id="adminOrdersList" style="display: flex; flex-direction: column; gap: 10px;">
-                        <p style="font-size: 11px; color: var(--text-muted);">Заказов пока нет.</p>
+                        <p style="font-size: 11px; color: var(--text-muted);" id="adminNoOrdersText">Заказов пока нет.</p>
                     </div>
                 </div>
             </div>
@@ -1266,7 +1266,7 @@
         <div class="container">
             <div class="footer-logo">ar.buyer_01</div>
             <div class="footer-subtext">BY ARIF ABBASOV</div>
-            <p style="font-size: 11px; color: rgba(251,249,245,0.5);">© 2026 AR.BUYER_01. ALL RIGHTS RESERVED. EXCLUSIVE PERSONAL SHOPPING SERVICE.</p>
+            <p style="font-size: 11px; color: rgba(251,249,245,0.5);" id="footerRights">© 2026 AR.BUYER_01. ALL RIGHTS RESERVED. EXCLUSIVE PERSONAL SHOPPING SERVICE.</p>
         </div>
     </footer>
 
@@ -1328,13 +1328,26 @@
                 labelName: "Ваше имя / Пожелания по связи",
                 labelDetails: "Детали Изделия (Бренд, Название, Размер)",
                 btnSubmitOrder: "ОТПРАВИТЬ ЛИЧНОМУ БАЙЕРУ",
+                vipModalTitle: "VIP PRIVATE ACCESS",
                 vipModalDesc: "Введите ваш персональный VIP-код для входа в закрытую зону релиза.",
                 labelVipCode: "Ваш VIP-Код",
                 btnActivateVip: "АКТИВИРОВАТЬ КОД",
+                btnVipKey: "VIP КЛЮЧ",
+                adminBtnText: "ADMIN",
+                adminSaveText: "СОХРАНИТЬ",
+                adminPanelTitle: "Панель Управления Кодами и Промокодами",
+                btnAddProduct: "+ Добавить новый товар в каталог",
+                adminVipTitle: "1. Создание VIP-кодов доступа (включая цифры):",
+                btnCreateVip: "Создать VIP-код",
+                adminPromoTitle: "2. Управление Промокодами на скидку:",
+                btnCreatePromo: "Создать промокод",
+                adminOrdersTitle: "3. Все Заказы Клиентов (Управление Статусом):",
+                adminNoOrdersText: "Заказов пока нет.",
                 vipTitleText: "ЗАКРЫТЫЙ ПОДИУМНЫЙ РЕЛИЗ",
                 vipHistoryTitle: "ИСТОРИЯ ВАШИХ VIP-ЗАКАЗОВ",
                 emptyHistoryText: "У вас пока нет оформленных заказов.",
                 btnCardAction: "ПЕРЕЙТИ",
+                footerRights: "© 2026 AR.BUYER_01. ALL RIGHTS RESERVED. EXCLUSIVE PERSONAL SHOPPING SERVICE.",
                 c1Cat: "Сумки",
                 c1Title: "Сумки & Аксессуары",
                 c1Desc: "Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
@@ -1383,13 +1396,26 @@
                 labelName: "Your Name / Contact Preference",
                 labelDetails: "Item Details (Brand, Item Name, Size)",
                 btnSubmitOrder: "SUBMIT TO PERSONAL SHOPPER",
+                vipModalTitle: "VIP PRIVATE ACCESS",
                 vipModalDesc: "Enter your personal VIP key to access private boutique releases.",
                 labelVipCode: "Your VIP Key",
                 btnActivateVip: "ACTIVATE KEY",
+                btnVipKey: "VIP KEY",
+                adminBtnText: "ADMIN",
+                adminSaveText: "SAVE",
+                adminPanelTitle: "Codes & Promo Management Panel",
+                btnAddProduct: "+ Add New Catalog Item",
+                adminVipTitle: "1. Create VIP Access Codes (including digits):",
+                btnCreateVip: "Create VIP Code",
+                adminPromoTitle: "2. Manage Discount Promos:",
+                btnCreatePromo: "Create Promo",
+                adminOrdersTitle: "3. All Client Orders (Status Management):",
+                adminNoOrdersText: "No orders yet.",
                 vipTitleText: "PRIVATE RUNWAY RELEASE",
                 vipHistoryTitle: "YOUR VIP ORDER HISTORY",
                 emptyHistoryText: "You have no active orders.",
                 btnCardAction: "PROCEED",
+                footerRights: "© 2026 AR.BUYER_01. ALL RIGHTS RESERVED. EXCLUSIVE PERSONAL SHOPPING SERVICE.",
                 c1Cat: "Bags",
                 c1Title: "Bags & Accessories",
                 c1Desc: "Iconic silhouettes and rare colorways from Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
@@ -1438,13 +1464,26 @@
                 labelName: "Votre Nom / Contact",
                 labelDetails: "Détails de la pièce (Marque, Modèle, Taille)",
                 btnSubmitOrder: "ENVOYER AU SHOPPER",
+                vipModalTitle: "VIP PRIVATE ACCESS",
                 vipModalDesc: "Entrez votre code VIP privé pour accéder aux ventes exclusives.",
                 labelVipCode: "Votre Code VIP",
                 btnActivateVip: "ACTIVER LE CODE",
+                btnVipKey: "CLÉ VIP",
+                adminBtnText: "ADMIN",
+                adminSaveText: "ENREGISTRER",
+                adminPanelTitle: "Panneau de Gestion des Codes et Promos",
+                btnAddProduct: "+ Ajouter un nouvel article",
+                adminVipTitle: "1. Créer des codes VIP (chiffres acceptés):",
+                btnCreateVip: "Créer Code VIP",
+                adminPromoTitle: "2. Gérer les codes promo:",
+                btnCreatePromo: "Créer Promo",
+                adminOrdersTitle: "3. Commandes Clients (Gestion du Statut):",
+                adminNoOrdersText: "Aucune commande pour le moment.",
                 vipTitleText: "VENTE PRIVÉE DE DÉFILÉ",
                 vipHistoryTitle: "HISTORIQUE DE VOS COMMANDES VIP",
-                emptyHistoryText: "Vous n'avez pas еще de commandes.",
+                emptyHistoryText: "Vous n'avez pas de commandes.",
                 btnCardAction: "DÉCOUVRIR",
+                footerRights: "© 2026 AR.BUYER_01. TOUS DROITS RÉSERVÉS.",
                 c1Cat: "Sacs",
                 c1Title: "Sacs & Accessoires",
                 c1Desc: "Modèles iconiques Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
@@ -1493,13 +1532,26 @@
                 labelName: "Su Nombre / Contacto",
                 labelDetails: "Detalles del artículo (Marca, Modelo, Talla)",
                 btnSubmitOrder: "ENVIAR AL SHOPPER",
+                vipModalTitle: "VIP PRIVATE ACCESS",
                 vipModalDesc: "Ingrese su código VIP privado para acceder a las ventas exclusivas.",
                 labelVipCode: "Su Código VIP",
                 btnActivateVip: "ACTIVAR CÓDIGO",
+                btnVipKey: "CLAVE VIP",
+                adminBtnText: "ADMIN",
+                adminSaveText: "GUARDAR",
+                adminPanelTitle: "Panel de Gestión de Códigos y Promos",
+                btnAddProduct: "+ Agregar nuevo producto",
+                adminVipTitle: "1. Crear códigos VIP (números permitidos):",
+                btnCreateVip: "Crear Código VIP",
+                adminPromoTitle: "2. Gestionar códigos promocionales:",
+                btnCreatePromo: "Crear Promo",
+                adminOrdersTitle: "3. Pedidos de Clientes (Gestión de Estado):",
+                adminNoOrdersText: "No hay pedidos todavía.",
                 vipTitleText: "LANCE EXCLUSIVO DE PASARELA",
                 vipHistoryTitle: "HISTORIAL DE SUS PEDIDOS VIP",
                 emptyHistoryText: "Aún no tiene pedidos registrados.",
                 btnCardAction: "VER MÁS",
+                footerRights: "© 2026 AR.BUYER_01. TODOS LOS DERECHOS RESERVADOS.",
                 c1Cat: "Bolsos",
                 c1Title: "Bolsos & Accesorios",
                 c1Desc: "Modelos icónicos de Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.",
@@ -1548,13 +1600,26 @@
                 labelName: "您的姓名 / 联系方式",
                 labelDetails: "单品详情 (品牌, 款式, 尺码)",
                 btnSubmitOrder: "发送给私人买手",
+                vipModalTitle: "VIP PRIVATE ACCESS",
                 vipModalDesc: "请输入您的专属VIP密钥以开启私享发布会。",
                 labelVipCode: "您的VIP密钥",
                 btnActivateVip: "激活密钥",
+                btnVipKey: "VIP 密钥",
+                adminBtnText: "ADMIN",
+                adminSaveText: "保存",
+                adminPanelTitle: "兑换码与优惠券管理后台",
+                btnAddProduct: "+ 添加新目录商品",
+                adminVipTitle: "1. 创建 VIP 访问密钥（支持纯数字）：",
+                btnCreateVip: "创建VIP密钥",
+                adminPromoTitle: "2. 管理折扣优惠码：",
+                btnCreatePromo: "创建优惠码",
+                adminOrdersTitle: "3. 所有客户订单（状态管理）：",
+                adminNoOrdersText: "暂无订单。",
                 vipTitleText: "私享秀场限定发布",
                 vipHistoryTitle: "您的VIP历史订单",
                 emptyHistoryText: "您暂无历史订单记录。",
                 btnCardAction: "查看详情",
+                footerRights: "© 2026 AR.BUYER_01. 保留所有权利。",
                 c1Cat: "手袋",
                 c1Title: "手袋与配饰",
                 c1Desc: "Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior 等品牌标志性与稀有配色手袋。",
@@ -1660,13 +1725,21 @@
                          'labelTotalSum', 'btnCheckout', 'heroSubtitle', 'heroTitle', 'heroDesc', 
                          'btnHeroAction', 'catalogHeader', 'filterLabelText', 'brandsTitle', 
                          'orderHeader', 'labelName', 'labelDetails', 'btnSubmitOrder', 
-                         'vipModalDesc', 'labelVipCode', 'btnActivateVip', 'vipTitleText',
-                         'vipHistoryTitle', 'emptyHistoryText'];
+                         'vipModalTitle', 'vipModalDesc', 'labelVipCode', 'btnActivateVip', 'btnVipKey', 
+                         'vipTitleText', 'vipHistoryTitle', 'emptyHistoryText',
+                         'adminPanelTitle', 'btnAddProduct', 'adminVipTitle', 'btnCreateVip',
+                         'adminPromoTitle', 'btnCreatePromo', 'adminOrdersTitle', 'adminNoOrdersText', 'footerRights'];
 
             ids.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && t[id]) el.innerText = t[id];
             });
+
+            // Обновляем кнопку ADMIN динамически (в зависимости от режима)
+            const adminBtn = document.getElementById('adminBtn');
+            if (adminBtn) {
+                adminBtn.innerText = isAdmin ? (t.adminSaveText || "СОХРАНИТЬ") : (t.adminBtnText || "ADMIN");
+            }
 
             document.querySelectorAll('[key]').forEach(el => {
                 const key = el.getAttribute('key');
@@ -1801,8 +1874,8 @@
             const t = i18n[currentLang] || i18n.ru;
 
             if (userOrders.length === 0) {
-                list.innerHTML = `<p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);" id="emptyHistoryText">${t.emptyHistoryText}</p>`;
-                adminList.innerHTML = `<p style="font-size: 11px; color: var(--text-muted);">Заказов пока нет.</p>`;
+                list.innerHTML = `<p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);">${t.emptyHistoryText}</p>`;
+                adminList.innerHTML = `<p style="font-size: 11px; color: var(--text-muted);">${t.adminNoOrdersText}</p>`;
                 return;
             }
 
@@ -1882,6 +1955,7 @@
         }
 
         function toggleAdminMode() {
+            const t = i18n[currentLang] || i18n.ru;
             if (!isAdmin) {
                 const pass = prompt("Введите пароль администратора:");
                 if (pass !== ADMIN_PASSWORD) {
@@ -1898,7 +1972,7 @@
             const editables = document.querySelectorAll('.catalog-title, .catalog-desc, .catalog-price, .catalog-category');
 
             if (isAdmin) {
-                adminBtn.innerText = 'СОХРАНИТЬ';
+                adminBtn.innerText = t.adminSaveText || "СОХРАНИТЬ";
                 adminBtn.style.background = '#28a745';
                 adminBtn.style.color = '#fff';
                 adminPanel.style.display = 'block';
@@ -1906,7 +1980,7 @@
                 uploadBtns.forEach(b => b.style.display = 'block');
                 editables.forEach(el => el.setAttribute('contenteditable', 'true'));
             } else {
-                adminBtn.innerText = 'ADMIN';
+                adminBtn.innerText = t.adminBtnText || "ADMIN";
                 adminBtn.style.background = 'var(--accent-gold)';
                 adminBtn.style.color = 'var(--brand-green)';
                 adminPanel.style.display = 'none';
@@ -2063,7 +2137,7 @@
                 </div>
             `).join('');
 
-            // Расчет итоговой суммы
+            // Расчет итоговой суммы со скидкой промокода
             let rawTotalKgs = cart.reduce((sum, i) => sum + i.baseKgs, 0);
             if (appliedDiscountPercent > 0) {
                 rawTotalKgs = rawTotalKgs * (1 - appliedDiscountPercent / 100);
