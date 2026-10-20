@@ -1095,6 +1095,7 @@
         let isAdmin = false;
 
         const kgsToKztRate = 5.3;
+        const ADMIN_PASSWORD = "12332112_01.02.2007_15.08.2006";
 
         const i18n = {
             ru: {
@@ -1224,7 +1225,6 @@
             
             document.getElementById('catalogHeader').innerText = t.catalogHeader;
             
-            // Checking element availability prior to translating
             if (document.getElementById('c1Title')) document.getElementById('c1Title').innerText = t.c1Title;
             if (document.getElementById('c1Desc')) document.getElementById('c1Desc').innerText = t.c1Desc;
             if (document.getElementById('c2Title')) document.getElementById('c2Title').innerText = t.c2Title;
@@ -1266,7 +1266,6 @@
             document.getElementById('btnKg').classList.toggle('active', country === 'KG');
             document.getElementById('btnKz').classList.toggle('active', country === 'KZ');
 
-            // Recalculating price for all cards in grid
             document.querySelectorAll('.catalog-card').forEach(card => {
                 const priceEl = card.querySelector('.catalog-price');
                 if (!priceEl) return;
@@ -1291,6 +1290,14 @@
         }
 
         function toggleAdminMode() {
+            if (!isAdmin) {
+                const pass = prompt("Введите пароль администратора:");
+                if (pass !== ADMIN_PASSWORD) {
+                    alert("Неверный пароль! Доступ запрещен.");
+                    return;
+                }
+            }
+
             isAdmin = !isAdmin;
             const adminBtn = document.getElementById('adminBtn');
             const addBtn = document.getElementById('addNewCardBtn');
@@ -1306,7 +1313,7 @@
                 deleteBtns.forEach(b => b.style.display = 'block');
                 
                 editables.forEach(el => el.setAttribute('contenteditable', 'true'));
-                alert('Режим админа включен! Вы можете редактировать текст, цены и добавлять карточки. По завершении нажмите зеленое "СОХРАНИТЬ".');
+                alert('Режим админа включен! Вы можете редактировать тексты, цены и добавлять карточки. По завершении нажмите "СОХРАНИТЬ".');
             } else {
                 adminBtn.innerText = 'ADMIN';
                 adminBtn.style.background = 'var(--accent-gold)';
