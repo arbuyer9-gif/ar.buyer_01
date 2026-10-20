@@ -12,14 +12,14 @@
 
     <style>
         :root {
-            --bg-cream: #FBF9F5;          /* Молочный с легким теплым оттенком */
-            --bg-card: #F4F0E8;           /* Чуть темнее для карточек */
-            --brand-green: #0B2B20;       /* Фирменный глубокий изумрудно-зеленый */
-            --accent-gold: #D4AF37;       /* Классическое золото */
+            --bg-cream: #FBF9F5;          /* Молочный с теплым подтоном */
+            --bg-card: #F4F0E8;           /* Элегантный кремовый для карточек */
+            --brand-green: #0B2B20;       /* Фирменный изумрудно-зеленый */
+            --accent-gold: #D4AF37;       /* Натуральное золото */
             --gold-light: #E6CA65;
-            --text-dark: #111111;         /* Насыщенный темный */
-            --text-muted: #555555;        /* Приглушенный серо-коричневый */
-            --border-subtle: #E2DCD2;     /* Нежная рамка */
+            --text-dark: #111111;         /* Глубокий темный */
+            --text-muted: #555555;        /* Приглушенный */
+            --border-subtle: #E2DCD2;     /* Легкая рамка */
             --font-title: 'Cinzel', serif;
             --font-body: 'Montserrat', sans-serif;
         }
@@ -51,7 +51,7 @@
             padding: 0 40px;
         }
 
-        /* Top Announcement Bar */
+        /* Top Bar */
         .top-bar {
             background-color: var(--brand-green);
             color: var(--accent-gold);
@@ -61,6 +61,7 @@
             text-align: center;
             padding: 10px 0;
             font-weight: 500;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         /* Header Navigation */
@@ -124,6 +125,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.4s ease;
+            text-align: center;
         }
 
         .btn-luxury:hover {
@@ -199,7 +201,7 @@
             margin: 15px auto 0;
         }
 
-        /* Pillars / Features */
+        /* Pillars / Quality Assurance */
         .pillars {
             padding: 90px 0;
             border-top: 1px solid var(--border-subtle);
@@ -238,12 +240,67 @@
             font-weight: 300;
         }
 
-        /* Brands Showroom */
-        .brands-section {
+        /* Catalog Section */
+        .catalog-section {
             padding: 100px 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .catalog-card {
+            background: var(--bg-cream);
+            padding: 40px 30px;
+            border: 1px solid var(--border-subtle);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .catalog-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 25px rgba(11, 43, 32, 0.05);
+        }
+
+        .catalog-category {
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .catalog-title {
+            font-family: var(--font-title);
+            font-size: 22px;
+            color: var(--brand-green);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .catalog-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        /* Luxury Brand Houses Ticker */
+        .brands-section {
+            padding: 110px 0;
             background: var(--brand-green);
             color: var(--bg-cream);
             text-align: center;
+            border-top: 1px solid var(--accent-gold);
+            border-bottom: 1px solid var(--accent-gold);
         }
 
         .brands-section h2 {
@@ -259,11 +316,13 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 40px 60px;
+            gap: 30px 50px;
             font-family: var(--font-title);
-            font-size: 18px;
-            letter-spacing: 4px;
-            color: rgba(251, 249, 245, 0.8);
+            font-size: 17px;
+            letter-spacing: 3.5px;
+            color: rgba(251, 249, 245, 0.85);
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .brands-ticker span {
@@ -274,18 +333,17 @@
             color: var(--accent-gold);
         }
 
-        /* Calculator Section */
-        .calculator-section {
+        /* Order Section */
+        .order-section {
             padding: 100px 0;
         }
 
-        .calc-wrapper {
+        .form-wrapper {
             max-width: 650px;
             margin: 0 auto;
             background: var(--bg-card);
             padding: 50px;
             border: 1px solid var(--border-subtle);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
 
         .form-group {
@@ -303,7 +361,6 @@
         }
 
         .form-group input,
-        .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 15px;
@@ -317,37 +374,8 @@
         }
 
         .form-group input:focus,
-        .form-group select:focus,
         .form-group textarea:focus {
             border-color: var(--accent-gold);
-        }
-
-        .calc-result-box {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid var(--border-subtle);
-            text-align: center;
-        }
-
-        .calc-result-box span {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .calc-result-box h3 {
-            font-family: var(--font-title);
-            font-size: 42px;
-            color: var(--brand-green);
-            margin: 10px 0;
-        }
-
-        /* Concierge Order Section */
-        .order-section {
-            padding: 100px 0;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-subtle);
         }
 
         /* Footer */
@@ -356,7 +384,6 @@
             color: var(--bg-cream);
             padding: 60px 0 30px;
             text-align: center;
-            border-top: 1px solid var(--accent-gold);
         }
 
         .footer-logo {
@@ -382,21 +409,21 @@
 </head>
 <body>
 
-    <!-- Top Announcement -->
+    <!-- Top Bar -->
     <div class="top-bar">
-        🏆 Best Buyer of the Year — Эксклюзивный сервис персональных покупок
+        🏆 Best Buyer of the Year — Эксклюзивный сервис персонального байинга
     </div>
 
-    <!-- Header -->
+    <!-- Header Navigation -->
     <header>
         <div class="container header-inner">
             <div class="logo">ar.buyer<span>_01</span></div>
             <nav>
                 <ul>
-                    <li><a href="#about">О Сервисе</a></li>
+                    <li><a href="#about">Стандарты</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
                     <li><a href="#brands">Дома Моды</a></li>
-                    <li><a href="#calculator">Расчет</a></li>
-                    <li><a href="#order">Заказ</a></li>
+                    <li><a href="#order">Запрос</a></li>
                 </ul>
             </nav>
             <a href="#order" class="btn-luxury">Консьерж</a>
@@ -406,103 +433,128 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <p class="hero-subtitle">High Luxury & Premium Shopping</p>
+            <p class="hero-subtitle">High Luxury & Personal Shopping</p>
             <h1>Ваш Личный Байер</h1>
-            <p>Прямой выкуп редких коллекций, одежды, аксессуаров и селективной парфюмерии из бутиков Европы, США и Азии. Гарантия безупречной подлинности.</p>
+            <p>Выкуп эксклюзивных коллекций, редких релизаций и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.</p>
             <a href="#order" class="btn-luxury btn-gold">Оформить персональный запрос</a>
         </div>
     </section>
 
-    <!-- Pillars / About -->
+    <!-- Quality & Authenticity Pillars -->
     <section class="pillars" id="about">
         <div class="container">
             <div class="section-header">
-                <h2>Стандарты Обслуживания</h2>
+                <h2>Гарантии и Сервис</h2>
                 <div></div>
             </div>
             <div class="pillars-grid">
                 <div class="pillar-card">
-                    <h3>Подлинность</h3>
-                    <p>Только официальные флагманские бутики. Предоставление оригинальных чеков, фирменной упаковки и бутиковых документов.</p>
+                    <h3>100% Подлинность</h3>
+                    <p>Прямой выкуп исключительно в официальных флагманских бутиках. Каждая позиция сопровождается кассовыми чеками, фирменными пыльниками и оригинальной бутиковой упаковкой.</p>
                 </div>
                 <div class="pillar-card">
-                    <h3>Приоритетный Доступ</h3>
-                    <p>Поиск и выкуп редких позиций, лимитированных релизов и эксклюзивных ароматов (например, коллекций Louis Vuitton Les Extraits).</p>
+                    <h3>Премиум Качество</h3>
+                    <p>Многоэтапный экспертный осмотр каждого изделия перед отправкой. Полный фото- и видеоотчет деталей, швов и комплектации лично для вас.</p>
                 </div>
                 <div class="pillar-card">
-                    <h3>Страхование и Доставка</h3>
-                    <p>Полное сопровождение заказа, фото- и видеофиксация перед отправкой, надежная и быстрая логистика до ваших дверей.</p>
+                    <h3>Закрытый Доступ</h3>
+                    <p>Приоритетный подбор лимитированных аксессуаров, подиумных коллекций и эксклюзивной парфюмерии через личных менеджеров в бутиках по всему миру.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Brands -->
+    <!-- Catalog Section -->
+    <section class="catalog-section" id="catalog">
+        <div class="container">
+            <div class="section-header">
+                <h2>Каталог Направлений</h2>
+                <div></div>
+            </div>
+            <div class="catalog-grid">
+                <div class="catalog-card">
+                    <div>
+                        <div class="catalog-category">High Luxury</div>
+                        <h3 class="catalog-title">Сумки & Аксессуары</h3>
+                        <p class="catalog-desc">Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.</p>
+                    </div>
+                    <a href="#order" class="btn-luxury btn-gold">Запросить модель</a>
+                </div>
+
+                <div class="catalog-card">
+                    <div>
+                        <div class="catalog-category">Quiet Luxury</div>
+                        <h3 class="catalog-title">Гардероб & Обувь</h3>
+                        <p class="catalog-desc">Изысканные ткани и силуэты Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.</p>
+                    </div>
+                    <a href="#order" class="btn-luxury btn-gold">Подобрать размер</a>
+                </div>
+
+                <div class="catalog-card">
+                    <div>
+                        <div class="catalog-category">Niche Beauty</div>
+                        <h3 class="catalog-title">Селективная Парфюмерия</h3>
+                        <p class="catalog-desc">Эксклюзивная линейка Louis Vuitton Les Extraits (Symphony и др.) и закрытые ароматические коллекции.</p>
+                    </div>
+                    <a href="#order" class="btn-luxury btn-gold">Найти аромат</a>
+                </div>
+
+                <div class="catalog-card">
+                    <div>
+                        <div class="catalog-category">Fine Jewelry & Watches</div>
+                        <h3 class="catalog-title">Часы & Ювелирные Изделия</h3>
+                        <p class="catalog-desc">Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet.</p>
+                    </div>
+                    <a href="#order" class="btn-luxury btn-gold">Уточнить наличие</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Fashion Houses -->
     <section class="brands-section" id="brands">
         <div class="container">
-            <h2>Официальные Бутики</h2>
+            <h2>Официальные Дома Моды</h2>
             <div class="brands-ticker">
-                <span>LOUIS VUITTON</span>
-                <span>LORO PIANA</span>
-                <span>MIU MIU</span>
-                <span>GUCCI</span>
-                <span>CHANEL</span>
-                <span>DIOR</span>
-                <span>BOTTEGA VENETA</span>
-                <span>ZIMMERMANN</span>
+                <span>LORO PIANA</span> • 
+                <span>HERMÈS</span> • 
+                <span>LOUIS VUITTON</span> • 
+                <span>CHANEL</span> • 
+                <span>DIOR</span> • 
+                <span>GUCCI</span> • 
+                <span>MIU MIU</span> • 
+                <span>BOTTEGA VENETA</span> • 
+                <span>SAINT LAURENT</span> • 
+                <span>CELINE</span> • 
+                <span>PRADA</span> • 
+                <span>BRUNELLO CUCINELLI</span> • 
+                <span>CARTIER</span> • 
+                <span>ROLEX</span> • 
+                <span>BALENCIAGA</span> • 
+                <span>ZIMMERMANN</span> • 
                 <span>PREMIATA</span>
             </div>
         </div>
     </section>
 
-    <!-- Interactive Calculator -->
-    <section class="calculator-section" id="calculator">
-        <div class="container">
-            <div class="section-header">
-                <h2>Предварительный Расчет</h2>
-                <div></div>
-            </div>
-            <div class="calc-wrapper">
-                <div class="form-group">
-                    <label for="itemPrice">Стоимость товара в бутике (€ / $)</label>
-                    <input type="number" id="itemPrice" placeholder="Например: 1500" oninput="calculateTotal()">
-                </div>
-                <div class="form-group">
-                    <label for="category">Категория Изделия</label>
-                    <select id="category" onchange="calculateTotal()">
-                        <option value="1.10">Одежда и Обувь (+10%)</option>
-                        <option value="1.12">Сумки и Кожаные Аксессуары (+12%)</option>
-                        <option value="1.08">Селективная Парфюмерия (+8%)</option>
-                        <option value="1.15">Ювелирные Изделия (+15%)</option>
-                    </select>
-                </div>
-                <div class="calc-result-box">
-                    <span>Итоговая ориентировочная стоимость</span>
-                    <h3 id="totalResult">$0</h3>
-                    <p style="font-size: 11px; color: var(--text-muted);">*Точный расчет с учетом текущих курсов и доставки формируется персональным консьержем.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Concierge Order Form -->
+    <!-- Order Section -->
     <section class="order-section" id="order">
         <div class="container">
             <div class="section-header">
-                <h2>Запрос Консьержу</h2>
+                <h2>Персональный Запрос</h2>
                 <div></div>
             </div>
-            <div class="calc-wrapper" style="background: var(--bg-cream);">
+            <div class="form-wrapper">
                 <form id="orderForm">
                     <div class="form-group">
-                        <label for="clientName">Ваше имя / Контакт в Telegram</label>
+                        <label for="clientName">Ваше имя / Telegram @username</label>
                         <input type="text" id="clientName" placeholder="@username или имя" required>
                     </div>
                     <div class="form-group">
-                        <label for="orderDetails">Детали Заказа (Бренд, Изделие, Размер)</label>
-                        <textarea id="orderDetails" rows="4" placeholder="Укажите бренд, наименование, нужный размер или прикрепите ссылку" required></textarea>
+                        <label for="orderDetails">Детали Изделия (Бренд, Название, Размер)</label>
+                        <textarea id="orderDetails" rows="5" placeholder="Например: Loro Piana Summer Walk size 42 или Louis Vuitton Symphony 100ml" required></textarea>
                     </div>
-                    <button type="submit" class="btn-luxury btn-gold" style="width: 100%;">Отправить Запрос в Telegram</button>
+                    <button type="submit" class="btn-luxury btn-gold" style="width: 100%;">Отправить Персональный Запрос</button>
                 </form>
             </div>
         </div>
@@ -516,26 +568,14 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Script -->
     <script>
-        function calculateTotal() {
-            const price = parseFloat(document.getElementById('itemPrice').value);
-            const rate = parseFloat(document.getElementById('category').value);
-            
-            if (!isNaN(price) && price > 0) {
-                const total = Math.round(price * rate);
-                document.getElementById('totalResult').innerText = '$' + total.toLocaleString();
-            } else {
-                document.getElementById('totalResult').innerText = '$0';
-            }
-        }
-
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('clientName').value;
             const details = document.getElementById('orderDetails').value;
             
-            // Замени на твой актуальный username в Telegram
+            // Замените на ваш Telegram username
             const telegramUsername = 'ar_buyer_01'; 
             
             const message = encodeURIComponent(`Доброго дня! Меня зовут ${name}.\nМой персональный запрос: ${details}`);
