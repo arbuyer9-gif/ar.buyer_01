@@ -108,6 +108,13 @@
             fill: var(--accent-gold);
         }
 
+        /* Logo Branding Block */
+        .logo-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         .logo {
             font-family: var(--font-title);
             font-size: 24px;
@@ -115,10 +122,21 @@
             letter-spacing: 4px;
             color: var(--brand-green);
             text-transform: uppercase;
+            line-height: 1;
         }
 
         .logo span {
             color: var(--accent-gold);
+        }
+
+        .logo-subtext {
+            font-family: var(--font-title);
+            font-size: 8px;
+            letter-spacing: 2.5px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 600;
         }
 
         nav ul {
@@ -144,7 +162,7 @@
         .header-right {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
         }
 
         /* Loro Piana Style Minimalist Cart SVG Icon */
@@ -186,18 +204,20 @@
             justify-content: center;
         }
 
-        /* Language Switcher */
-        .lang-switch {
+        /* Selectors (Country & Lang) */
+        .selector-box {
             display: flex;
             gap: 6px;
             font-size: 11px;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             font-weight: 600;
             color: var(--brand-green);
             align-items: center;
+            border-left: 1px solid var(--border-subtle);
+            padding-left: 15px;
         }
 
-        .lang-btn {
+        .select-btn {
             cursor: pointer;
             padding: 2px 6px;
             border-radius: 2px;
@@ -205,7 +225,7 @@
             color: var(--text-muted);
         }
 
-        .lang-btn.active {
+        .select-btn.active {
             color: var(--accent-gold);
             background: var(--brand-green);
         }
@@ -242,7 +262,7 @@
             color: var(--brand-green);
         }
 
-        /* Side Navigation Drawer (Menu) */
+        /* Side Navigation Drawer */
         .drawer-overlay {
             position: fixed;
             top: 0;
@@ -402,7 +422,8 @@
 
         .cart-item-info p {
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--accent-gold);
+            font-weight: 600;
         }
 
         .cart-remove-btn {
@@ -523,7 +544,7 @@
 
         .catalog-card {
             background: var(--bg-cream);
-            padding: 40px 30px;
+            padding: 35px 25px;
             border: 1px solid var(--border-subtle);
             text-align: center;
             display: flex;
@@ -542,23 +563,67 @@
             letter-spacing: 2.5px;
             color: var(--accent-gold);
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
         .catalog-title {
             font-family: var(--font-title);
-            font-size: 22px;
+            font-size: 20px;
             color: var(--brand-green);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             letter-spacing: 1px;
         }
 
+        .catalog-price {
+            font-family: var(--font-title);
+            font-size: 18px;
+            color: var(--brand-green);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
         .catalog-desc {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Item Options & Size Selector */
+        .size-box {
+            margin-bottom: 20px;
+        }
+
+        .size-title {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--brand-green);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .size-chips {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .size-chip {
+            padding: 4px 10px;
+            font-size: 10px;
+            border: 1px solid var(--border-subtle);
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--bg-card);
+        }
+
+        .size-chip.active, .size-chip:hover {
+            background: var(--brand-green);
+            color: var(--accent-gold);
+            border-color: var(--brand-green);
         }
 
         /* Luxury Brand Houses Ticker */
@@ -659,7 +724,16 @@
             font-size: 22px;
             letter-spacing: 3px;
             color: var(--accent-gold);
-            margin-bottom: 15px;
+            margin-bottom: 5px;
+        }
+
+        .footer-subtext {
+            font-family: var(--font-title);
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: rgba(251, 249, 245, 0.7);
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
         .footer-text {
@@ -685,7 +759,7 @@
     <!-- Overlay for drawers -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeAllDrawers()"></div>
 
-    <!-- Left Side Navigation Drawer (Шторка без эмодзи) -->
+    <!-- Left Side Navigation Drawer -->
     <div class="side-drawer" id="sideDrawer">
         <div>
             <div class="drawer-header">
@@ -716,7 +790,7 @@
         </div>
     </div>
 
-    <!-- Right Side Cart Drawer (Корзина) -->
+    <!-- Right Side Cart Drawer -->
     <div class="cart-drawer" id="cartDrawer">
         <div>
             <div class="drawer-header">
@@ -742,7 +816,12 @@
                         <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
                     </svg>
                 </div>
-                <div class="logo">ar.buyer<span>_01</span></div>
+                
+                <!-- Logo Block with BY ARIF ABBASOV -->
+                <div class="logo-block">
+                    <div class="logo">ar.buyer<span>_01</span></div>
+                    <div class="logo-subtext">BY ARIF ABBASOV</div>
+                </div>
             </div>
             
             <nav>
@@ -755,7 +834,7 @@
             </nav>
 
             <div class="header-right">
-                <!-- Loro Piana Style Minimalist Shopping Bag SVG -->
+                <!-- Loro Piana Style Minimalist Cart SVG -->
                 <div class="cart-icon-btn" onclick="openCart()">
                     <svg viewBox="0 0 24 24">
                         <path d="M6 9V7a6 6 0 1 1 12 0v2m-14 0h16l1 12H3L4 9z"/>
@@ -763,11 +842,18 @@
                     <span class="cart-badge" id="cartCount">0</span>
                 </div>
 
-                <!-- Language Switcher -->
-                <div class="lang-switch">
-                    <span class="lang-btn active" id="btnRu" onclick="switchLang('ru')">RU</span>
+                <!-- Country Selector -->
+                <div class="selector-box">
+                    <span class="select-btn active" id="btnKg" onclick="switchCountry('KG')">KG</span>
                     <span>|</span>
-                    <span class="lang-btn" id="btnEn" onclick="switchLang('en')">EN</span>
+                    <span class="select-btn" id="btnKz" onclick="switchCountry('KZ')">KZ</span>
+                </div>
+
+                <!-- Language Switcher -->
+                <div class="selector-box">
+                    <span class="select-btn active" id="btnRu" onclick="switchLang('ru')">RU</span>
+                    <span>|</span>
+                    <span class="select-btn" id="btnEn" onclick="switchLang('en')">EN</span>
                 </div>
             </div>
         </div>
@@ -783,7 +869,7 @@
         </div>
     </section>
 
-    <!-- Quality & Authenticity Pillars (Без эмодзи) -->
+    <!-- Quality & Authenticity Pillars -->
     <section class="pillars" id="about">
         <div class="container">
             <div class="section-header">
@@ -807,7 +893,7 @@
         </div>
     </section>
 
-    <!-- Catalog Section -->
+    <!-- Catalog Section with Prices & Sizes -->
     <section class="catalog-section" id="catalog">
         <div class="container">
             <div class="section-header">
@@ -815,46 +901,91 @@
                 <div></div>
             </div>
             <div class="catalog-grid">
+                
+                <!-- Card 1 -->
                 <div class="catalog-card">
                     <div>
                         <div class="catalog-category">High Luxury</div>
                         <h3 class="catalog-title" id="c1Title">Сумки & Аксессуары</h3>
+                        <div class="catalog-price" id="pPrice1">180 000 KGS</div>
                         <p class="catalog-desc" id="c1Desc">Культовые модели и редкие цвета Hermès, Chanel, Louis Vuitton, Bottega Veneta, Dior.</p>
+                        
+                        <div class="size-box">
+                            <div class="size-title">Выберите размер / формат:</div>
+                            <div class="size-chips" id="sizeBox1">
+                                <span class="size-chip active" onclick="selectSize(this)">Nano</span>
+                                <span class="size-chip" onclick="selectSize(this)">PM</span>
+                                <span class="size-chip" onclick="selectSize(this)">MM</span>
+                            </div>
+                        </div>
                     </div>
-                    <button class="btn-luxury btn-gold btn-action" onclick="addToCart('Сумки & Аксессуары')">ПЕРЕЙТИ</button>
+                    <button class="btn-luxury btn-gold btn-action" onclick="addToCart('Сумки & Аксессуары', 180000, 'sizeBox1')">ПЕРЕЙТИ</button>
                 </div>
 
+                <!-- Card 2 -->
                 <div class="catalog-card">
                     <div>
                         <div class="catalog-category">Quiet Luxury</div>
                         <h3 class="catalog-title" id="c2Title">Гардероб & Обувь</h3>
+                        <div class="catalog-price" id="pPrice2">85 000 KGS</div>
                         <p class="catalog-desc" id="c2Desc">Изысканные ткани и силуэты Loro Piana, Miu Miu, Brunello Cucinelli, Zimmermann, Premiata.</p>
+                        
+                        <div class="size-box">
+                            <div class="size-title">Доступные размеры:</div>
+                            <div class="size-chips" id="sizeBox2">
+                                <span class="size-chip active" onclick="selectSize(this)">EU 36</span>
+                                <span class="size-chip" onclick="selectSize(this)">EU 38</span>
+                                <span class="size-chip" onclick="selectSize(this)">EU 40</span>
+                                <span class="size-chip" onclick="selectSize(this)">EU 42</span>
+                            </div>
+                        </div>
                     </div>
-                    <button class="btn-luxury btn-gold btn-action" onclick="addToCart('Гардероб & Обувь')">ПЕРЕЙТИ</button>
+                    <button class="btn-luxury btn-gold btn-action" onclick="addToCart('Гардероб & Обувь', 85000, 'sizeBox2')">ПЕРЕЙТИ</button>
                 </div>
 
+                <!-- Card 3 -->
                 <div class="catalog-card">
                     <div>
                         <div class="catalog-category">Niche Beauty</div>
                         <h3 class="catalog-title" id="c3Title">Селективная Парфюмерия</h3>
+                        <div class="catalog-price" id="pPrice3">52 000 KGS</div>
                         <p class="catalog-desc" id="c3Desc">Эксклюзивная линейка Louis Vuitton Les Extraits (Symphony и др.) и закрытые ароматические коллекции.</p>
+                        
+                        <div class="size-box">
+                            <div class="size-title">Объем флакона:</div>
+                            <div class="size-chips" id="sizeBox3">
+                                <span class="size-chip active" onclick="selectSize(this)">100 ml</span>
+                                <span class="size-chip" onclick="selectSize(this)">200 ml</span>
+                            </div>
+                        </div>
                     </div>
-                    <button class="btn-luxury btn-gold btn-action" onclick="addToCart('Селективная Парфюмерия')">ПЕРЕЙТИ</button>
+                    <button class="btn-luxury btn-gold btn-action" onclick="addToCart('Селективная Парфюмерия', 52000, 'sizeBox3')">ПЕРЕЙТИ</button>
                 </div>
 
+                <!-- Card 4 -->
                 <div class="catalog-card">
                     <div>
                         <div class="catalog-category">Fine Jewelry & Watches</div>
                         <h3 class="catalog-title" id="c4Title">Часы & Ювелирные Изделия</h3>
+                        <div class="catalog-price" id="pPrice4">350 000 KGS</div>
                         <p class="catalog-desc" id="c4Desc">Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet.</p>
+                        
+                        <div class="size-box">
+                            <div class="size-title">Опции выкупа:</div>
+                            <div class="size-chips" id="sizeBox4">
+                                <span class="size-chip active" onclick="selectSize(this)">Standard</span>
+                                <span class="size-chip" onclick="selectSize(this)">Custom Size</span>
+                            </div>
+                        </div>
                     </div>
-                    <button class="btn-luxury btn-gold btn-action" onclick="addToCart('Часы & Ювелирные Изделия')">ПЕРЕЙТИ</button>
+                    <button class="btn-luxury btn-gold btn-action" onclick="addToCart('Часы & Ювелирные Изделия', 350000, 'sizeBox4')">ПЕРЕЙТИ</button>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Luxury Fashion Houses (Louis Vuitton на 1 месте) -->
+    <!-- Luxury Fashion Houses -->
     <section class="brands-section" id="brands">
         <div class="container">
             <h2 id="brandsTitle">Официальные Дома Моды</h2>
@@ -907,6 +1038,7 @@
     <footer>
         <div class="container">
             <div class="footer-logo">ar.buyer_01</div>
+            <div class="footer-subtext">BY ARIF ABBASOV</div>
             <p class="footer-text">© 2026 AR.BUYER_01. ALL RIGHTS RESERVED. EXCLUSIVE PERSONAL SHOPPING SERVICE.</p>
         </div>
     </footer>
@@ -915,6 +1047,18 @@
     <script>
         let cart = [];
         let currentLang = 'ru';
+        let currentCountry = 'KG'; // 'KG' или 'KZ'
+
+        // Базовые цены в Сомах (KGS)
+        const basePrices = {
+            pPrice1: 180000,
+            pPrice2: 85000,
+            pPrice3: 52000,
+            pPrice4: 350000
+        };
+
+        // Курс конвертации Сом (KGS) -> Тенге (KZT)
+        const kgsToKztRate = 5.3;
 
         const i18n = {
             ru: {
@@ -1009,6 +1153,28 @@
             }
         };
 
+        function selectSize(chipElement) {
+            const parent = chipElement.parentElement;
+            parent.querySelectorAll('.size-chip').forEach(c => c.classList.remove('active'));
+            chipElement.classList.add('active');
+        }
+
+        function switchCountry(country) {
+            currentCountry = country;
+            document.getElementById('btnKg').classList.toggle('active', country === 'KG');
+            document.getElementById('btnKz').classList.toggle('active', country === 'KZ');
+
+            for (let id in basePrices) {
+                let baseKgs = basePrices[id];
+                if (country === 'KZ') {
+                    let kztPrice = Math.round(baseKgs * kgsToKztRate);
+                    document.getElementById(id).innerText = kztPrice.toLocaleString() + ' KZT';
+                } else {
+                    document.getElementById(id).innerText = baseKgs.toLocaleString() + ' KGS';
+                }
+            }
+        }
+
         function openMenu() {
             closeAllDrawers();
             document.getElementById('drawerOverlay').classList.add('active');
@@ -1027,8 +1193,21 @@
             document.getElementById('cartDrawer').classList.remove('active');
         }
 
-        function addToCart(itemName) {
-            cart.push(itemName);
+        function addToCart(itemName, kgsPrice, sizeBoxId) {
+            let selectedSize = 'Standard';
+            const activeChip = document.querySelector(`#${sizeBoxId} .size-chip.active`);
+            if (activeChip) {
+                selectedSize = activeChip.innerText;
+            }
+
+            let finalPriceText = '';
+            if (currentCountry === 'KZ') {
+                finalPriceText = Math.round(kgsPrice * kgsToKztRate).toLocaleString() + ' KZT';
+            } else {
+                finalPriceText = kgsPrice.toLocaleString() + ' KGS';
+            }
+
+            cart.push({ name: itemName, size: selectedSize, price: finalPriceText });
             updateCartUI();
             openCart();
         }
@@ -1050,8 +1229,8 @@
             list.innerHTML = cart.map((item, idx) => `
                 <div class="cart-item">
                     <div class="cart-item-info">
-                        <h4>${item}</h4>
-                        <p>Персональный подбор</p>
+                        <h4>${item.name}</h4>
+                        <p>Размер/Формат: ${item.size} • ${item.price}</p>
                     </div>
                     <div class="cart-remove-btn" onclick="removeFromCart(${idx})">✕</div>
                 </div>
@@ -1064,12 +1243,12 @@
                 return;
             }
             const whatsappNumber = '996709972571';
-            const itemsText = cart.join(', ');
+            const itemsListText = cart.map(i => `• ${i.name} (Размер: ${i.size}) — ${i.price}`).join('\n');
             const message = encodeURIComponent(
                 `Здравствуйте, ar.buyer_01!\n\n` +
-                `Хочу оформить заказ на следующие категории из корзины:\n` +
-                `• Категории: ${itemsText}\n\n` +
-                `Уточните, пожалуйста, наличие, доступные размеры и итоговые цены.`
+                `Хочу оформить заказ из корзины:\n${itemsListText}\n\n` +
+                `Страна доставки: ${currentCountry === 'KG' ? 'Кыргызстан' : 'Казахстан'}\n` +
+                `Уточните, пожалуйста, наличие и сроки выкупа.`
             );
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
         }
@@ -1147,6 +1326,7 @@
                 `Здравствуйте, ar.buyer_01!\n\n` +
                 `Меня зовут: ${name}\n` +
                 `Детали запроса:\n${details}\n\n` +
+                `Страна: ${currentCountry === 'KG' ? 'Кыргызстан' : 'Казахстан'}\n` +
                 `Уточните, пожалуйста, наличие, цену и возможные размеры.`
             );
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
