@@ -256,7 +256,7 @@
             height: 100vh;
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(4px);
-            z-index: 200;
+            z-index: 999;
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s ease;
@@ -275,7 +275,7 @@
             height: 100vh;
             background: var(--bg-cream);
             border-right: 1px solid var(--border-subtle);
-            z-index: 201;
+            z-index: 1000;
             transition: left 0.4s ease;
             display: flex;
             flex-direction: column;
@@ -370,7 +370,7 @@
             height: 100vh;
             background: var(--bg-cream);
             border-left: 1px solid var(--border-subtle);
-            z-index: 201;
+            z-index: 1000;
             transition: right 0.4s ease;
             display: flex;
             flex-direction: column;
@@ -732,7 +732,7 @@
             height: 100vh;
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(5px);
-            z-index: 300;
+            z-index: 1005;
             display: none;
             align-items: center;
             justify-content: center;
@@ -895,88 +895,11 @@
         Best Buyer of the Year — Эксклюзивный сервис личного байера
     </div>
 
-    <!-- VIP Key Entrance Modal -->
-    <div class="auth-modal" id="vipModal">
-        <div class="auth-box">
-            <div style="position: absolute; top: 15px; right: 20px; cursor: pointer;" onclick="closeModal('vipModal')">✕</div>
-            <h3 data-i18n="vipModalTitle">VIP PRIVATE ACCESS</h3>
-            <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 20px;" data-i18n="vipModalDesc">Введите ваш персональный VIP-код для входа в закрытую зону релиза.</p>
-            <div class="form-group">
-                <label data-i18n="labelVipCode">Ваш VIP-Код</label>
-                <input type="text" id="vipCodeInput" placeholder="7777" style="text-align: center; letter-spacing: 2px; text-transform: uppercase;">
-            </div>
-            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="submitVipCode()" data-i18n="btnActivateVip">АКТИВИРОВАТЬ КОД</button>
-        </div>
-    </div>
-
-    <!-- Drawer Overlay -->
-    <div class="drawer-overlay" id="drawerOverlay" onclick="closeAllDrawers()"></div>
-
-    <!-- Side Menu Drawer (Три полоски) -->
-    <div class="side-drawer" id="sideDrawer">
-        <div>
-            <div class="drawer-header">
-                <div class="drawer-title" data-i18n="drawerTitle">МЕНЮ</div>
-                <div class="drawer-close" onclick="closeAllDrawers()">✕</div>
-            </div>
-
-            <!-- Фильтрация по категориям -->
-            <ul class="drawer-menu-list">
-                <li><a onclick="filterCatalog('ALL', this)" class="active-cat" data-i18n="catAll">Все категории</a></li>
-                <li><a onclick="filterCatalog('Одежда', this)" data-i18n="catClothes">Одежда</a></li>
-                <li><a onclick="filterCatalog('Сумки', this)" data-i18n="catBags">Сумки</a></li>
-                <li><a onclick="filterCatalog('Обувь', this)" data-i18n="catShoes">Обувь</a></li>
-                <li><a onclick="filterCatalog('Парфюмы', this)" data-i18n="catPerfumes">Парфюмы</a></li>
-                <li><a onclick="filterCatalog('Ювелирные изделия', this)" data-i18n="catJewelry">Ювелирные изделия</a></li>
-                <li><a onclick="filterCatalog('Часы', this)" data-i18n="catWatches">Часы</a></li>
-            </ul>
-        </div>
-
-        <div class="support-box">
-            <div class="support-title" data-i18n="supportTitle">Служба поддержки</div>
-            <ul class="support-list">
-                <li><span data-i18n="labelSupportText">Служба поддержки</span>: <a href="mailto:arbuyersupport@gmail.com">arbuyersupport@gmail.com</a></li>
-                <li><span data-i18n="labelContactUs">Связаться с нами</span>: <a href="https://wa.me/996709972571" target="_blank">+996 709 972 571</a></li>
-                <li><span data-i18n="labelSocials">Социальные сети</span>: <a href="https://instagram.com/ar.buyer_01" target="_blank">inst: ar.buyer_01</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Cart Drawer -->
-    <div class="cart-drawer" id="cartDrawer">
-        <div>
-            <div class="drawer-header">
-                <div class="drawer-title" data-i18n="cartHeader">Ваша Корзина</div>
-                <div class="drawer-close" onclick="closeAllDrawers()">✕</div>
-            </div>
-            <div class="cart-items-list" id="cartItemsList">
-                <p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 30px;" data-i18n="emptyCartText">Корзина пуста</p>
-            </div>
-        </div>
-        <div>
-            <!-- Поле промокода -->
-            <div class="promo-box">
-                <div class="promo-input-group">
-                    <input type="text" id="promoInput" placeholder="ПРОМОКОД (напр. VIP10)">
-                    <button class="btn-luxury" style="padding: 8px 12px; font-size: 10px;" data-i18n="btnApplyPromo" onclick="applyPromoCode()">ПРИМЕНИТЬ</button>
-                </div>
-                <div id="promoDiscountStatus" style="font-size: 11px; color: var(--accent-gold); text-align: center; font-weight: 600;"></div>
-            </div>
-
-            <div class="cart-total-box">
-                <span data-i18n="labelTotalSum">ИТОГО:</span>
-                <span id="cartTotalSum">0 KGS</span>
-            </div>
-
-            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="checkoutCart()" data-i18n="btnCheckout">Связаться с байером</button>
-        </div>
-    </div>
-
     <!-- Header Navigation -->
     <header>
         <div class="container header-inner">
             <div class="header-left">
-                <!-- Кнопка ☰ (Три полоски) -->
+                <!-- Кнопка меню (Три полоски) -->
                 <div class="menu-toggle" onclick="openMenu()">
                     <svg viewBox="0 0 24 24">
                         <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -1015,7 +938,10 @@
                     <span class="cart-badge" id="cartCount">0</span>
                 </div>
 
-                <button class="vip-access-btn" onclick="openModal('vipModal')" data-i18n="btnVipKey">VIP КЛЮЧ</button>
+                <!-- Кнопка VIP КЛЮЧ -->
+                <button class="vip-access-btn" onclick="openVipModal()" data-i18n="btnVipKey">VIP КЛЮЧ</button>
+                
+                <!-- Кнопка ADMIN -->
                 <button class="admin-toggle-btn" id="adminBtn" onclick="toggleAdminMode()" data-i18n="adminBtnText">ADMIN</button>
             </div>
         </div>
@@ -1270,6 +1196,80 @@
         </div>
     </footer>
 
+    <!-- ГЛОБАЛЬНЫЕ ВЫЕЗЖАЮЩИЕ ПАНЕЛИ И МОДАЛЬНЫЕ ОКНА (ВЫНЕСЕНЫ В КОРЕНЬ) -->
+
+    <!-- Дммер / Затемнение фона -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="closeAllDrawers()"></div>
+
+    <!-- Боковое меню -->
+    <div class="side-drawer" id="sideDrawer">
+        <div>
+            <div class="drawer-header">
+                <div class="drawer-title" data-i18n="drawerTitle">МЕНЮ</div>
+                <div class="drawer-close" onclick="closeAllDrawers()">✕</div>
+            </div>
+            <ul class="drawer-menu-list">
+                <li><a onclick="filterCatalog('ALL', this)" class="active-cat" data-i18n="catAll">Все категории</a></li>
+                <li><a onclick="filterCatalog('Одежда', this)" data-i18n="catClothes">Одежда</a></li>
+                <li><a onclick="filterCatalog('Сумки', this)" data-i18n="catBags">Сумки</a></li>
+                <li><a onclick="filterCatalog('Обувь', this)" data-i18n="catShoes">Обувь</a></li>
+                <li><a onclick="filterCatalog('Парфюмы', this)" data-i18n="catPerfumes">Парфюмы</a></li>
+                <li><a onclick="filterCatalog('Ювелирные изделия', this)" data-i18n="catJewelry">Ювелирные изделия</a></li>
+                <li><a onclick="filterCatalog('Часы', this)" data-i18n="catWatches">Часы</a></li>
+            </ul>
+        </div>
+        <div class="support-box">
+            <div class="support-title" data-i18n="supportTitle">Служба поддержки</div>
+            <ul class="support-list">
+                <li><span data-i18n="labelSupportText">Служба поддержки</span>: <a href="mailto:arbuyersupport@gmail.com">arbuyersupport@gmail.com</a></li>
+                <li><span data-i18n="labelContactUs">Связаться с нами</span>: <a href="https://wa.me/996709972571" target="_blank">+996 709 972 571</a></li>
+                <li><span data-i18n="labelSocials">Социальные сети</span>: <a href="https://instagram.com/ar.buyer_01" target="_blank">inst: ar.buyer_01</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Корзина -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div>
+            <div class="drawer-header">
+                <div class="drawer-title" data-i18n="cartHeader">Ваша Корзина</div>
+                <div class="drawer-close" onclick="closeAllDrawers()">✕</div>
+            </div>
+            <div class="cart-items-list" id="cartItemsList">
+                <p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 30px;" data-i18n="emptyCartText">Корзина пуста</p>
+            </div>
+        </div>
+        <div>
+            <div class="promo-box">
+                <div class="promo-input-group">
+                    <input type="text" id="promoInput" placeholder="ПРОМОКОД (напр. VIP10)">
+                    <button class="btn-luxury" style="padding: 8px 12px; font-size: 10px;" data-i18n="btnApplyPromo" onclick="applyPromoCode()">ПРИМЕНИТЬ</button>
+                </div>
+                <div id="promoDiscountStatus" style="font-size: 11px; color: var(--accent-gold); text-align: center; font-weight: 600;"></div>
+            </div>
+            <div class="cart-total-box">
+                <span data-i18n="labelTotalSum">ИТОГО:</span>
+                <span id="cartTotalSum">0 KGS</span>
+            </div>
+            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="checkoutCart()" data-i18n="btnCheckout">Связаться с байером</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно VIP КЛЮЧ -->
+    <div class="auth-modal" id="vipModal">
+        <div class="auth-box">
+            <div style="position: absolute; top: 15px; right: 20px; cursor: pointer;" onclick="closeVipModal()">✕</div>
+            <h3 data-i18n="vipModalTitle">VIP PRIVATE ACCESS</h3>
+            <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 20px;" data-i18n="vipModalDesc">Введите ваш персональный VIP-код для входа в закрытую зону релиза.</p>
+            <div class="form-group">
+                <label data-i18n="labelVipCode">Ваш VIP-Код</label>
+                <input type="text" id="vipCodeInput" placeholder="7777" style="text-align: center; letter-spacing: 2px; text-transform: uppercase;">
+            </div>
+            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="submitVipCode()" data-i18n="btnActivateVip">АКТИВИРОВАТЬ КОД</button>
+        </div>
+    </div>
+
+    <!-- СКРИПТЫ -->
     <script>
         let cart = [];
         let currentLang = 'ru';
@@ -1724,7 +1724,6 @@
             document.getElementById('langSelect').value = lang;
             const t = i18n[lang] || i18n.ru;
 
-            // Надежный проход по всем элементам с атрибутом data-i18n
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (t[key]) {
@@ -1732,7 +1731,6 @@
                 }
             });
 
-            // Отдельно управляем кнопкой ADMIN / СОХРАНИТЬ
             const adminBtn = document.getElementById('adminBtn');
             if (adminBtn) {
                 adminBtn.innerText = isAdmin ? (t.adminSaveText || "СОХРАНИТЬ") : (t.adminBtnText || "ADMIN");
@@ -1801,6 +1799,14 @@
             closeAllDrawers();
         }
 
+        function openVipModal() {
+            document.getElementById('vipModal').classList.add('active');
+        }
+
+        function closeVipModal() {
+            document.getElementById('vipModal').classList.remove('active');
+        }
+
         function submitVipCode() {
             const input = document.getElementById('vipCodeInput').value.trim().toUpperCase();
             if (!input) {
@@ -1821,7 +1827,7 @@
                 grid.innerHTML = vipTierContent[tier] || vipTierContent.SILVER;
                 
                 section.style.display = 'block';
-                closeModal('vipModal');
+                closeVipModal();
                 switchCurrency(currentCurrency);
                 renderHistoryUI();
                 section.scrollIntoView({ behavior: 'smooth' });
@@ -2052,4 +2058,138 @@
 
         function selectSize(chipElement) {
             const parent = chipElement.parentElement;
-            parent.querySelectorAll('.size-chip').forEach(c => c.
+            parent.querySelectorAll('.size-chip').forEach(c => c.classList.remove('active'));
+            chipElement.classList.add('active');
+        }
+
+        function openMenu() {
+            closeAllDrawers();
+            document.getElementById('drawerOverlay').classList.add('active');
+            document.getElementById('sideDrawer').classList.add('active');
+        }
+
+        function openCart() {
+            closeAllDrawers();
+            document.getElementById('drawerOverlay').classList.add('active');
+            document.getElementById('cartDrawer').classList.add('active');
+        }
+
+        function closeAllDrawers() {
+            document.getElementById('drawerOverlay').classList.remove('active');
+            document.getElementById('sideDrawer').classList.remove('active');
+            document.getElementById('cartDrawer').classList.remove('active');
+        }
+
+        function addToCartFromElement(btn) {
+            const card = btn.closest('.catalog-card');
+            const title = card.querySelector('.catalog-title').innerText;
+            const priceEl = card.querySelector('.catalog-price');
+            const baseKgs = parseFloat(priceEl.getAttribute('data-base-kgs')) || 100000;
+            const priceText = priceEl.innerText;
+            
+            let selectedSize = 'Standard';
+            const activeChip = card.querySelector('.size-chip.active');
+            if (activeChip) selectedSize = activeChip.innerText;
+
+            cart.push({ name: title, size: selectedSize, priceText: priceText, baseKgs: baseKgs });
+            updateCartUI();
+            openCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const list = document.getElementById('cartItemsList');
+            const totalSumEl = document.getElementById('cartTotalSum');
+            const t = i18n[currentLang] || i18n.ru;
+            
+            if (cart.length === 0) {
+                list.innerHTML = `<p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-top: 30px;" data-i18n="emptyCartText">${t.emptyCartText}</p>`;
+                totalSumEl.innerText = "0 " + currentCurrency;
+                return;
+            }
+
+            list.innerHTML = cart.map((item, idx) => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p>Размер: ${item.size} • ${item.priceText}</p>
+                    </div>
+                    <div class="cart-remove-btn" onclick="removeFromCart(${idx})">✕</div>
+                </div>
+            `).join('');
+
+            let rawTotalKgs = cart.reduce((sum, i) => sum + i.baseKgs, 0);
+            if (appliedDiscountPercent > 0) {
+                rawTotalKgs = rawTotalKgs * (1 - appliedDiscountPercent / 100);
+            }
+
+            const rate = exchangeRates[currentCurrency] || 1;
+            const symbol = currencySymbols[currentCurrency] || ' KGS';
+            const finalNum = rawTotalKgs * rate;
+
+            if (currentCurrency === 'KGS') {
+                totalSumEl.innerText = Math.round(finalNum).toLocaleString('ru-RU') + symbol;
+            } else {
+                totalSumEl.innerText = symbol + ' ' + Math.round(finalNum).toLocaleString('en-US');
+            }
+        }
+
+        function checkoutCart() {
+            if (cart.length === 0) {
+                alert('Ваша корзина пуста.');
+                return;
+            }
+
+            const totalSumText = document.getElementById('cartTotalSum').innerText;
+
+            cart.forEach(item => {
+                userOrders.unshift({
+                    id: 'ORD-' + Math.floor(1000 + Math.random() * 9000),
+                    item: item.name + ` (${item.size})`,
+                    price: item.priceText,
+                    date: new Date().toLocaleDateString('ru-RU'),
+                    tier: activeVipTier || 'GUEST',
+                    status: 'processing'
+                });
+            });
+
+            localStorage.setItem('ar_buyer_orders', JSON.stringify(userOrders));
+            renderHistoryUI();
+
+            const whatsappNumber = '996709972571';
+            const itemsListText = cart.map(i => `• ${i.name} (Размер: ${i.size}) — ${i.priceText}`).join('\n');
+            let discountInfo = appliedDiscountPercent > 0 ? `\n\nПрименен промокод: ${activePromoName} (-${appliedDiscountPercent}%)` : '';
+
+            const message = encodeURIComponent(
+                `Здравствуйте, личный байер!\n\n` +
+                `Хочу оформить заказ из корзины:\n${itemsListText}${discountInfo}\n\n` +
+                `ИТОГО СО СКИДКОЙ: ${totalSumText}\n` +
+                `Валюта: ${currentCurrency}\n\n` +
+                `Уточните, пожалуйста, наличие и реквизиты для оплаты.`
+            );
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const details = document.getElementById('orderDetails').value;
+            
+            const whatsappNumber = '996709972571';
+            const message = encodeURIComponent(
+                `Здравствуйте, личный байер!\n\n` +
+                `Меня зовут: ${name}\n` +
+                `Детали запроса:\n${details}\n\n` +
+                `Валюта: ${currentCurrency}\n` +
+                `Уточните, пожалуйста, наличие, цену и возможные размеры.`
+            );
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        });
+    </script>
+</body>
+</html>
