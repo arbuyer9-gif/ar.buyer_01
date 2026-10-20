@@ -1323,7 +1323,7 @@
                 catalogHeader: "Каталог Направлений",
                 filterLabelText: "Показаны категории:",
                 allFilterName: "Все",
-                resetFilterText: "(Сбросить фильтр)",
+                resetFilterText: "Сбросить фильтр",
                 brandsTitle: "Официальные Дома Моды",
                 orderHeader: "Персональный Запрос",
                 labelName: "Ваше имя / Пожелания по связи",
@@ -1392,7 +1392,7 @@
                 catalogHeader: "Curated Categories",
                 filterLabelText: "Active filter:",
                 allFilterName: "All",
-                resetFilterText: "(Reset filter)",
+                resetFilterText: "Reset filter",
                 brandsTitle: "Official Fashion Houses",
                 orderHeader: "Personal Inquiry",
                 labelName: "Your Name / Contact Preference",
@@ -1461,7 +1461,7 @@
                 catalogHeader: "Catalogue Exclusif",
                 filterLabelText: "Filtre actif:",
                 allFilterName: "Tout",
-                resetFilterText: "(Réinitialiser le filtre)",
+                resetFilterText: "Réinitialiser le filtre",
                 brandsTitle: "Maisons de Couture",
                 orderHeader: "Demande Personnalisée",
                 labelName: "Votre Nom / Contact",
@@ -1530,7 +1530,7 @@
                 catalogHeader: "Catálogo Exclusivo",
                 filterLabelText: "Filtro activo:",
                 allFilterName: "Todo",
-                resetFilterText: "(Restablecer filtro)",
+                resetFilterText: "Restablecer filtro",
                 brandsTitle: "Casas de Moda",
                 orderHeader: "Solicitud Personalizada",
                 labelName: "Su Nombre / Contacto",
@@ -1599,7 +1599,7 @@
                 catalogHeader: "尊享目录",
                 filterLabelText: "当前筛选:",
                 allFilterName: "全部",
-                resetFilterText: "(重置筛选)",
+                resetFilterText: "重置筛选",
                 brandsTitle: "官方合作奢品大牌",
                 orderHeader: "私人定制需求",
                 labelName: "您的姓名 / 联系方式",
@@ -2175,47 +2175,4 @@
             // Запись покупок в историю
             cart.forEach(item => {
                 userOrders.unshift({
-                    id: 'ORD-' + Math.floor(1000 + Math.random() * 9000),
-                    item: item.name + ` (${item.size})`,
-                    price: item.priceText,
-                    date: new Date().toLocaleDateString('ru-RU'),
-                    tier: activeVipTier || 'GUEST',
-                    status: 'processing'
-                });
-            });
-
-            localStorage.setItem('ar_buyer_orders', JSON.stringify(userOrders));
-            renderHistoryUI();
-
-            const whatsappNumber = '996709972571';
-            const itemsListText = cart.map(i => `• ${i.name} (Размер: ${i.size}) — ${i.priceText}`).join('\n');
-            let discountInfo = appliedDiscountPercent > 0 ? `\n\nПрименен промокод: ${activePromoName} (-${appliedDiscountPercent}%)` : '';
-
-            const message = encodeURIComponent(
-                `Здравствуйте, личный байер!\n\n` +
-                `Хочу оформить заказ из корзины:\n${itemsListText}${discountInfo}\n\n` +
-                `ИТОГО СО СКИДКОЙ: ${totalSumText}\n` +
-                `Валюта: ${currentCurrency}\n\n` +
-                `Уточните, пожалуйста, наличие и реквизиты для оплаты.`
-            );
-            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-        }
-
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('clientName').value;
-            const details = document.getElementById('orderDetails').value;
-            
-            const whatsappNumber = '996709972571';
-            const message = encodeURIComponent(
-                `Здравствуйте, личный байер!\n\n` +
-                `Меня зовут: ${name}\n` +
-                `Детали запроса:\n${details}\n\n` +
-                `Валюта: ${currentCurrency}\n` +
-                `Уточните, пожалуйста, наличие, цену и возможные размеры.`
-            );
-            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-        });
-    </script>
-</body>
-</html>
+                    id: '
