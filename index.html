@@ -1323,6 +1323,7 @@
                 catalogHeader: "Каталог Направлений",
                 filterLabelText: "Показаны категории:",
                 allFilterName: "Все",
+                resetFilterText: "(Сбросить фильтр)",
                 brandsTitle: "Официальные Дома Моды",
                 orderHeader: "Персональный Запрос",
                 labelName: "Ваше имя / Пожелания по связи",
@@ -1391,6 +1392,7 @@
                 catalogHeader: "Curated Categories",
                 filterLabelText: "Active filter:",
                 allFilterName: "All",
+                resetFilterText: "(Reset filter)",
                 brandsTitle: "Official Fashion Houses",
                 orderHeader: "Personal Inquiry",
                 labelName: "Your Name / Contact Preference",
@@ -1398,7 +1400,7 @@
                 btnSubmitOrder: "SUBMIT TO PERSONAL SHOPPER",
                 vipModalTitle: "VIP PRIVATE ACCESS",
                 vipModalDesc: "Enter your personal VIP key to access private boutique releases.",
-                labelVipKey: "Your VIP Key",
+                labelVipCode: "Your VIP Key",
                 btnActivateVip: "ACTIVATE KEY",
                 btnVipKey: "VIP KEY",
                 adminBtnText: "ADMIN",
@@ -1459,6 +1461,7 @@
                 catalogHeader: "Catalogue Exclusif",
                 filterLabelText: "Filtre actif:",
                 allFilterName: "Tout",
+                resetFilterText: "(Réinitialiser le filtre)",
                 brandsTitle: "Maisons de Couture",
                 orderHeader: "Demande Personnalisée",
                 labelName: "Votre Nom / Contact",
@@ -1527,6 +1530,7 @@
                 catalogHeader: "Catálogo Exclusivo",
                 filterLabelText: "Filtro activo:",
                 allFilterName: "Todo",
+                resetFilterText: "(Restablecer filtro)",
                 brandsTitle: "Casas de Moda",
                 orderHeader: "Solicitud Personalizada",
                 labelName: "Su Nombre / Contacto",
@@ -1595,6 +1599,7 @@
                 catalogHeader: "尊享目录",
                 filterLabelText: "当前筛选:",
                 allFilterName: "全部",
+                resetFilterText: "(重置筛选)",
                 brandsTitle: "官方合作奢品大牌",
                 orderHeader: "私人定制需求",
                 labelName: "您的姓名 / 联系方式",
@@ -1723,7 +1728,7 @@
                          'catPerfumes', 'catJewelry', 'catWatches', 'supportTitle', 'labelSupportText',
                          'labelContactUs', 'labelSocials', 'cartHeader', 'emptyCartText', 'btnApplyPromo',
                          'labelTotalSum', 'btnCheckout', 'heroSubtitle', 'heroTitle', 'heroDesc', 
-                         'btnHeroAction', 'catalogHeader', 'filterLabelText', 'brandsTitle', 
+                         'btnHeroAction', 'catalogHeader', 'filterLabelText', 'resetFilterBtn', 'brandsTitle', 
                          'orderHeader', 'labelName', 'labelDetails', 'btnSubmitOrder', 
                          'vipModalTitle', 'vipModalDesc', 'labelVipCode', 'btnActivateVip', 'btnVipKey', 
                          'vipTitleText', 'vipHistoryTitle', 'emptyHistoryText',
@@ -1732,7 +1737,13 @@
 
             ids.forEach(id => {
                 const el = document.getElementById(id);
-                if (el && t[id]) el.innerText = t[id];
+                if (el && t[id]) {
+                    if (id === 'resetFilterBtn') {
+                        el.innerText = '(' + t.resetFilterText + ')';
+                    } else {
+                        el.innerText = t[id];
+                    }
+                }
             });
 
             const adminBtn = document.getElementById('adminBtn');
