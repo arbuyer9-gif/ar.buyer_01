@@ -935,9 +935,9 @@
         <div class="support-box">
             <div class="support-title" id="supportTitle">Служба поддержки</div>
             <ul class="support-list">
-                <li>Служба поддержки: <a href="mailto:arbuyersupport@gmail.com">arbuyersupport@gmail.com</a></li>
-                <li>WhatsApp: <a href="https://wa.me/996709972571" target="_blank">+996 709 972 571</a></li>
-                <li>Instagram: <a href="https://instagram.com/ar.buyer_01" target="_blank">ar.buyer_01</a></li>
+                <li><span id="labelSupportText">Служба поддержки</span>: <a href="mailto:arbuyersupport@gmail.com">arbuyersupport@gmail.com</a></li>
+                <li><span id="labelContactUs">Связаться с нами</span>: <a href="https://wa.me/996709972571" target="_blank">+996 709 972 571</a></li>
+                <li><span id="labelSocials">Социальные сети</span>: <a href="https://instagram.com/ar.buyer_01" target="_blank">inst: ar.buyer_01</a></li>
             </ul>
         </div>
     </div>
@@ -958,13 +958,13 @@
             <div class="promo-box">
                 <div class="promo-input-group">
                     <input type="text" id="promoInput" placeholder="ПРОМОКОД (напр. VIP10)">
-                    <button class="btn-luxury" style="padding: 8px 12px; font-size: 10px;" onclick="applyPromoCode()">ПРИМЕНИТЬ</button>
+                    <button class="btn-luxury" style="padding: 8px 12px; font-size: 10px;" id="btnApplyPromo" onclick="applyPromoCode()">ПРИМЕНИТЬ</button>
                 </div>
                 <div id="promoDiscountStatus" style="font-size: 11px; color: var(--accent-gold); text-align: center; font-weight: 600;"></div>
             </div>
 
             <div class="cart-total-box">
-                <span>ИТОГО:</span>
+                <span id="labelTotalSum">ИТОГО:</span>
                 <span id="cartTotalSum">0 KGS</span>
             </div>
 
@@ -1045,9 +1045,9 @@
 
             <!-- VIP History Box -->
             <div class="vip-history-box">
-                <div class="vip-history-title">ИСТОРИЯ ВАШИХ VIP-ЗАКАЗОВ</div>
+                <div class="vip-history-title" id="vipHistoryTitle">ИСТОРИЯ ВАШИХ VIP-ЗАКАЗОВ</div>
                 <div class="order-history-list" id="vipHistoryList">
-                    <p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);">У вас пока нет оформленных заказов.</p>
+                    <p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);" id="emptyHistoryText">У вас пока нет оформленных заказов.</p>
                 </div>
             </div>
         </div>
@@ -1308,8 +1308,13 @@
                 catJewelry: "Ювелирные изделия",
                 catWatches: "Часы",
                 supportTitle: "Служба поддержки",
+                labelSupportText: "Служба поддержки",
+                labelContactUs: "Связаться с нами",
+                labelSocials: "Социальные сети",
                 cartHeader: "Ваша Корзина",
                 emptyCartText: "Корзина пуста",
+                btnApplyPromo: "ПРИМЕНИТЬ",
+                labelTotalSum: "ИТОГО:",
                 btnCheckout: "Связаться с байером",
                 heroSubtitle: "High Luxury & Personal Shopping",
                 heroTitle: "Ваш Личный Байер",
@@ -1327,6 +1332,8 @@
                 labelVipCode: "Ваш VIP-Код",
                 btnActivateVip: "АКТИВИРОВАТЬ КОД",
                 vipTitleText: "ЗАКРЫТЫЙ ПОДИУМНЫЙ РЕЛИЗ",
+                vipHistoryTitle: "ИСТОРИЯ ВАШИХ VIP-ЗАКАЗОВ",
+                emptyHistoryText: "У вас пока нет оформленных заказов.",
                 btnCardAction: "ПЕРЕЙТИ",
                 c1Cat: "Сумки",
                 c1Title: "Сумки & Аксессуары",
@@ -1356,8 +1363,13 @@
                 catJewelry: "Fine Jewelry",
                 catWatches: "Watches",
                 supportTitle: "Customer Support",
+                labelSupportText: "Support Service",
+                labelContactUs: "Contact Us",
+                labelSocials: "Social Media",
                 cartHeader: "Your Cart",
                 emptyCartText: "Cart is empty",
+                btnApplyPromo: "APPLY",
+                labelTotalSum: "TOTAL:",
                 btnCheckout: "Contact Personal Shopper",
                 heroSubtitle: "High Luxury & Personal Shopping",
                 heroTitle: "Your Personal Shopper",
@@ -1375,6 +1387,8 @@
                 labelVipCode: "Your VIP Key",
                 btnActivateVip: "ACTIVATE KEY",
                 vipTitleText: "PRIVATE RUNWAY RELEASE",
+                vipHistoryTitle: "YOUR VIP ORDER HISTORY",
+                emptyHistoryText: "You have no active orders.",
                 btnCardAction: "PROCEED",
                 c1Cat: "Bags",
                 c1Title: "Bags & Accessories",
@@ -1404,8 +1418,13 @@
                 catJewelry: "Joaillerie",
                 catWatches: "Horlogerie",
                 supportTitle: "Service Client",
+                labelSupportText: "Service Client",
+                labelContactUs: "Nous Contacter",
+                labelSocials: "Réseaux Sociaux",
                 cartHeader: "Votre Panier",
                 emptyCartText: "Le panier est vide",
+                btnApplyPromo: "APPLIQUER",
+                labelTotalSum: "TOTAL:",
                 btnCheckout: "Contacter le Personal Shopper",
                 heroSubtitle: "Haute Luxe & Personal Shopping",
                 heroTitle: "Votre Personal Shopper",
@@ -1423,6 +1442,8 @@
                 labelVipCode: "Votre Code VIP",
                 btnActivateVip: "ACTIVER LE CODE",
                 vipTitleText: "VENTE PRIVÉE DE DÉFILÉ",
+                vipHistoryTitle: "HISTORIQUE DE VOS COMMANDES VIP",
+                emptyHistoryText: "Vous n'avez pas еще de commandes.",
                 btnCardAction: "DÉCOUVRIR",
                 c1Cat: "Sacs",
                 c1Title: "Sacs & Accessoires",
@@ -1452,8 +1473,13 @@
                 catJewelry: "Joyería",
                 catWatches: "Relojes",
                 supportTitle: "Atención al Cliente",
+                labelSupportText: "Soporte Técnico",
+                labelContactUs: "Contáctenos",
+                labelSocials: "Redes Sociales",
                 cartHeader: "Su Cesta",
                 emptyCartText: "La cesta está vacía",
+                btnApplyPromo: "APLICAR",
+                labelTotalSum: "TOTAL:",
                 btnCheckout: "Contactar Personal Shopper",
                 heroSubtitle: "Alta Costura & Personal Shopping",
                 heroTitle: "Su Personal Shopper",
@@ -1471,6 +1497,8 @@
                 labelVipCode: "Su Código VIP",
                 btnActivateVip: "ACTIVAR CÓDIGO",
                 vipTitleText: "LANCE EXCLUSIVO DE PASARELA",
+                vipHistoryTitle: "HISTORIAL DE SUS PEDIDOS VIP",
+                emptyHistoryText: "Aún no tiene pedidos registrados.",
                 btnCardAction: "VER MÁS",
                 c1Cat: "Bolsos",
                 c1Title: "Bolsos & Accesorios",
@@ -1500,8 +1528,13 @@
                 catJewelry: "珠宝",
                 catWatches: "腕表",
                 supportTitle: "客户服务",
+                labelSupportText: "技术支持",
+                labelContactUs: "联系我们",
+                labelSocials: "社交媒体",
                 cartHeader: "购物袋",
                 emptyCartText: "购物袋为空",
+                btnApplyPromo: "应用",
+                labelTotalSum: "总计:",
                 btnCheckout: "联系私人买手",
                 heroSubtitle: "High Luxury & Personal Shopping",
                 heroTitle: "您的私人代购买手",
@@ -1519,6 +1552,8 @@
                 labelVipCode: "您的VIP密钥",
                 btnActivateVip: "激活密钥",
                 vipTitleText: "私享秀场限定发布",
+                vipHistoryTitle: "您的VIP历史订单",
+                emptyHistoryText: "您暂无历史订单记录。",
                 btnCardAction: "查看详情",
                 c1Cat: "手袋",
                 c1Title: "手袋与配饰",
@@ -1620,11 +1655,13 @@
             const t = i18n[lang] || i18n.ru;
 
             const ids = ['topBar', 'drawerTitle', 'catAll', 'catClothes', 'catBags', 'catShoes', 
-                         'catPerfumes', 'catJewelry', 'catWatches', 'supportTitle', 'cartHeader', 
-                         'emptyCartText', 'btnCheckout', 'heroSubtitle', 'heroTitle', 'heroDesc', 
+                         'catPerfumes', 'catJewelry', 'catWatches', 'supportTitle', 'labelSupportText',
+                         'labelContactUs', 'labelSocials', 'cartHeader', 'emptyCartText', 'btnApplyPromo',
+                         'labelTotalSum', 'btnCheckout', 'heroSubtitle', 'heroTitle', 'heroDesc', 
                          'btnHeroAction', 'catalogHeader', 'filterLabelText', 'brandsTitle', 
                          'orderHeader', 'labelName', 'labelDetails', 'btnSubmitOrder', 
-                         'vipModalDesc', 'labelVipCode', 'btnActivateVip', 'vipTitleText'];
+                         'vipModalDesc', 'labelVipCode', 'btnActivateVip', 'vipTitleText',
+                         'vipHistoryTitle', 'emptyHistoryText'];
 
             ids.forEach(id => {
                 const el = document.getElementById(id);
@@ -1761,9 +1798,10 @@
         function renderHistoryUI() {
             const list = document.getElementById('vipHistoryList');
             const adminList = document.getElementById('adminOrdersList');
+            const t = i18n[currentLang] || i18n.ru;
 
             if (userOrders.length === 0) {
-                list.innerHTML = `<p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);">У вас пока нет оформленных заказов.</p>`;
+                list.innerHTML = `<p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);" id="emptyHistoryText">${t.emptyHistoryText}</p>`;
                 adminList.innerHTML = `<p style="font-size: 11px; color: var(--text-muted);">Заказов пока нет.</p>`;
                 return;
             }
