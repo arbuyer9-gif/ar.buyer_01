@@ -84,12 +84,11 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         /* Hamburger Icon */
         .menu-toggle {
-            font-size: 22px;
             cursor: pointer;
             color: var(--brand-green);
             display: flex;
@@ -98,8 +97,15 @@
             transition: color 0.3s;
         }
 
-        .menu-toggle:hover {
-            color: var(--accent-gold);
+        .menu-toggle svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--brand-green);
+            transition: fill 0.3s;
+        }
+
+        .menu-toggle:hover svg {
+            fill: var(--accent-gold);
         }
 
         .logo {
@@ -138,28 +144,42 @@
         .header-right {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
+        /* Loro Piana Style Minimalist Cart SVG Icon */
         .cart-icon-btn {
             position: relative;
             cursor: pointer;
-            font-size: 18px;
             color: var(--brand-green);
             display: flex;
             align-items: center;
+            justify-content: center;
+        }
+
+        .cart-icon-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--brand-green);
+            fill: none;
+            stroke-width: 1.5;
+            transition: stroke 0.3s;
+        }
+
+        .cart-icon-btn:hover svg {
+            stroke: var(--accent-gold);
         }
 
         .cart-badge {
             position: absolute;
-            top: -8px;
-            right: -10px;
+            top: -7px;
+            right: -9px;
             background: var(--accent-gold);
             color: var(--brand-green);
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -282,7 +302,7 @@
 
         .drawer-close {
             cursor: pointer;
-            font-size: 24px;
+            font-size: 20px;
             color: var(--text-dark);
         }
 
@@ -298,9 +318,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            display: block;
             transition: color 0.3s;
         }
 
@@ -661,13 +679,13 @@
 
     <!-- Top Bar -->
     <div class="top-bar" id="topBar">
-        🏆 Best Buyer of the Year — Эксклюзивный сервис персонального байинга
+        Best Buyer of the Year — Эксклюзивный сервис персонального байинга
     </div>
 
     <!-- Overlay for drawers -->
     <div class="drawer-overlay" id="drawerOverlay" onclick="closeAllDrawers()"></div>
 
-    <!-- Left Side Navigation Drawer (Шторка) -->
+    <!-- Left Side Navigation Drawer (Шторка без эмодзи) -->
     <div class="side-drawer" id="sideDrawer">
         <div>
             <div class="drawer-header">
@@ -675,15 +693,15 @@
                 <div class="drawer-close" onclick="closeAllDrawers()">✕</div>
             </div>
             <ul class="drawer-menu-list">
-                <li><a href="#profile" onclick="closeAllDrawers()">👤 <span id="mProfile">Профиль</span></a></li>
-                <li><a href="#catalog" onclick="closeAllDrawers()">✨ <span id="mWomen">Женский</span></a></li>
-                <li><a href="#catalog" onclick="closeAllDrawers()">👔 <span id="mMen">Мужской</span></a></li>
-                <li><a href="#catalog" onclick="closeAllDrawers()">🧥 <span id="mClothes">Одежда</span></a></li>
-                <li><a href="#catalog" onclick="closeAllDrawers()">👜 <span id="mBags">Сумки</span></a></li>
-                <li><a href="#catalog" onclick="closeAllDrawers()">👠 <span id="mShoes">Обувь</span></a></li>
-                <li><a href="#catalog" onclick="closeAllDrawers()">✨ <span id="mPerfumes">Парфюмы</span></a></li>
-                <li><a href="#catalog" onclick="closeAllDrawers()">💎 <span id="mJewelry">Ювелирные изделия</span></a></li>
-                <li><a href="#catalog" onclick="closeAllDrawers()">⌚ <span id="mWatches">Часы</span></a></li>
+                <li><a href="#profile" onclick="closeAllDrawers()"><span id="mProfile">Профиль</span></a></li>
+                <li><a href="#catalog" onclick="closeAllDrawers()"><span id="mWomen">Женский</span></a></li>
+                <li><a href="#catalog" onclick="closeAllDrawers()"><span id="mMen">Мужской</span></a></li>
+                <li><a href="#catalog" onclick="closeAllDrawers()"><span id="mClothes">Одежда</span></a></li>
+                <li><a href="#catalog" onclick="closeAllDrawers()"><span id="mBags">Сумки</span></a></li>
+                <li><a href="#catalog" onclick="closeAllDrawers()"><span id="mShoes">Обувь</span></a></li>
+                <li><a href="#catalog" onclick="closeAllDrawers()"><span id="mPerfumes">Парфюмы</span></a></li>
+                <li><a href="#catalog" onclick="closeAllDrawers()"><span id="mJewelry">Ювелирные изделия</span></a></li>
+                <li><a href="#catalog" onclick="closeAllDrawers()"><span id="mWatches">Часы</span></a></li>
             </ul>
         </div>
 
@@ -691,9 +709,9 @@
         <div class="support-box">
             <div class="support-title" id="supportHeader">Служба поддержки</div>
             <ul class="support-list">
-                <li>✉️ Email: <a href="mailto:arbuyer9@gmail.com">arbuyer9@gmail.com</a></li>
-                <li>💬 WhatsApp: <a href="https://wa.me/996709972571" target="_blank">+996 709 972 571</a></li>
-                <li>📸 Instagram: <a href="https://instagram.com/ar.buyer_01" target="_blank">ar.buyer_01</a></li>
+                <li>Email: <a href="mailto:arbuyer9@gmail.com">arbuyer9@gmail.com</a></li>
+                <li>WhatsApp Business: <a href="https://wa.me/996709972571" target="_blank">+996 709 972 571</a></li>
+                <li>Instagram: <a href="https://instagram.com/ar.buyer_01" target="_blank">ar.buyer_01</a></li>
             </ul>
         </div>
     </div>
@@ -710,7 +728,7 @@
             </div>
         </div>
         <div>
-            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="checkoutCart()" id="btnCheckout">Оформить в Telegram</button>
+            <button class="btn-luxury btn-gold" style="width: 100%;" onclick="checkoutCart()" id="btnCheckout">Связаться с байером</button>
         </div>
     </div>
 
@@ -718,8 +736,12 @@
     <header>
         <div class="container header-inner">
             <div class="header-left">
-                <!-- Three bars icon -->
-                <div class="menu-toggle" onclick="openMenu()">☰</div>
+                <!-- Hamburger Icon SVG -->
+                <div class="menu-toggle" onclick="openMenu()">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </div>
                 <div class="logo">ar.buyer<span>_01</span></div>
             </div>
             
@@ -733,9 +755,11 @@
             </nav>
 
             <div class="header-right">
-                <!-- Cart Icon -->
+                <!-- Loro Piana Style Minimalist Shopping Bag SVG -->
                 <div class="cart-icon-btn" onclick="openCart()">
-                    🛍️
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 9V7a6 6 0 1 1 12 0v2m-14 0h16l1 12H3L4 9z"/>
+                    </svg>
                     <span class="cart-badge" id="cartCount">0</span>
                 </div>
 
@@ -754,12 +778,12 @@
         <div class="container">
             <p class="hero-subtitle" id="heroSubtitle">High Luxury & Personal Shopping</p>
             <h1 id="heroTitle">Ваш Личный Байер</h1>
-            <p id="heroDesc">Выкуп эксклюзивных коллекций, редких релизаций и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.</p>
+            <p id="heroDesc">Выкуп эксклюзивных коллекций, редких релизов и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.</p>
             <a href="#order" class="btn-luxury btn-gold btn-action">ПЕРЕЙТИ</a>
         </div>
     </section>
 
-    <!-- Quality & Authenticity Pillars -->
+    <!-- Quality & Authenticity Pillars (Без эмодзи) -->
     <section class="pillars" id="about">
         <div class="container">
             <div class="section-header">
@@ -830,14 +854,14 @@
         </div>
     </section>
 
-    <!-- Luxury Fashion Houses -->
+    <!-- Luxury Fashion Houses (Louis Vuitton на 1 месте) -->
     <section class="brands-section" id="brands">
         <div class="container">
             <h2 id="brandsTitle">Официальные Дома Моды</h2>
             <div class="brands-ticker">
+                <span>LOUIS VUITTON</span> • 
                 <span>LORO PIANA</span> • 
                 <span>HERMÈS</span> • 
-                <span>LOUIS VUITTON</span> • 
                 <span>CHANEL</span> • 
                 <span>DIOR</span> • 
                 <span>GUCCI</span> • 
@@ -866,8 +890,8 @@
             <div class="form-wrapper">
                 <form id="orderForm">
                     <div class="form-group">
-                        <label for="clientName" id="labelName">Ваше имя / Telegram @username</label>
-                        <input type="text" id="clientName" placeholder="@username" required>
+                        <label for="clientName" id="labelName">Ваше имя / Пожелания по связи</label>
+                        <input type="text" id="clientName" placeholder="Ваше имя" required>
                     </div>
                     <div class="form-group">
                         <label for="orderDetails" id="labelDetails">Детали Изделия (Бренд, Название, Размер)</label>
@@ -894,7 +918,7 @@
 
         const i18n = {
             ru: {
-                topBar: "🏆 Best Buyer of the Year — Эксклюзивный сервис персонального байинга",
+                topBar: "Best Buyer of the Year — Эксклюзивный сервис персонального байинга",
                 navAbout: "Стандарты",
                 navCatalog: "Каталог",
                 navBrands: "Дома Моды",
@@ -902,7 +926,7 @@
                 btnAction: "ПЕРЕЙТИ",
                 heroSubtitle: "High Luxury & Personal Shopping",
                 heroTitle: "Ваш Личный Байер",
-                heroDesc: "Выкуп эксклюзивных коллекций, редких релизаций и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.",
+                heroDesc: "Выкуп эксклюзивных коллекций, редких релизов и подиумных позиций из официальных бутиков Европы, США и Азии. Высочайшие стандарты обслуживания и безупречный сервис.",
                 pillarsTitle: "Гарантии и Сервис",
                 p1Title: "100% Подлинность",
                 p1Desc: "Прямой выкуп исключительно в официальных флагманских бутиках. Каждая позиция сопровождается кассовыми чеками, фирменными пыльниками и оригинальной бутиковой упаковкой.",
@@ -921,7 +945,7 @@
                 c4Desc: "Официальный выкуп драгоценностей и часовых шедевров Cartier, Van Cleef, Rolex, Audemars Piguet.",
                 brandsTitle: "Официальные Дома Моды",
                 orderHeader: "Персональный Запрос",
-                labelName: "Ваше имя / Telegram @username",
+                labelName: "Ваше имя / Пожелания по связи",
                 labelDetails: "Детали Изделия (Бренд, Название, Размер)",
                 drawerNavTitle: "Навигация",
                 mProfile: "Профиль",
@@ -936,10 +960,10 @@
                 supportHeader: "Служба поддержки",
                 cartTitle: "Ваша Корзина",
                 emptyCartText: "Корзина пока пуста",
-                btnCheckout: "Оформить в Telegram"
+                btnCheckout: "Связаться с байером"
             },
             en: {
-                topBar: "🏆 Best Buyer of the Year — Exclusive Personal Shopping Service",
+                topBar: "Best Buyer of the Year — Exclusive Personal Shopping Service",
                 navAbout: "Standards",
                 navCatalog: "Catalog",
                 navBrands: "Fashion Houses",
@@ -966,7 +990,7 @@
                 c4Desc: "Official sourcing of high jewelry and horological masterpieces from Cartier, Van Cleef, Rolex, Audemars Piguet.",
                 brandsTitle: "Official Fashion Houses",
                 orderHeader: "Personal Inquiry",
-                labelName: "Your Name / Telegram @username",
+                labelName: "Your Name / Contact Info",
                 labelDetails: "Item Details (Brand, Name, Size)",
                 drawerNavTitle: "Navigation",
                 mProfile: "Profile",
@@ -981,7 +1005,7 @@
                 supportHeader: "Customer Support",
                 cartTitle: "Your Cart",
                 emptyCartText: "Cart is currently empty",
-                btnCheckout: "Proceed via Telegram"
+                btnCheckout: "Contact Buyer"
             }
         };
 
@@ -1027,7 +1051,7 @@
                 <div class="cart-item">
                     <div class="cart-item-info">
                         <h4>${item}</h4>
-                        <p>Эксклюзивный запрос</p>
+                        <p>Персональный подбор</p>
                     </div>
                     <div class="cart-remove-btn" onclick="removeFromCart(${idx})">✕</div>
                 </div>
@@ -1039,10 +1063,15 @@
                 alert('Ваша корзина пуста.');
                 return;
             }
-            const telegramUsername = 'ar_buyer_01';
+            const whatsappNumber = '996709972571';
             const itemsText = cart.join(', ');
-            const message = encodeURIComponent(`Доброго дня! Хочу оформить заказ на следующие категории из корзины: ${itemsText}`);
-            window.open(`https://t.me/${telegramUsername}?text=${message}`, '_blank');
+            const message = encodeURIComponent(
+                `Здравствуйте, ar.buyer_01!\n\n` +
+                `Хочу оформить заказ на следующие категории из корзины:\n` +
+                `• Категории: ${itemsText}\n\n` +
+                `Уточните, пожалуйста, наличие, доступные размеры и итоговые цены.`
+            );
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
         }
 
         function switchLang(lang) {
@@ -1112,10 +1141,15 @@
             const name = document.getElementById('clientName').value;
             const details = document.getElementById('orderDetails').value;
             
-            const telegramUsername = 'ar_buyer_01'; 
+            const whatsappNumber = '996709972571'; 
             
-            const message = encodeURIComponent(`Доброго дня! Меня зовут ${name}.\nМой персональный запрос: ${details}`);
-            window.open(`https://t.me/${telegramUsername}?text=${message}`, '_blank');
+            const message = encodeURIComponent(
+                `Здравствуйте, ar.buyer_01!\n\n` +
+                `Меня зовут: ${name}\n` +
+                `Детали запроса:\n${details}\n\n` +
+                `Уточните, пожалуйста, наличие, цену и возможные размеры.`
+            );
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
         });
     </script>
 </body>
