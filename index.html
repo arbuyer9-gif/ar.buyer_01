@@ -1104,6 +1104,36 @@
             }
         });
 
+        function switchCountry(country) {
+            currentCountry = country;
+            document.getElementById('btnKg').classList.toggle('active', country === 'KG');
+            document.getElementById('btnKz').classList.toggle('active', country === 'KZ');
+
+            // Пересчитываем цены для всех карточек в каталоге
+            document.querySelectorAll('.catalog-card').forEach(card => {
+                const priceEl = card.querySelector('.catalog-price');
+                if (!priceEl) return;
+
+                // Сохраняем базовую цену в Сомах (KGS)
+                if (!card.dataset.baseKgs) {
+                    const rawPrice = priceEl.innerText.replace(/[^0-9]/g, '');
+                    if (rawPrice) {
+                        card.dataset.baseKgs = rawPrice;
+                    }
+                }
+
+                const baseKgs = parseFloat(card.dataset.baseKgs);
+                if (!isNaN(baseKgs)) {
+                    if (country === 'KZ') {
+                        const kztPrice = Math.round(baseKgs * kgsToKztRate);
+                        priceEl.innerText = kztPrice.toLocaleString('ru-RU') + ' KZT';
+                    } else {
+                        priceEl.innerText = baseKgs.toLocaleString('ru-RU') + ' KGS';
+                    }
+                }
+            });
+        }
+
         function toggleAdminMode() {
             isAdmin = !isAdmin;
             const adminBtn = document.getElementById('adminBtn');
@@ -1173,12 +1203,6 @@
             const parent = chipElement.parentElement;
             parent.querySelectorAll('.size-chip').forEach(c => c.classList.remove('active'));
             chipElement.classList.add('active');
-        }
-
-        function switchCountry(country) {
-            currentCountry = country;
-            document.getElementById('btnKg').classList.toggle('active', country === 'KG');
-            document.getElementById('btnKz').classList.toggle('active', country === 'KZ');
         }
 
         function openMenu() {
