@@ -645,6 +645,54 @@
         .tier-platinum { color: #E5E4E2; }
         .tier-black { color: #FFFFFF; background: #000; border-color: #333; }
 
+        /* VIP History Panel */
+        .vip-history-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 25px;
+            margin-top: 40px;
+            border-radius: 4px;
+        }
+
+        .vip-history-title {
+            font-family: var(--font-title);
+            color: var(--accent-gold);
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .order-history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .history-item {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .order-status {
+            padding: 3px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 2px;
+        }
+
+        .status-processing { background: #d97706; color: #fff; }
+        .status-purchased { background: #2563eb; color: #fff; }
+        .status-shipping { background: #9333ea; color: #fff; }
+        .status-delivered { background: #16a34a; color: #fff; }
+
         .auth-modal {
             position: fixed;
             top: 0;
@@ -806,6 +854,7 @@
         @media (max-width: 900px) {
             .hero h1 { font-size: 36px; }
             .container { padding: 0 20px; }
+            .history-item { flex-direction: column; align-items: flex-start; gap: 8px; }
         }
     </style>
 </head>
@@ -937,7 +986,7 @@
         </div>
     </section>
 
-    <!-- VIP TIER ZONES -->
+    <!-- VIP TIER ZONES WITH HISTORY -->
     <section class="vip-tier-section" id="vipSectionTier">
         <div class="container">
             <div style="text-align: center;">
@@ -947,6 +996,14 @@
             
             <div class="catalog-grid" id="vipTierGrid">
                 <!-- VIP content -->
+            </div>
+
+            <!-- VIP History Box -->
+            <div class="vip-history-box">
+                <div class="vip-history-title">ИСТОРИЯ ВАШИХ VIP-ЗАКАЗОВ</div>
+                <div class="order-history-list" id="vipHistoryList">
+                    <p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);">У вас пока нет оформленных заказов.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -972,7 +1029,7 @@
                     <button class="btn-luxury btn-gold" onclick="addNewCatalogCard()">+ Добавить новый товар в каталог</button>
                 </div>
 
-                <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px;">
+                <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px; margin-bottom: 20px;">
                     <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;">Управление VIP-кодами:</h5>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <input type="text" id="newVipCode" placeholder="Новый код (напр. VIP777)" style="padding: 6px; font-size: 11px;">
@@ -983,6 +1040,14 @@
                             <option value="BLACK">BLACK</option>
                         </select>
                         <button class="btn-luxury" style="padding: 6px 12px; font-size: 10px;" onclick="createVipCode()">Создать код</button>
+                    </div>
+                </div>
+
+                <!-- Управление Статусами Заказов в ADMIN -->
+                <div style="border-top: 1px solid var(--border-subtle); padding-top: 15px;">
+                    <h5 style="margin-bottom: 10px; font-size: 12px; text-transform: uppercase;">Все Заказы Клиентов (Управление Статусом):</h5>
+                    <div id="adminOrdersList" style="display: flex; flex-direction: column; gap: 10px;">
+                        <p style="font-size: 11px; color: var(--text-muted);">Заказов пока нет.</p>
                     </div>
                 </div>
             </div>
@@ -1156,6 +1221,8 @@
         let currentLang = 'ru';
         let currentCurrency = 'KGS';
         let isAdmin = false;
+        let activeVipTier = null;
+        let userOrders = [];
 
         const ADMIN_PASSWORD = "12332112_01.02.2007_15.08.2006";
 
@@ -1430,7 +1497,7 @@
                     <h3 class="catalog-title">Chanel Classic Flap Medium</h3>
                     <div class="catalog-price" data-base-kgs="850000">850 000 KGS</div>
                     <p class="catalog-desc">Парижский бутик. Доступ по ключу Silver.</p>
-                    <button class="btn-luxury btn-gold" onclick="addToCartFromElement(this)">ЗАБРОНИРОВАТЬ</button>
+                    <button class="btn-luxury btn-gold" onclick="addVipOrder('Chanel Classic Flap Medium', '850 000 KGS')">ЗАБРОНИРОВАТЬ</button>
                 </div>
             `,
             GOLD: `
@@ -1439,7 +1506,7 @@
                     <h3 class="catalog-title">Louis Vuitton Symphony 100ml (Les Extraits)</h3>
                     <div class="catalog-price" data-base-kgs="380000">380 000 KGS</div>
                     <p class="catalog-desc">Запечатанный флакон с сертификатом бутика.</p>
-                    <button class="btn-luxury btn-gold" onclick="addToCartFromElement(this)">ЗАБРОНИРОВАТЬ</button>
+                    <button class="btn-luxury btn-gold" onclick="addVipOrder('Louis Vuitton Symphony 100ml', '380 000 KGS')">ЗАБРОНИРОВАТЬ</button>
                 </div>
             `,
             PLATINUM: `
@@ -1448,7 +1515,7 @@
                     <h3 class="catalog-title">Hermès Birkin 25 Gold Hardware</h3>
                     <div class="catalog-price" data-base-kgs="1850000">1 850 000 KGS</div>
                     <p class="catalog-desc">Официальный выкуп во Франции. Полный комплект.</p>
-                    <button class="btn-luxury btn-gold" onclick="addToCartFromElement(this)">ЗАБРОНИРОВАТЬ</button>
+                    <button class="btn-luxury btn-gold" onclick="addVipOrder('Hermès Birkin 25 Gold Hardware', '1 850 000 KGS')">ЗАБРОНИРОВАТЬ</button>
                 </div>
             `,
             BLACK: `
@@ -1457,7 +1524,7 @@
                     <h3 class="catalog-title">Rolex Daytona Cosmograph Oystersteel</h3>
                     <div class="catalog-price" data-base-kgs="2900000">2 900 000 KGS</div>
                     <p class="catalog-desc">Эксклюзивный доступ уровня Black. Заводская комплектация.</p>
-                    <button class="btn-luxury btn-gold" onclick="addToCartFromElement(this)">ЗАБРОНИРОВАТЬ</button>
+                    <button class="btn-luxury btn-gold" onclick="addVipOrder('Rolex Daytona Cosmograph', '2 900 000 KGS')">ЗАБРОНИРОВАТЬ</button>
                 </div>
             `
         };
@@ -1471,7 +1538,12 @@
             if (savedCodes) {
                 vipDatabase = JSON.parse(savedCodes);
             }
+            const savedOrders = localStorage.getItem('ar_buyer_orders');
+            if (savedOrders) {
+                userOrders = JSON.parse(savedOrders);
+            }
             switchLang('ru');
+            renderHistoryUI();
         });
 
         function switchLang(lang) {
@@ -1570,6 +1642,8 @@
 
             if (vipDatabase[input]) {
                 const tier = vipDatabase[input];
+                activeVipTier = tier;
+
                 const section = document.getElementById('vipSectionTier');
                 const badge = document.getElementById('vipTierBadge');
                 const grid = document.getElementById('vipTierGrid');
@@ -1581,10 +1655,89 @@
                 section.style.display = 'block';
                 closeModal('vipModal');
                 switchCurrency(currentCurrency);
+                renderHistoryUI();
                 section.scrollIntoView({ behavior: 'smooth' });
             } else {
                 alert('Неверный VIP-код.');
             }
+        }
+
+        // Заказ VIP позиции с фиксацией в историю
+        function addVipOrder(itemName, price) {
+            const newOrder = {
+                id: 'ORD-' + Math.floor(1000 + Math.random() * 9000),
+                item: itemName,
+                price: price,
+                date: new Date().toLocaleDateString('ru-RU'),
+                tier: activeVipTier || 'SILVER',
+                status: 'processing' // processing, purchased, shipping, delivered
+            };
+
+            userOrders.unshift(newOrder);
+            localStorage.setItem('ar_buyer_orders', JSON.stringify(userOrders));
+            renderHistoryUI();
+
+            const whatsappNumber = '996709972571';
+            const message = encodeURIComponent(
+                `Здравствуйте, личный байер!\n\n` +
+                `Запрос на бронирование VIP-релиза:\n` +
+                `• Товар: ${itemName}\n` +
+                `• Цена: ${price}\n` +
+                `• Код заказа: ${newOrder.id}\n\n` +
+                `Уточните, пожалуйста, наличие и реквизиты.`
+            );
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        }
+
+        function renderHistoryUI() {
+            const list = document.getElementById('vipHistoryList');
+            const adminList = document.getElementById('adminOrdersList');
+
+            if (userOrders.length === 0) {
+                list.innerHTML = `<p style="text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);">У вас пока нет оформленных заказов.</p>`;
+                adminList.innerHTML = `<p style="font-size: 11px; color: var(--text-muted);">Заказов пока нет.</p>`;
+                return;
+            }
+
+            const statusLabels = {
+                processing: { text: 'В обработке', class: 'status-processing' },
+                purchased: { text: 'Выкуплено', class: 'status-purchased' },
+                shipping: { text: 'В доставке', class: 'status-shipping' },
+                delivered: { text: 'Доставлено', class: 'status-delivered' }
+            };
+
+            list.innerHTML = userOrders.map(o => `
+                <div class="history-item">
+                    <div>
+                        <strong style="color: var(--accent-gold);">${o.id}</strong> • ${o.item}
+                        <div style="font-size: 10px; color: rgba(255,255,255,0.6);">${o.date} • ${o.price}</div>
+                    </div>
+                    <span class="order-status ${statusLabels[o.status].class}">${statusLabels[o.status].text}</span>
+                </div>
+            `).join('');
+
+            adminList.innerHTML = userOrders.map((o, idx) => `
+                <div style="background: #fff; padding: 10px; border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                    <div>
+                        <strong>${o.id}</strong> (${o.tier}) — ${o.item} [${o.price}]
+                    </div>
+                    <div>
+                        <select onchange="updateOrderStatus(${idx}, this.value)" style="padding: 3px; font-size: 11px;">
+                            <option value="processing" ${o.status==='processing'?'selected':''}>В обработке</option>
+                            <option value="purchased" ${o.status==='purchased'?'selected':''}>Выкуплено</option>
+                            <option value="shipping" ${o.status==='shipping'?'selected':''}>В доставке</option>
+                            <option value="delivered" ${o.status==='delivered'?'selected':''}>Доставлено</option>
+                        </select>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateOrderStatus(index, newStatus) {
+            userOrders[index].status = newStatus;
+            localStorage.setItem('ar_buyer_orders', JSON.stringify(userOrders));
+            renderHistoryUI();
+            alert('Статус заказа успешно обновлен!');
         }
 
         function triggerImgUpload(btn) {
@@ -1770,6 +1923,22 @@
                 alert('Ваша корзина пуста.');
                 return;
             }
+
+            // Добавляем позиции из корзины в историю
+            cart.forEach(item => {
+                userOrders.unshift({
+                    id: 'ORD-' + Math.floor(1000 + Math.random() * 9000),
+                    item: item.name + ` (${item.size})`,
+                    price: item.price,
+                    date: new Date().toLocaleDateString('ru-RU'),
+                    tier: activeVipTier || 'SILVER',
+                    status: 'processing'
+                });
+            });
+
+            localStorage.setItem('ar_buyer_orders', JSON.stringify(userOrders));
+            renderHistoryUI();
+
             const whatsappNumber = '996709972571';
             const itemsListText = cart.map(i => `• ${i.name} (Размер: ${i.size}) — ${i.price}`).join('\n');
             const message = encodeURIComponent(
